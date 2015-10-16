@@ -1,0 +1,5 @@
+# PhoneGap files and directories
+Client/platforms/**
+!Client/platforms/android/AndroidManifest.xml
+Client/plugins/**
+Client/hooks/**

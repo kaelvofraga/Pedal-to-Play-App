@@ -1,0 +1,29 @@
+<nav id="mainnav" class="navmenu navmenu-default navmenu-fixed-left offcanvas nav-purple" role="navigation">
+  <span class="navmenu-brand color-onmain">Menu</span>
+  <ul class="nav navmenu-nav">
+     <li ng-repeat="item in menuCtrl.menuItens" >
+        <a ng-click="item.action()"><i ng-class="item.icon"></i> {{item.name}}</a>
+     </li>
+  </ul>
+</nav>
+<div class="navbar navbar-default navbar-fixed-top nav-purple">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle pull-left" data-toggle="offcanvas"
+            data-target="#mainnav" data-canvas="body">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <span class="navmenu-brand color-onmain">{{navbarTitle}}</span>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="item in menuCtrl.menuItens" >
+       <a ng-click="item.action()">{{item.name}}</a>
+     </li>
+    </ul>
+  </div>  
+</div>
+<div id="menuContainer" ui-view class="container"></div>
+<logout-modal></logout-modal>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="Pedal2Play">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Content Security Policy: Cordova White-List -->    
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+     
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="libs/style/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="libs/style/jasny-bootstrap/css/jasny-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" type="text/css" href="libs/style/font-awesome/css/font-awesome.min.css" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  </head>
+  
+  <body ng-controller="MainController"> 
+    <!-- PAGE CONTENT -->
+    <div ui-view></div>
+    
+    <!-- Libs -->
+    <script type="text/javascript" src="libs/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular-md5.min.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular-touch.min.js"></script>  
+    <script type="text/javascript" src="libs/style/bootstrap/js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="libs/style/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+    
+    <!-- cordova script (this will be a 404 during development) -->
+    <script type="text/javascript" src="cordova.js"></script>
+    
+    <!-- Project JS -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- Project Services -->
+    <script type="text/javascript" src="js/services/AuthenticationService.js"></script>
+    <script type="text/javascript" src="js/services/CordovaMainService.js"></script>
+    <script type="text/javascript" src="js/services/TrackingService.js"></script>
+    <script type="text/javascript" src="js/services/LoadingService.js"></script>
+    <script type="text/javascript" src="js/services/AvatarService.js"></script> 
+    <script type="text/javascript" src="js/services/ImageService.js"></script>  
+    <!-- Project Controllers -->
+    <script type="text/javascript" src="js/controllers/MenuCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/AuthenticationCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/HomeCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/TrackingCtrl.js"></script>
+    <script type="text/javascript" src="js/controllers/AvatarCtrl.js"></script>
+    <!-- Project Diretives -->
+    <script type="text/javascript" src="js/directives/logout-modal.js"></script>
+  </body>
+
+</html>

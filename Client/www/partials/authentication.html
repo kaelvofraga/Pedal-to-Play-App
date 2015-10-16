@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default nav-purple">
+	<div class="container-fluid">
+		<span class="navbar-brand color-onmain">{{appName}}</span>
+		<button type="button" class="btn btn-default navbar-btn pull-right" ng-click="authCtrl.changeOperation()">
+			{{isRegistering ? 'Fazer Login' : 'Inscreva-se' }}
+		</button>
+	</div>
+</nav>
+<div id="authDiv" class="container center-block">
+	<h1 class="clearfix">
+			{{isRegistering ? 'Inscreva-se' : 'Login'}}
+	</h1>
+	<form name="authForm" ng-submit="authCtrl.signUser()" novalidate>
+		<div class="form-group form-group-lg">
+			<label class="control-label" for="emailID">Email:</label>
+			<input id="emailID" type="email" class="form-control" placeholder="exemplo@email.com" ng-model="user.email" 
+				   name="uEmail" ng-model-options="{ debounce: 750 }" required email-validator>
+			<div class="help-block" ng-show="authForm.$submitted || authForm.uEmail.$touched">
+				<span ng-show="authForm.uEmail.$error.required">Este campo deve ser preenchido.</span>
+				<span ng-show="authForm.uEmail.$error.email">Email inválido.</span>
+				<span ng-show="authForm.uEmail.$pending.isValidEmail">Verificando email <i class="fa fa-spinner fa-pulse"></i></span>
+				<span ng-show="authForm.uEmail.$error.isValidEmail">Email inválido ou já está sendo utilizado.</span>
+			</div>
+		</div>
+		<div class="form-group form-group-lg">
+			<label class="control-label" for="passwordID">Senha:</label>
+			<input id="passwordID" type="password" class="form-control" placeholder="6 a 30 caracteres" ng-model="temporaryPassword" 
+				   name="uPassword" minlength="6" maxlength="30" required>
+			<div class="help-block" ng-show="authForm.$submitted || authForm.uPassword.$touched">
+				<span ng-show="authForm.uPassword.$error.required">
+					Este campo deve ser preenchido.
+				</span>
+				<span ng-show="authForm.uPassword.$error.minlength || authForm.uPassword.$error.maxlength">
+					Senha inválida. Deve conter de 6 a 30 caracteres.
+				</span>
+			</div>
+		</div>
+		<div class="form-group form-group-lg" ng-show="isRegistering">
+			<label class="control-label" for="confirmPasswordID">Confirmar senha:</label>
+			<input id="confirmPasswordID" type="password" class="form-control" placeholder="Digite a senha novamente" 
+				   ng-model="confirmPassword" ng-required="isRegistering" name="uConfirmPassword" password-validator>
+			<div class="help-block" ng-show="authForm.$submitted || authForm.uConfirmPassword.$touched">
+				<span ng-show="authForm.uConfirmPassword.$error.required">
+					Este campo deve ser preenchido.
+				</span>
+				<span ng-show="authForm.uConfirmPassword.$error.comparePasswords">
+					As senhas digitadas são diferentes.
+				</span>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="authForm.$invalid">
+			{{isRegistering ? 'Inscreva-se' : 'Fazer Login'}}
+		</button>
+	</form>
+	<div class="alert alert-danger" role="alert" ng-show="errorMessage.length > 0">
+		{{errorMessage}}
+	</div>
+	<div ng-show="loading">
+		Processando <i class="fa fa-spinner fa-pulse"></i>
+	</div>
+</div>
