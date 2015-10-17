@@ -14,7 +14,7 @@
     $rootScope.appName = 'Pedal-to-Play';
     $rootScope.SERVER_BASE_URL = 
         //'http://localhost/Pedal-to-Play/Server/'; /* Development */
-        'http://pedal2play.kaelfraga.com/'; /* Production */   
+        'http://php-pedal2play.rhcloud.com/';  /* Production */        
   }])
     
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
