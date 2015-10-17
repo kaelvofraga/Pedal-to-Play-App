@@ -30,16 +30,7 @@
 		}	
 		
 		return {		
-			signIn: function (scope) {
-				
-				if(scope.user.email === "p2p@admin.com" && 
-				   scope.user.password === "bc37008a9e7bb86fcb7a8661b0da4684")
-				{
-					localStorageService.set('user', angular.copy(scope.user));
-					$state.go('app.home');
-					return;
-				}
-								
+			signIn: function (scope) {				
 				LoadingService.startLoading();
 				$http.post($rootScope.SERVER_BASE_URL + 'signin', scope.user)
 					.then(
