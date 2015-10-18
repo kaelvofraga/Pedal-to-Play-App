@@ -53,12 +53,14 @@
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
     <access origin="http://*.kaelfraga.com" />
     <access origin="http://*.google.com" />
+	<access origin="http://php-pedal2play.rhcloud.com" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-navigation href="*://*.kaelfraga.com/*" />
+	<allow-navigation href="*://php-pedal2play.rhcloud.com/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
