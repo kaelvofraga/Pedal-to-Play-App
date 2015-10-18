@@ -7,9 +7,18 @@
     .controller('MenuController', ['AuthService', '$scope', '$state', '$window', 'localStorageService',
                           function (AuthService, $scope, $state, $window, localStorageService) {
                 
-        $scope.$watch(function () { return $state.current.data.pageTitle }, function (newValue, oldValue) {
-          if (typeof newValue !== 'undefined') {
-            $scope.navbarTitle = $state.current.data.pageTitle;
+        $scope.$watch(function () { return $state.current.name }, function (newValue, oldValue) {
+          if (typeof newValue !== 'undefined') {           
+            switch ($state.current.name) {
+              case 'app.avatar': 
+                $scope.navbarTitle =  $scope.string.navbarTitle.AVATAR; 
+                break;
+              case 'app.tracking': 
+                $scope.navbarTitle = $scope.string.navbarTitle.TRACKING;
+                break;
+              default: 
+                $scope.navbarTitle = $scope.string.APP_NAME;
+            }            
           }
         });
         
@@ -19,28 +28,28 @@
         
         this.menuItens = [
           {
-            name: 'Home',
+            name: $scope.string.menu.HOME,
             icon: 'fa fa-home',
             action: function () {
               $state.go('app.home');
             }
           },
           {
-            name: 'Pedalada',
+            name: $scope.string.menu.TRACKING,
             icon: 'fa fa-bicycle',
             action: function () {
               $state.go('app.tracking');
             }
           },
           {
-            name: 'Avatar',
+            name: $scope.string.menu.AVATAR,
             icon: 'fa fa-user',
             action: function () {
               $state.go('app.avatar');
             }
           },
           {
-            name: 'Logout',
+            name: $scope.string.menu.LOGOUT,
             icon: 'fa fa-sign-out',
             action: function () {
               angular.element('#logoutModal').modal('show');                 

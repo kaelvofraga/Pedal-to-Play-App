@@ -9,14 +9,38 @@
       var intervalId = setInterval(function () {
         TrackService.getCurrentPosition(function (position) {
           $scope.position = [
-            { name: 'Latitude: ', value: position.coords.latitude },
-            { name: 'Longitude: ', value: position.coords.longitude },
-            { name: 'Altitude: ', value: position.coords.altitude },
-            { name: 'Accuracy: ', value: position.coords.accuracy },
-            { name: 'Altitude Accuracy: ', value: position.coords.altitudeAccuracy },
-            { name: 'Heading: ', value: position.coords.heading },
-            { name: 'Speed: ', value: position.coords.speed },
-            { name: 'Timestamp: ', value: position.coords.timestamp }
+            { 
+              name: $scope.string.position.LATITUDE, 
+              value: position.coords.latitude 
+            },
+            { 
+              name: $scope.string.position.LONGITUDE, 
+              value: position.coords.longitude 
+            },
+            { 
+              name: $scope.string.position.ALTITUDE,
+              value: position.coords.altitude 
+            },
+            {
+              name: $scope.string.position.ACCURACY, 
+              value: position.coords.accuracy 
+            },
+            { 
+              name: $scope.string.position.ALTITUDE_ACCURACY, 
+              value: position.coords.altitudeAccuracy 
+            },
+            { 
+              name: $scope.string.position.HEADING, 
+              value: position.coords.heading 
+            },
+            { 
+              name: $scope.string.position.SPEED, 
+              value: position.coords.speed 
+            },
+            { 
+              name: $scope.string.position.TIMESTAMP, 
+              value: position.coords.timestamp
+            }
           ];
         });
       }, 1000);

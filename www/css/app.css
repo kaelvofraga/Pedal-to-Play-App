@@ -38,6 +38,9 @@ body{
   border: 1px solid #512e90;
   border-radius: 0;
 }
+.nav-purple .navmenu-nav{
+  margin-top: 48px;
+}
 .nav-purple a,
 .nav-purple ul{
   background-color: #673ab7;
@@ -119,24 +122,6 @@ body{
   display: block;
   margin-bottom: 30px;
 }
-#avatarDiv button { 
-  /* From "Dig Deep Into CSS Linear Gradients" (TUDOR, 2013)   
-     http://hugogiraudel.com/2013/02/04/css-gradients/ */
-  background: 
-    linear-gradient(36deg, #272b66 42.34%, transparent 42.34%),
-    linear-gradient(72deg, #2d559f 75.48%, transparent 75.48%),
-    linear-gradient(-36deg, #9ac147 42.34%, transparent 42.34%) 100% 0,
-    linear-gradient(-72deg, #639b47 75.48%, transparent 75.48%) 100% 0, 
-    linear-gradient(36deg, transparent 57.66%, #e1e23b 57.66%) 100% 100%,
-    linear-gradient(72deg, transparent 24.52%, #f7941e 24.52%) 100% 100%,
-    linear-gradient(-36deg, transparent 57.66%, #662a6c 57.66%) 0 100%,
-    linear-gradient(-72deg, transparent 24.52%, #9a1d34 24.52%) 0 100%, 
-    #43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 100%;
-  background-repeat: no-repeat;
-  background-size: 50% 50%;
-  color: white !important;
-  z-index: 2;                                        
-}
 #avatarDiv .avatar{
   height: 600px;
   width: auto;
@@ -158,23 +143,42 @@ body{
   }
 }
 
-.flex-footer {
-  display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: row;
-	flex-direction: row;
-  align-items: center;
+.color-picker { 
+  /* From "Dig Deep Into CSS Linear Gradients" (TUDOR, 2013)   
+     http://hugogiraudel.com/2013/02/04/css-gradients/ */
+  background-color: #55D43F;
+  background: 
+    linear-gradient(36deg, #272b66 42.34%, transparent 42.34%),
+    linear-gradient(72deg, #2d559f 75.48%, transparent 75.48%),
+    linear-gradient(-36deg, #9ac147 42.34%, transparent 42.34%) 100% 0,
+    linear-gradient(-72deg, #639b47 75.48%, transparent 75.48%) 100% 0, 
+    linear-gradient(36deg, transparent 57.66%, #e1e23b 57.66%) 100% 100%,
+    linear-gradient(72deg, transparent 24.52%, #f7941e 24.52%) 100% 100%,
+    linear-gradient(-36deg, transparent 57.66%, #662a6c 57.66%) 0 100%,
+    linear-gradient(-72deg, transparent 24.52%, #9a1d34 24.52%) 0 100%, 
+    #43a1cd linear-gradient(#ba3e2e, #ba3e2e) 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  color: white !important;
+  z-index: 2;                                        
 }
-.flex-footer > .flex-item {
-	-webkit-flex: auto;
-	flex: auto;
+.color-picker:hover {
+    -webkit-filter: brightness(0.7);
+    -moz-filter: brightness(0.7);
+    -o-filter: brightness(0.7);
+    -ms-filter: brightness(0.7);
+    filter: brightness(0.7);
 }
 
-#avatar-share {
-  text-align: center; 
+@media (max-width: 300px) { 
+  .footer .btn-lg { 
+    font-size: 14px;
+    padding: 10px 10px;
+  }
 }
 
 .circle-button {
   border-radius: 50% !important;
+  text-align: center;
 }
 

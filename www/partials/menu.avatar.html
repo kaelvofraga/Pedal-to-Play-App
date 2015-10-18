@@ -15,27 +15,21 @@
   </div>
 </div>
 
-<div id="avatarDiv">	
-	<button class="btn btn-lg circle-button pull-right" ng-click="">
+<div id="avatarDiv">
+	<button class="btn btn-lg circle-button pull-right color-picker" ng-click="">
 		<i class="fa fa-eyedropper"></i>
+	</button>
+	<button class="btn btn-primary btn-lg circle-button" ng-click="">
+		<i class="fa fa-share-alt"></i>
 	</button>
 	<img class="avatar img-responsive center-block" src="img/avatar_female.svg" alt="Avatar" title="Avatar">
 </div>
 
-<div class="flex-footer">
-	<div class="flex-item">
-		<button class="btn btn-default btn-lg" ng-click="">
-			Gênero
-		</button>
-	</div>
-	<div id="avatar-share" class="flex-item">
-		<button class="btn btn-primary btn-lg circle-button" ng-click="">
-			<i class="fa fa-share-alt"></i>
-		</button>
-	</div>
-	<div class="flex-item">
-		<button class="btn btn-default btn-lg pull-right" ng-click="">
-			Salvar
-		</button>
-	</div>
+<div>
+	<button class="btn btn-default btn-lg" ng-click="">
+		{{string.button.GENDER}}
+	</button>
+	<button class="btn btn-default btn-lg pull-right" ng-click="">
+		{{string.button.SAVE}}
+	</button>
 </div>

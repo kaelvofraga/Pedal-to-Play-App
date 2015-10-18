@@ -10,15 +10,13 @@
     'ngTouch'
   ]) 
   
-  .controller('MainController', ['$rootScope', function ($rootScope){    
-    $rootScope.appName = 'Pedal-to-Play';
-    $rootScope.SERVER_BASE_URL = 
-        //'http://localhost/Pedal-to-Play/Server/'; /* Development */
-        'http://php-pedal2play.rhcloud.com/';  /* Production */        
+  .controller('MainController', ['$rootScope', 'StringService', 
+                        function ($rootScope, StringService) {    
+      StringService.getStrings($rootScope, null);                          
   }])
-    
+      
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-  
+
     $stateProvider
       .state('auth', {
           url: '/auth',
@@ -37,22 +35,19 @@
         url: '/home',
         templateUrl: 'partials/menu.home.html',
         controller: 'HomeController',
-        controllerAs: 'homeCtrl',
-        data: { pageTitle: 'Pedal-to-Play' }         
+        controllerAs: 'homeCtrl'        
       })
       .state('app.avatar', {
         url: '/avatar',
         templateUrl: 'partials/menu.avatar.html',
         controller: 'AvatarController',
-        controllerAs: 'avatarCtrl',
-        data: { pageTitle: 'Customização do Avatar' }         
+        controllerAs: 'avatarCtrl'        
       })
       .state('app.tracking', {
         url: '/tracking',
         templateUrl: 'partials/menu.tracking.html',
         controller: 'TrackingController',
-        controllerAs: 'trackCtrl',
-        data: { pageTitle: 'Monitorando Pedalada' }
+        controllerAs: 'trackCtrl'
       });
     
     $urlRouterProvider.otherwise('/app/home');

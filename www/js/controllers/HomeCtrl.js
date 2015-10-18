@@ -4,8 +4,8 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('HomeController', ['$scope', function ($scope) 
+    .controller('HomeController', ['$scope', 'localStorageService', function ($scope, localStorageService) 
     {
-           
+       $scope.user = localStorageService.get('user');
     }]);
 })();

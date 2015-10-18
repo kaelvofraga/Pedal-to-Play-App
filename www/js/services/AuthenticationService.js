@@ -13,8 +13,9 @@
 				response.data.id_user && 
 				!(response.data.error)) 
 			{
-				scope.user = {};
-				scope.user = angular.copy(response.data);
+				delete scope.user.password;
+				scope.user.id = response.data.id_user;
+				scope.user.token = response.data.token;
 				localStorageService.set('user', angular.copy(scope.user));
 				$state.go('app.home');
 			} else {
@@ -32,7 +33,7 @@
 		return {		
 			signIn: function (scope) {				
 				LoadingService.startLoading();
-				$http.post($rootScope.SERVER_BASE_URL + 'signin', scope.user)
+				$http.post($rootScope.string.SERVER_BASE_URL + 'signin', scope.user)
 					.then(
 						function (response) {
 							sucessCallback(scope, response, "Usuário ou senha incorretos.");
@@ -43,7 +44,7 @@
 			},		
 			signUp: function (scope) {
 				LoadingService.startLoading();
-				$http.post($rootScope.SERVER_BASE_URL + 'signup', scope.user)
+				$http.post($rootScope.string.SERVER_BASE_URL + 'signup', scope.user)
 					.then(
 						function (response) {
 							sucessCallback(scope, response, "Dados para cadastro inválidos.");						
@@ -53,7 +54,7 @@
 						});
 			},
 			isValidEmail: function (email) {
-				return $http.get($rootScope.SERVER_BASE_URL + 'validateemail/' + email)
+				return $http.get($rootScope.string.SERVER_BASE_URL + 'validateemail/' + email)
 					.then(
 						function (response) {
 							if (response.data) {

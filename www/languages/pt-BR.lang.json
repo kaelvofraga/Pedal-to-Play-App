@@ -1,0 +1,54 @@
+{
+    "APP_NAME": "Pedal-to-Play",
+    "USER_NAME": "Usuário: ",
+    "SERVER_BASE_URL": "http://php-pedal2play.rhcloud.com/",
+    "SERVER_BASE_URL_comment": "http://localhost/Pedal-to-Play/Server/",
+    "DO_LOGIN": "Fazer Login",
+    "DO_REGISTER": "Inscreva-se",
+    "LOGOUT_TITLE": "Confirmar Logout",
+    "LOGOUT_CONFIRMATION": "Tem certeza que deseja sair?",
+    "YES": "Sim",
+    "NO": "Não",
+    "PROCESSING": "Processando",
+    "TRACKING_TITLE": "Posição",
+    "menu": {
+        "HOME": "Home",
+        "TRACKING": "Pedalada",
+        "AVATAR": "Avatar",
+        "LOGOUT": "Logout"
+    },
+    "navbarTitle":{
+        "TRACKING": "Monitorando Pedalada",
+        "AVATAR": "Customização do Avatar"
+    },                       
+    "form": {
+        "EMAIL": "Email:",
+        "PASSWORD": "Senha:",
+        "CONFIRM_PASSWORD": "Confirmar senha:",
+        "EMAIL_PLACEHOLDER": "exemplo@email.com",
+        "PASSWORD_PLACEHOLDER": "6 a 30 caracteres",
+        "CONFIRM_PASSWORD_PLACEHOLDER": "Digite a senha novamente",
+        "message": {
+            "REQUIRED": "Este campo deve ser preenchido.",
+            "INVALID_EMAIL": "Email inválido.",
+            "CHECKING_EMAIL": "Verificando email",
+            "INVALID_OR_REPEATED_EMAIL": "Email inválido ou já está sendo utilizado.",
+            "INVALID_PASSWORD": "Senha inválida. Deve conter de 6 a 30 caracteres.",
+            "DIFFERENT_PASSWORDS": "As senhas digitadas são diferentes."
+        }
+    },
+    "button": {
+        "GENDER": "Gênero",
+        "SAVE": "Salvar"
+    },
+    "position": {
+        "LATITUDE": "Latitude: ",
+        "LONGITUDE": "Longitude: ",
+        "ALTITUDE": "Altitude: ",
+        "ACCURACY": "Precisão: ",
+        "ALTITUDE_ACCURACY": "Precisão de Altitude: ",
+        "HEADING": "Direção: ",
+        "SPEED": "Velocidade: ",
+        "TIMESTAMP": "Data e hora: "
+    }
+}

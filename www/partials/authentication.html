@@ -1,61 +1,72 @@
 <nav class="navbar navbar-default nav-purple">
 	<div class="container-fluid">
-		<span class="navbar-brand color-onmain">{{appName}}</span>
+		<span class="navbar-brand color-onmain">{{string.APP_NAME}}</span>
 		<button type="button" class="btn btn-default navbar-btn pull-right" ng-click="authCtrl.changeOperation()">
-			{{isRegistering ? 'Fazer Login' : 'Inscreva-se' }}
+			{{isRegistering ? string.DO_LOGIN : string.DO_REGISTER }}
 		</button>
 	</div>
 </nav>
 <div id="authDiv" class="container center-block">
 	<h1 class="clearfix">
-			{{isRegistering ? 'Inscreva-se' : 'Login'}}
+			{{isRegistering ? string.DO_REGISTER : string.DO_LOGIN}}
 	</h1>
 	<form name="authForm" ng-submit="authCtrl.signUser()" novalidate>
 		<div class="form-group form-group-lg">
-			<label class="control-label" for="emailID">Email:</label>
-			<input id="emailID" type="email" class="form-control" placeholder="exemplo@email.com" ng-model="user.email" 
+			<label class="control-label" for="emailID">{{string.form.EMAIL}}</label>
+			<input id="emailID" type="email" class="form-control" 
+				   placeholder="{{string.form.EMAIL_PLACEHOLDER}}" ng-model="user.email" 
 				   name="uEmail" ng-model-options="{ debounce: 750 }" required email-validator>
 			<div class="help-block" ng-show="authForm.$submitted || authForm.uEmail.$touched">
-				<span ng-show="authForm.uEmail.$error.required">Este campo deve ser preenchido.</span>
-				<span ng-show="authForm.uEmail.$error.email">Email inválido.</span>
-				<span ng-show="authForm.uEmail.$pending.isValidEmail">Verificando email <i class="fa fa-spinner fa-pulse"></i></span>
-				<span ng-show="authForm.uEmail.$error.isValidEmail">Email inválido ou já está sendo utilizado.</span>
+				<span ng-show="authForm.uEmail.$error.required">
+					{{string.form.message.REQUIRED}}
+				</span>
+				<span ng-show="authForm.uEmail.$error.email">
+					{{string.form.message.INVALID_EMAIL}}
+				</span>
+				<span ng-show="authForm.uEmail.$pending.isValidEmail">
+					{{string.form.message.CHECKING_EMAIL}} <i class="fa fa-spinner fa-pulse"></i>
+				</span>
+				<span ng-show="authForm.uEmail.$error.isValidEmail">
+					{{string.form.message.INVALID_OR_REPEATED_EMAIL}}
+				</span>
 			</div>
 		</div>
 		<div class="form-group form-group-lg">
-			<label class="control-label" for="passwordID">Senha:</label>
-			<input id="passwordID" type="password" class="form-control" placeholder="6 a 30 caracteres" ng-model="temporaryPassword" 
+			<label class="control-label" for="passwordID">{{string.form.PASSWORD}}</label>
+			<input id="passwordID" type="password" class="form-control" 
+				   placeholder="{{string.form.PASSWORD_PLACEHOLDER}}" ng-model="temporaryPassword" 
 				   name="uPassword" minlength="6" maxlength="30" required>
 			<div class="help-block" ng-show="authForm.$submitted || authForm.uPassword.$touched">
 				<span ng-show="authForm.uPassword.$error.required">
-					Este campo deve ser preenchido.
+					{{string.form.message.REQUIRED}}
 				</span>
 				<span ng-show="authForm.uPassword.$error.minlength || authForm.uPassword.$error.maxlength">
-					Senha inválida. Deve conter de 6 a 30 caracteres.
+					{{string.form.message.INVALID_PASSWORD}}
 				</span>
 			</div>
 		</div>
 		<div class="form-group form-group-lg" ng-show="isRegistering">
-			<label class="control-label" for="confirmPasswordID">Confirmar senha:</label>
-			<input id="confirmPasswordID" type="password" class="form-control" placeholder="Digite a senha novamente" 
+			<label class="control-label" for="confirmPasswordID">{{string.form.CONFIRM_PASSWORD}}</label>
+			<input id="confirmPasswordID" type="password" class="form-control" 
+				   placeholder="{{string.form.CONFIRM_PASSWORD_PLACEHOLDER}}" 
 				   ng-model="confirmPassword" ng-required="isRegistering" name="uConfirmPassword" password-validator>
 			<div class="help-block" ng-show="authForm.$submitted || authForm.uConfirmPassword.$touched">
 				<span ng-show="authForm.uConfirmPassword.$error.required">
-					Este campo deve ser preenchido.
+					{{string.form.message.REQUIRED}}
 				</span>
 				<span ng-show="authForm.uConfirmPassword.$error.comparePasswords">
-					As senhas digitadas são diferentes.
+					{{string.form.message.DIFFERENT_PASSWORDS}}
 				</span>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="authForm.$invalid">
-			{{isRegistering ? 'Inscreva-se' : 'Fazer Login'}}
+			{{isRegistering ? string.DO_REGISTER : string.DO_LOGIN}}
 		</button>
 	</form>
 	<div class="alert alert-danger" role="alert" ng-show="errorMessage.length > 0">
 		{{errorMessage}}
 	</div>
 	<div ng-show="loading">
-		Processando <i class="fa fa-spinner fa-pulse"></i>
+		{{string.PROCESSING}} <i class="fa fa-spinner fa-pulse"></i>
 	</div>
 </div>
