@@ -1,35 +1,32 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-	<ul class="nav nav-tabs">
-		<li role="presentation" ng-class="{'active': true}"><!--ng-repeat-->
-			<a ng-click="">Item 1</a>
-		</li>
-	</ul>
-	<div class="row">
-		<div class="col-xs-6 col-md-3">
-			<a ng-click="" class="thumbnail"><!--ng-repeat-->
-				<img src=" 	" alt="Opção 1" title="Opção 1">
-			</a>
+<div id="avatarDiv" class="row container-fluid"">
+	<div class="col-md-8 panel panel-default">
+		<div class="buttons">
+			<button class="btn btn-default" ng-click="">
+				{{string.button.SHARE}}
+			</button>
+			<button class="btn btn-default pull-right" ng-click="">
+				{{string.button.SAVE}}
+			</button>
+		</div>
+		<img class="avatar center-block" src="img/avatar_female.svg" alt="Avatar" title="Avatar">
+		<button class="btn btn-lg circle-button color-picker" ng-click="">
+			<i class="fa fa-eyedropper"></i>
+		</button>
+	</div>
+	<div class="col-md-4 panel panel-default">
+		<ul class="nav nav-tabs">
+			<li role="presentation" ng-class="{'active': true}">
+				<!--ng-repeat-->
+				<a ng-click="">Item 1</a>
+			</li>
+		</ul>
+		<div class="row">
+			<div class="col-xs-6 col-md-3">
+				<a ng-click="" class="thumbnail">
+					<!--ng-repeat-->
+					<img src=" 	" alt="Opção 1" title="Opção 1">
+				</a>
+			</div>
 		</div>
 	</div>
-  </div>
-</div>
-
-<div id="avatarDiv">
-	<button class="btn btn-lg circle-button pull-right color-picker" ng-click="">
-		<i class="fa fa-eyedropper"></i>
-	</button>
-	<button class="btn btn-primary btn-lg circle-button" ng-click="">
-		<i class="fa fa-share-alt"></i>
-	</button>
-	<img class="avatar img-responsive center-block" src="img/avatar_female.svg" alt="Avatar" title="Avatar">
-</div>
-
-<div>
-	<button class="btn btn-default btn-lg" ng-click="">
-		{{string.button.GENDER}}
-	</button>
-	<button class="btn btn-default btn-lg pull-right" ng-click="">
-		{{string.button.SAVE}}
-	</button>
 </div>
