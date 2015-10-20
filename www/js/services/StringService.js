@@ -4,14 +4,30 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .service('StringService', function($http) {  
+    .service('StringService', ['$http', function ($http) 
+    {   
         this.getStrings = function(scope, language) {
             var lang = language || 'pt-BR';
-            var languageFilePath = 'languages/' + lang + '.lang.json';           
+            var baseLanguagePath = 'languages/';
+            var sufix = '.lang.json';        
             
-            $http.get(languageFilePath).success(function (data) {
-                scope.string = data;
-            });
+            $http.get(baseLanguagePath + lang + sufix)
+                .then(
+                    function (response) {
+                        scope.string = response.data;
+                    }
+                );
+            
+            $http.get(baseLanguagePath + 'common' + sufix)
+                .then(
+                    function (response) {
+                        angular.merge(scope.string, response.data);
+                    }
+                );
         };
-    });
+    }]);
 })();
+
+  
+        
+   

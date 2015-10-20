@@ -1,0 +1,5 @@
+{
+    "APP_NAME": "Pedal-to-Play",
+    "SERVER_BASE_URL": "http://php-pedal2play.rhcloud.com/",
+    "SERVER_BASE_URL_comment": "http://localhost/Pedal-to-Play/Server/"
+}

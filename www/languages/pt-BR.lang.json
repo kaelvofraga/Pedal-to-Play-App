@@ -1,8 +1,5 @@
 {
-    "APP_NAME": "Pedal-to-Play",
     "USER_NAME": "Usuário: ",
-    "SERVER_BASE_URL": "http://php-pedal2play.rhcloud.com/",
-    "SERVER_BASE_URL_comment": "http://localhost/Pedal-to-Play/Server/",
     "DO_LOGIN": "Fazer Login",
     "DO_REGISTER": "Inscreva-se",
     "LOGOUT_TITLE": "Confirmar Logout",
