@@ -1,5 +1,5 @@
 <div id="avatarDiv" class="row container-fluid">
-	<div class="col-md-8 panel panel-default">
+	<div class="col-xs-12 col-sm-6 col-md-8 panel panel-default">
 		<div class="buttons">
 			<button class="btn btn-default" ng-click="">
 				{{string.button.SHARE}}
@@ -8,12 +8,15 @@
 				{{string.button.SAVE}}
 			</button>
 		</div>
+		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
+			{{string.error.SVG}}
+		</div>
 		<svg class="avatar center-block" width="256" height="512" viewBox="0 0 256 512.00001"></svg>
 		<button class="btn btn-lg circle-button color-picker" ng-click="">
 			<i class="fa fa-eyedropper"></i>
 		</button>
 	</div>
-	<div class="col-md-4 panel panel-default">
+	<div class="col-xs-6 col-md-4 panel panel-default">
 		<ul class="nav nav-tabs avatar-pieces">
 			<li role="presentation" ng-class="{'active': true}">
 				<!--ng-repeat-->

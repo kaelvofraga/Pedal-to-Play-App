@@ -2,38 +2,109 @@
 	"female": "img/avatar/avatar_female.svg",
 	"male": "img/avatar/avatar_male.svg",
 	"base": "#base",
+	"gradients": "linearGradient",
 	"faces": {
-		"cute": "#face1",
-		"seductive": "#face2",
-		"scared": "#face3",
-		"happy": "#face4",
-		"sad": "#face5",
-		"colorable": "eye"
+		"id": 0,
+		"options": [
+			{
+				"id": 0,
+				"value": "#face1"
+			},
+			{
+				"id": 1,
+				"value": "#face2"
+			},
+			{
+				"id": 2,
+				"value": "#face3"
+			},
+			{
+				"id": 3,
+				"value": "#face4"
+			},
+			{
+				"id": 4,
+				"value": "#face5"
+			}
+		]
 	},
 	"hairs": {
-		"emo": "#hair1",
-		"curly": "#hair2",
-		"athlete": "#hair3",
-		"cute": "#hair4",
-		"long": "#hair5"
+		"id": 1,
+		"options": [
+			{
+				"id": 0,
+				"value": "#hair1"
+			},
+			{
+				"id": 1,
+				"value": "#hair2"
+			},
+			{
+				"id": 2,
+				"value": "#hair3"
+			},
+			{
+				"id": 3,
+				"value": "#hair4"
+			},
+			{
+				"id": 4,
+				"value": "#hair5"
+			}
+		]
 	},
-	"helmet": "#helmet",
+	"helmet": {
+		"id": 2,
+		"options": [
+			{
+				"id": 0,
+				"value": "#helmet"
+			}
+		]
+	},
 	"shorts": {
-		"professional": "#gear-shorts",
-		"colorable": "shorts-colorable"
+		"id": 3,
+		"options": [
+			{
+				"id": 0,
+				"value": "#gear-shorts"
+			}
+		]
 	},
 	"jersey": {
-		"professional": "#gear-jersey",
-		"colorable": "jersey-colorable"
+		"id": 4,
+		"options": [
+			{
+				"id": 0,
+				"value": "#gear-jersey"
+			}
+		]
 	},
 	"gloves": {
-		"professional": "#gloves",
-		"colorable": "gloves-colorable"
+		"id": 5,
+		"options": [
+			{
+				"id": 0,
+				"value": "#gloves"
+			}
+		]
 	},
 	"shoes": {
-		"professional": "#gear-shoes",
-		"colorable": "shoes-colorable"
+		"id": 6,
+		"options": [
+			{
+				"id": 0,
+				"value": "#gear-shoes"
+			}
+		]
 	},
-	"glasses": "#glasses",
-	"gradients": "linearGradient"
+	"glasses": {
+		"id": 7,
+		"options": [
+			{
+				"id": 0,
+				"value": "#glasses"
+			}
+		]
+	}
 }

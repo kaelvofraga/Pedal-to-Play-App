@@ -99,23 +99,23 @@ body{
   margin-top: 15px;
 }
 #avatarDiv .avatar{
-  height: 512px;
+  height: 600px;
   width: auto;
   z-index: -1;
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
-    height: 240px;
+    height: 480px;
   }
 } 
 @media (max-height: 600px) { 
   #avatarDiv .avatar{ 
-    height: 168px;
+    height: 280px;
   }
 }
-@media (max-height: 500px) { 
+@media (max-height: 480px) { 
   #avatarDiv .avatar{ 
-    height: 128px;
+    height: 180px;
   }
 }
 #avatarDiv .nav-tabs {

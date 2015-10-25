@@ -47,5 +47,8 @@
         "HEADING": "Direção: ",
         "SPEED": "Velocidade: ",
         "TIMESTAMP": "Data e hora: "
+    },
+    "error": {
+        "SVG": "Desculpe-me, mas seu dispositivo não suporta o sistema de customização do avatar."
     }
 }
