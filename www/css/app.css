@@ -99,23 +99,23 @@ body{
   margin-top: 15px;
 }
 #avatarDiv .avatar{
-  height: 600px;
+  height: 512px;
   width: auto;
   z-index: -1;
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
-    height: 300px;
+    height: 240px;
   }
 } 
 @media (max-height: 600px) { 
   #avatarDiv .avatar{ 
-    height: 240px;
+    height: 168px;
   }
 }
 @media (max-height: 500px) { 
   #avatarDiv .avatar{ 
-    height: 180px;
+    height: 128px;
   }
 }
 #avatarDiv .nav-tabs {
@@ -136,6 +136,20 @@ body{
     padding: 10px 10px;
     font-size: 14px;
   }
+}
+#avatarDiv .color-picker {
+  margin-top: -60px;
+  float: right;
+  z-index: 2;
+}
+#avatarDiv .avatar-pieces {
+  margin-bottom: 10px;
+}
+#avatarDiv .avatar-pieces a {
+  height: 32px !important;
+}
+#avatarDiv .avatar-options a{
+  height: 64px !important;
 }
 
 .nav-tabs {
@@ -192,10 +206,4 @@ body{
   border-radius: 50% !important;
   text-align: center;  
   margin: 5px;  
-}
-
-#avatarDiv .color-picker {
-  margin-top: -60px;
-  float: right;
-  z-index: 2;
 }

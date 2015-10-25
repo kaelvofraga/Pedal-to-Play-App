@@ -4,8 +4,23 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .factory('ImageService', ['$http', function ($http) 
-    {   
-        
+    .service('ImageService', ['$http', '$log', function ($http, $log) 
+    {  
+       var baseImgPath = 'img/';
+       var sufix = '.json';
+       
+       this.getAvatarPieces = function () {   
+
+         return $http.get(baseImgPath + 'avatar/avatar-imgs' + sufix)
+           .then(
+             function (response) {
+               return response.data;
+             },
+             function (error) {
+               $log.error(error);
+               return null;
+             }
+           );
+       };
     }]);
 })();

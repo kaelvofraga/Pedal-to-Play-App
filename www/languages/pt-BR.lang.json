@@ -14,10 +14,10 @@
         "AVATAR": "Avatar",
         "LOGOUT": "Logout"
     },
-    "navbarTitle":{
+    "navbarTitle": {
         "TRACKING": "Monitorando Pedalada",
         "AVATAR": "Customização do Avatar"
-    },                       
+    },
     "form": {
         "EMAIL": "Email:",
         "PASSWORD": "Senha:",

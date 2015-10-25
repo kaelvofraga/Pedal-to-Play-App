@@ -1,0 +1,39 @@
+{
+	"female": "img/avatar/avatar_female.svg",
+	"male": "img/avatar/avatar_male.svg",
+	"base": "#base",
+	"faces": {
+		"cute": "#face1",
+		"seductive": "#face2",
+		"scared": "#face3",
+		"happy": "#face4",
+		"sad": "#face5",
+		"colorable": "eye"
+	},
+	"hairs": {
+		"emo": "#hair1",
+		"curly": "#hair2",
+		"athlete": "#hair3",
+		"cute": "#hair4",
+		"long": "#hair5"
+	},
+	"helmet": "#helmet",
+	"shorts": {
+		"professional": "#gear-shorts",
+		"colorable": "shorts-colorable"
+	},
+	"jersey": {
+		"professional": "#gear-jersey",
+		"colorable": "jersey-colorable"
+	},
+	"gloves": {
+		"professional": "#gloves",
+		"colorable": "gloves-colorable"
+	},
+	"shoes": {
+		"professional": "#gear-shoes",
+		"colorable": "shoes-colorable"
+	},
+	"glasses": "#glasses",
+	"gradients": "linearGradient"
+}
