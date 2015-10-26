@@ -17,26 +17,43 @@
       var Snap = $window.Snap;
       var drawingArea = Snap('.avatar');
       var svgContent = null;
-      var currentOption = 0;
+	  var currentOption = 0;
+      var avatarReferences = {};
       var avatarBaseGroup = {};    
       
       $scope.onNextOptionClick = function () {
-        if (currentOption < $scope.options.length) {
-          var value = $scope.options[currentOption].value;
-          var element = svgContent.select(value);
-          avatarBaseGroup.remove(element);
+        if (currentOption < $scope.options.length - 1) {	  
+		  var element = avatarBaseGroup.select($scope.options[currentOption].value);
+		  element.remove();
           ++currentOption;
-          avatarBaseGroup.append(svgContent.select(
-              $scope.avatarPieces[$scope.selectPiece].options[currentOption].value));
+          avatarBaseGroup.append(
+			angular.copy(
+				svgContent.select(
+					$scope.avatarPieces[$scope.selectPiece].options[currentOption].value
+				)
+			)
+		  );
         }
       }
       
       $scope.onPreviousOptionClick = function () {
-        
+        if (currentOption > 0) {
+          var element = avatarBaseGroup.select($scope.options[currentOption].value);
+		  element.remove();
+          --currentOption;
+          avatarBaseGroup.append(
+			angular.copy(
+				svgContent.select(
+					$scope.avatarPieces[$scope.selectPiece].options[currentOption].value
+				)
+			)
+		  );
+        }        
       }
                
       $scope.onPieceClick = function (reference) {
         $scope.selectPiece = reference;
+		currentOption = 0;
         if (!angular.isUndefined($scope.avatarPieces[reference])) {
           $scope.options = $scope.avatarPieces[reference].options;
         }
@@ -59,16 +76,38 @@
         } else {
           avatarSVG = avatarPieces.male;
         }            
-        
+		
+		//TODO implements avatarReferences
+		
         Snap.load(avatarSVG, function (svg) {
           svgContent = svg;
           avatarBaseGroup = svg.select(avatarPieces.base);
           drawingArea.append(avatarBaseGroup);
-          avatarBaseGroup.append(svg.select(avatarPieces.faces.options[currentOption].value));
-          avatarBaseGroup.append(svg.select(avatarPieces.shorts.options[currentOption].value));
-          avatarBaseGroup.append(svg.select(avatarPieces.jerseys.options[currentOption].value));
-          avatarBaseGroup.append(svg.select(avatarPieces.shoes.options[currentOption].value));          
-          avatarBaseGroup.append(svg.select(avatarPieces.hairs.options[currentOption].value));
+          avatarBaseGroup.append(
+			angular.copy(
+				svg.select(avatarPieces.faces.options[0].value)
+			)
+		  );
+          avatarBaseGroup.append(
+			angular.copy(
+				svg.select(avatarPieces.shorts.options[0].value)
+			)
+		  );
+          avatarBaseGroup.append(
+			angular.copy(
+				svg.select(avatarPieces.jerseys.options[0].value)
+			)
+		  );
+          avatarBaseGroup.append(
+			angular.copy(
+				svg.select(avatarPieces.shoes.options[0].value)
+			)
+		  );          
+          avatarBaseGroup.append(
+			angular.copy(
+				svg.select(avatarPieces.hairs.options[0].value)
+			)
+		  );
         });  
       });      
     }]);
