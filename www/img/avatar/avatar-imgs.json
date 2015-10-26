@@ -1,5 +1,5 @@
 {
-	"male": "img/avatar/avatar_male.svg",			
+	"male": "img/avatar/avatar_male.svg",
 	"female": "img/avatar/avatar_female.svg",
 	"base": "#base",
 	"icons": [
@@ -33,121 +33,139 @@
 		{
 			"reference": "glasses"
 		}
-	],	
-	"faces": {
-		"id": 0,
-		"options": [
-			{
-				"id": 0,
-				"value": "#face1"
-			},
-			{
-				"id": 1,
-				"value": "#face2"
-			},
-			{
-				"id": 2,
-				"value": "#face3"
-			},
-			{
-				"id": 3,
-				"value": "#face4"
-			},
-			{
-				"id": 4,
-				"value": "#face5"
-			}
-		]
-	},
-	"hairs": {
-		"id": 1,
-		"options": [
-			{
-				"id": 0,
-				"value": "#hair1"
-			},
-			{
-				"id": 1,
-				"value": "#hair2"
-			},
-			{
-				"id": 2,
-				"value": "#hair3"
-			},
-			{
-				"id": 3,
-				"value": "#hair4"
-			},
-			{
-				"id": 4,
-				"value": "#hair5"
-			}
-		]
-	},
-	"helmets": {
-		"id": 2,
-		"options": [
-			{
-				"id": 0,
-				"value": "#helmet"
-			}
-		]
-	},
-	"shorts": {
-		"id": 3,
-		"options": [
-			{
-				"id": 0,
-				"value": "#base-shorts"
-			},
-			{
-				"id": 1,
-				"value": "#gear-shorts"
-			}
-		]
-	},
-	"jerseys": {
-		"id": 4,
-		"options": [
-			{
-				"id": 0,
-				"value": "#base-jersey"
-			},
-			{
-				"id": 1,
-				"value": "#gear-jersey"
-			}
-		]
-	},
-	"gloves": {
-		"id": 5,
-		"options": [
-			{
-				"id": 0,
-				"value": "#gloves"
-			}
-		]
-	},
-	"shoes": {
-		"id": 6,
-		"options": [
-			{
-				"id": 0,
-				"value": "#base-shoes"
-			},
-			{
-				"id": 1,
-				"value": "#gear-shoes"
-			}
-		]
-	},
-	"glasses": {
-		"id": 7,
-		"options": [
-			{
-				"id": 0,
-				"value": "#glasses"
-			}
-		]
+	],
+	"pieces" : {
+		"faces": {
+			"id": 0,
+			"options": [
+				{
+					"id": 0,
+					"value": "#face1"
+				},
+				{
+					"id": 1,
+					"value": "#face2"
+				},
+				{
+					"id": 2,
+					"value": "#face3"
+				},
+				{
+					"id": 3,
+					"value": "#face4"
+				},
+				{
+					"id": 4,
+					"value": "#face5"
+				}
+			]
+		},
+		"hairs": {
+			"id": 1,
+			"options": [
+				{
+					"id": 0,
+					"value": null
+				},
+				{
+					"id": 1,
+					"value": "#hair1"
+				},
+				{
+					"id": 2,
+					"value": "#hair2"
+				},
+				{
+					"id": 3,
+					"value": "#hair3"
+				},
+				{
+					"id": 4,
+					"value": "#hair4"
+				},
+				{
+					"id": 5,
+					"value": "#hair5"
+				}
+			]
+		},
+		"helmets": {
+			"id": 2,
+			"options": [
+				{
+					"id": 0,
+					"value": null
+				},
+				{
+					"id": 1,
+					"value": "#helmet"
+				}
+			]
+		},
+		"shorts": {
+			"id": 3,
+			"options": [
+				{
+					"id": 0,
+					"value": "#base-shorts"
+				},
+				{
+					"id": 1,
+					"value": "#gear-shorts"
+				}
+			]
+		},
+		"jerseys": {
+			"id": 4,
+			"options": [
+				{
+					"id": 0,
+					"value": "#base-jersey"
+				},
+				{
+					"id": 1,
+					"value": "#gear-jersey"
+				}
+			]
+		},
+		"gloves": {
+			"id": 5,
+			"options": [
+				{
+					"id": 0,
+					"value": null
+				},
+				{
+					"id": 1,
+					"value": "#gloves"
+				}
+			]
+		},
+		"shoes": {
+			"id": 6,
+			"options": [
+				{
+					"id": 0,
+					"value": "#base-shoes"
+				},
+				{
+					"id": 1,
+					"value": "#gear-shoes"
+				}
+			]
+		},
+		"glasses": {
+			"id": 7,
+			"options": [
+				{
+					"id": 0,
+					"value": null
+				},
+				{
+					"id": 1,
+					"value": "#glasses"
+				}
+			]
+		}
 	}
 }

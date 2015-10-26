@@ -181,26 +181,27 @@ body{
 }
 @media (min-width: 1000px) { 
 	.nav-tabs {
-		height: 650px;
+		height: 680px;
 		overflow-y: scroll;
 		overflow-x: hidden;
-	}
-}
-@media (max-height: 700px) { 
-  .nav-tabs { 
-    height: 600px;
+	}  
+  @media (max-height: 700px) { 
+    .nav-tabs { 
+      height: 605px;
+    }
+  } 
+  @media (max-height: 600px) { 
+    .nav-tabs { 
+      height: 405px;
+    }
   }
-} 
-@media (max-height: 600px) { 
-  .nav-tabs { 
-    height: 400px;
-  }
+  @media (max-height: 480px) { 
+    .nav-tabs { 
+      height: 305px;
+    }
+  }  
 }
-@media (max-height: 480px) { 
-  .nav-tabs { 
-    height: 300px;
-  }
-}
+
 .nav-tabs > li {
     display: table-cell;
     width: 1%;
@@ -209,13 +210,12 @@ body{
 @media (min-width: 1000px) { 
 	.nav-tabs > li {
 		display: inline;
-		width: 100%;
 	}
 }
 .nav-tabs > li > a {
     margin-bottom: 10px !important;
     text-align: center !important;
-    border-bottom: 1px solid #8d8d8d !important;
+    border-bottom: 1px solid #b3b3b3 !important;
     border-radius: 4px 4px 0 0 !important;
     margin-right: 0 !important;  
 }
@@ -226,7 +226,7 @@ body{
 	}
 }
 .nav-tabs > li.active > a{
-	border: 1px solid #8d8d8d !important;
+	border: 1px solid #b3b3b3 !important;
 }
 @media (max-width: 1000px) { 
 	.nav-tabs > li.active  > a {
@@ -238,11 +238,11 @@ body{
     left: auto !important;
 }
 .nav-tabs > li > a:hover {
-    border-color: #bdbdbd #bdbdbd #c1c1c1;
+    border-color: #cdcdcd #cdcdcd #c1c1c1;
 }
 .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
-    background-color: #bdbdbd;
+    background-color: #cdcdcd; 
 }
 
 .color-picker { 

@@ -31,10 +31,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="154.8642"
-     inkscape:cy="215.68507"
+     inkscape:cx="150.21429"
+     inkscape:cy="329.97078"
      inkscape:document-units="px"
-     inkscape:current-layer="layer19"
+     inkscape:current-layer="layer21"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="837"
@@ -1339,7 +1339,7 @@
     <path
        style="fill:#000000;fill-opacity:0.54304636;fill-rule:evenodd;stroke:#000000;stroke-width:0.73902512;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 82.912116,90.900606 c 12.919736,-5.7507 21.291114,-8.507407 34.709154,-7.180908 5.90155,2.771521 15.75011,2.658185 20.73613,0.259972 12.96846,-0.167742 22.38854,4.223739 31.02755,8.631727 1.99425,2.47687 1.52113,5.505113 -0.93314,7.776343 -5.07174,7.02908 -16.03987,11.65639 -25.01312,14.60842 -6.62171,0.63902 -14.72426,-13.69696 -16.66804,-13.67526 -2.02803,0.0993 -7.87501,14.437 -15.65482,13.76639 -13.050078,-5.92991 -15.807873,-7.7336 -27.115031,-16.0993 -2.464748,-2.57314 -2.036581,-7.531478 -1.088683,-8.087384 z"
-       id="path4812-5"
+       id="glasses"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccc" />
   </g>

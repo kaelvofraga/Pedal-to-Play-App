@@ -9,7 +9,7 @@
        var baseImgPath = 'img/';
        var sufix = '.json';
        
-       this.getAvatarPieces = function () {   
+       this.getAvatarImages = function () {   
 
          return $http.get(baseImgPath + 'avatar/avatar-imgs' + sufix)
            .then(

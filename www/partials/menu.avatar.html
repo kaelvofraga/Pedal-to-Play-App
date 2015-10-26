@@ -29,9 +29,9 @@
 	<div class="col-xs-12 col-md-4 panel panel-default">
 		<ul class="nav nav-tabs avatar-pieces">
 			<li role="presentation" 
-				ng-class="{'active': selectPiece == icon.reference}" 
-				ng-repeat="icon in avatarPieces.icons">
-				<a ng-click="onPieceClick(icon.reference)">
+				ng-class="{'active': iconActived == icon.reference}" 
+				ng-repeat="icon in avatarImages.icons">
+				<a ng-click="onPieceClick(icon.reference)" >
 					<img ng-src="{{getPath(icon.reference)}}" alt="Opção" title="Opção"/>
 				</a>
 			</li>
