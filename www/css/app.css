@@ -137,24 +137,34 @@ body{
     font-size: 14px;
   }
 }
-#avatarDiv .color-picker {
-  margin-top: -60px;
-  float: right;
-  z-index: 2;
+#avatarDiv .pager a {
+  cursor: pointer;
+  font-size: 24px;
+}
+@media (max-width: 500px) { 
+  #avatarDiv .pager a { 
+     font-size: 18px;
+  }
 }
 #avatarDiv .avatar-pieces {
   margin-bottom: 10px;
 }
-#avatarDiv .avatar-pieces a {
-  height: 32px !important;
-}
-#avatarDiv .avatar-options a{
+#avatarDiv .avatar-pieces li {
   height: 64px !important;
+}
+@media (max-width: 500px) { 
+  #avatarDiv .avatar-pieces li { 
+    height: 32px !important;
+  }
+  #avatarDiv .avatar-pieces img { 
+    height: 32px !important;
+  }
 }
 
 .nav-tabs {
     width: 100%;
     border-bottom: 0;
+    overflow-x: scroll;
 }
 .nav-tabs > li {
     display: table-cell;
@@ -162,7 +172,7 @@ body{
     float: none;
 }
 .nav-tabs > li > a {
-    margin-bottom: 1px !important;
+    margin-bottom: 10px !important;
     text-align: center !important;
     border-bottom: 1px solid #ddd !important;
     border-radius: 4px 4px 0 0 !important;
@@ -200,6 +210,14 @@ body{
     -o-filter: brightness(0.7);
     -ms-filter: brightness(0.7);
     filter: brightness(0.7);
+}
+#avatarDiv .color-picker {
+  margin-top: 0px;
+}
+@media (max-width: 500px) { 
+  #avatarDiv .color-picker { 
+     padding: 8px 12px;
+  }
 }
 
 .circle-button {

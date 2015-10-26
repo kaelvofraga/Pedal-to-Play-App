@@ -11,25 +11,30 @@
 		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
 			{{string.error.SVG}}
 		</div>
-		<svg class="avatar center-block" width="256" height="512" viewBox="0 0 256 512.00001"></svg>
-		<button class="btn btn-lg circle-button color-picker" ng-click="">
-			<i class="fa fa-eyedropper"></i>
-		</button>
-	</div>
-	<div class="col-xs-6 col-md-4 panel panel-default">
-		<ul class="nav nav-tabs avatar-pieces">
-			<li role="presentation" ng-class="{'active': true}">
-				<!--ng-repeat-->
-				<a ng-click="">Item 1</a>
+		<svg class="avatar center-block" width="256" height="512" viewBox="0 0 256 512.00001"></svg>		
+		<ul class="pager">
+			<li class="previous">
+				<a ng-click=""><span aria-hidden="true">&larr;</span></a>
+			</li>
+			<li>
+				<button class="btn btn-lg circle-button color-picker" ng-click="">
+					<i class="fa fa-eyedropper"></i>
+				</button>
+			</li>
+			<li class="next">
+				<a ng-click="onNextOptionClick()"><span aria-hidden="true">&rarr;</span></a>
 			</li>
 		</ul>
-		<div class="row">
-			<div class="col-xs-6 col-md-3 avatar-options">
-				<a ng-click="" class="thumbnail">
-					<!--ng-repeat-->
-					<img src=" 	" alt="Opção 1" title="Opção 1" />
+	</div>
+	<div class="col-xs-12 col-md-4 panel panel-default">
+		<ul class="nav nav-tabs avatar-pieces">
+			<li role="presentation" 
+				ng-class="{'active': selectPiece == icon.reference}" 
+				ng-repeat="icon in avatarPieces.icons">
+				<a ng-click="onPieceClick(icon.reference)">
+					<img ng-src="{{getPath(icon.reference)}}" alt="Opção" title="Opção"/>
 				</a>
-			</div>
-		</div>
+			</li>
+		</ul>
 	</div>
 </div>

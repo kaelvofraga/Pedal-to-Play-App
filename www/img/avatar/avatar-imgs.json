@@ -1,8 +1,39 @@
 {
+	"male": "img/avatar/avatar_male.svg",			
 	"female": "img/avatar/avatar_female.svg",
-	"male": "img/avatar/avatar_male.svg",
 	"base": "#base",
-	"gradients": "linearGradient",
+	"icons": [
+		{
+			"reference": "genders"
+		},
+		{
+			"reference": "bikes"
+		},
+		{
+			"reference": "faces"
+		},
+		{
+			"reference": "hairs"
+		},
+		{
+			"reference": "jerseys"
+		},
+		{
+			"reference": "shorts"
+		},
+		{
+			"reference": "shoes"
+		},
+		{
+			"reference": "helmets"
+		},
+		{
+			"reference": "gloves"
+		},
+		{
+			"reference": "glasses"
+		}
+	],	
 	"faces": {
 		"id": 0,
 		"options": [
@@ -53,7 +84,7 @@
 			}
 		]
 	},
-	"helmet": {
+	"helmets": {
 		"id": 2,
 		"options": [
 			{
@@ -67,15 +98,23 @@
 		"options": [
 			{
 				"id": 0,
+				"value": "#base-shorts"
+			},
+			{
+				"id": 1,
 				"value": "#gear-shorts"
 			}
 		]
 	},
-	"jersey": {
+	"jerseys": {
 		"id": 4,
 		"options": [
 			{
 				"id": 0,
+				"value": "#base-jersey"
+			},
+			{
+				"id": 1,
 				"value": "#gear-jersey"
 			}
 		]
@@ -94,6 +133,10 @@
 		"options": [
 			{
 				"id": 0,
+				"value": "#base-shoes"
+			},
+			{
+				"id": 1,
 				"value": "#gear-shoes"
 			}
 		]
