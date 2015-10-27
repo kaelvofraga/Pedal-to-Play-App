@@ -4,6 +4,8 @@
     "DO_REGISTER": "Inscreva-se",
     "LOGOUT_TITLE": "Confirmar Logout",
     "LOGOUT_CONFIRMATION": "Tem certeza que deseja sair?",
+    "GENDER_TITLE": "Confirmar Troca de Gênero",
+    "GENDER_CONFIRMATION": "Deseja trocar o gênero de seu avatar?",    
     "YES": "Sim",
     "NO": "Não",
     "PROCESSING": "Processando",

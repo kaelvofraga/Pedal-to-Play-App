@@ -14,7 +14,9 @@
 		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>		
 		<ul class="pager">
 			<li class="previous">
-				<a ng-click="onPreviousOptionClick()"><i class="fa fa-arrow-left"></i></a>
+				<a ng-click="onPreviousOptionClick()">
+					<i class="fa fa-arrow-left"></i>
+				</a>
 			</li>
 			<li>
 				<button class="btn btn-lg circle-button color-picker" ng-click="">
@@ -22,7 +24,9 @@
 				</button>
 			</li>
 			<li class="next">
-				<a ng-click="onNextOptionClick()"><i class="fa fa-arrow-right"></i></a>
+				<a ng-click="onNextOptionClick()">
+					<i class="fa fa-arrow-right"></i>
+				</a>
 			</li>
 		</ul>
 	</div>
@@ -32,9 +36,10 @@
 				ng-class="{'active': iconActived == icon.reference}" 
 				ng-repeat="icon in avatarImages.icons">
 				<a ng-click="onPieceClick(icon.reference)" >
-					<img ng-src="{{getPath(icon.reference)}}" alt="Opção" title="Opção"/>
+					<img ng-src="{{getPath(icon.reference)}}" alt="{{icon.reference}}" title="{{icon.reference}}"/>
 				</a>
 			</li>
 		</ul>
 	</div>
 </div>
+<gender-modal></gender-modal>

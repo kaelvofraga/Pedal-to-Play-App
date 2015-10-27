@@ -1,7 +1,9 @@
 {
 	"male": "img/avatar/avatar_male.svg",
-	"female": "img/avatar/avatar_female_bikes.svg",
+	"female": "img/avatar/avatar_female.svg",
+	"bikesFile": "img/avatar/bikes.svg",
 	"base": "#base",
+	"bikesGroup": "#bikes",
 	"icons": [
 		{
 			"reference": "genders"
@@ -94,10 +96,6 @@
 			"options": [
 				{
 					"id": 0,
-					"value": null
-				},
-				{
-					"id": 1,
 					"value": "#helmet"
 				}
 			]
