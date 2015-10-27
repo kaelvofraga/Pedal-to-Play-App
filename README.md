@@ -3,3 +3,6 @@ Pedal-to-Play é um software multiplataforma com a pretensão de motivar os usu�
 
 ## Repositório raiz
 [Especificação e análise do projeto](https://github.com/kaelvofraga/Pedal-to-Play)
+
+## Repositório do Server:
+[Fonte da WebAPI](https://github.com/kaelvofraga/Pedal-to-Play-Server)
