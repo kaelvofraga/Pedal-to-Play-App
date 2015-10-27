@@ -100,23 +100,24 @@ body{
 }
 
 #avatarDiv .avatar{
-  height: 550px;
+  height: 555px;
   width: auto;
+  width: 90%;
   z-index: -1;
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
-    height: 480px;
+    height: 300px;
   }
 } 
 @media (max-height: 600px) { 
   #avatarDiv .avatar{ 
-    height: 280px;
+    height: 220px;
   }
 }
 @media (max-height: 480px) { 
   #avatarDiv .avatar{ 
-    height: 180px;
+    height: 140px;
   }
 }
 
@@ -128,9 +129,19 @@ body{
   margin-bottom: 10px !important;
 }
 
+@media (orientation: landscape) {
+  .avatar-visualization {
+    width: 66%;
+    display: table-cell;
+  }
+  .avatar-pieces {
+    width: 33%;
+    display: table-cell;
+  }
+}
+
 #avatarDiv .buttons {
   margin-top: 10px;
-  
 }
 #avatarDiv .buttons .btn-default { 
     font-size: 16px;
@@ -142,18 +153,15 @@ body{
   }
 }
 
-#avatarDiv .avatar-pieces {
+#avatarDiv .avatar-pieces ul{
   margin-bottom: 10px;
 }
-#avatarDiv .avatar-pieces li {
-  height: 64px !important;
+#avatarDiv .avatar-pieces li, #avatarDiv .avatar-pieces img{
+  height: 32px !important;
 }
-@media (max-width: 500px) { 
-  #avatarDiv .avatar-pieces li { 
-    height: 32px !important;
-  }
-  #avatarDiv .avatar-pieces img { 
-    height: 32px !important;
+@media (min-width: 600px) and (min-height: 600px){ 
+  #avatarDiv .avatar-pieces li, #avatarDiv .avatar-pieces img { 
+    height: 64px !important;
   }
 }
 
@@ -179,25 +187,25 @@ body{
     border-bottom: 0;
     overflow-x: scroll;
 }
-@media (min-width: 1000px) { 
+@media (orientation: landscape) { 
 	.nav-tabs {
-		height: 680px;
+		height: 685px;
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}  
   @media (max-height: 700px) { 
     .nav-tabs { 
-      height: 605px;
+      height: 610px;
     }
   } 
   @media (max-height: 600px) { 
     .nav-tabs { 
-      height: 405px;
+      height: 410px;
     }
   }
   @media (max-height: 480px) { 
     .nav-tabs { 
-      height: 305px;
+      height: 260px;
     }
   }  
 }
@@ -207,7 +215,7 @@ body{
     width: 1%;
     float: none;
 }
-@media (min-width: 1000px) { 
+@media (orientation: landscape) { 
 	.nav-tabs > li {
 		display: inline;
 	}
@@ -219,7 +227,7 @@ body{
     border-radius: 4px 4px 0 0 !important;
     margin-right: 0 !important;  
 }
-@media (min-width: 1000px) { 
+@media (orientation: landscape) { 
 	.nav-tabs > li > a {
 		border: none !important;
 		border-radius: 4px !important;
@@ -228,7 +236,7 @@ body{
 .nav-tabs > li.active > a{
 	border: 1px solid #b3b3b3 !important;
 }
-@media (max-width: 1000px) { 
+@media (orientation: portrait) { 
 	.nav-tabs > li.active  > a {
 		border-bottom: none !important;
 	}

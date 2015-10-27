@@ -1,5 +1,5 @@
 <div id="avatarDiv" class="row container-fluid">
-	<div class="col-xs-12 col-sm-6 col-md-8 panel panel-default">
+	<div class="avatar-visualization col-md-8 panel panel-default">
 		<div class="buttons">
 			<button class="btn btn-default" ng-click="">
 				{{string.button.SHARE}}
@@ -11,7 +11,7 @@
 		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
 			{{string.error.SVG}}
 		</div>
-		<svg class="avatar center-block" width="256" height="512" viewBox="0 0 256 512.00001"></svg>		
+		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>		
 		<ul class="pager">
 			<li class="previous">
 				<a ng-click="onPreviousOptionClick()"><i class="fa fa-arrow-left"></i></a>
@@ -26,8 +26,8 @@
 			</li>
 		</ul>
 	</div>
-	<div class="col-xs-12 col-md-4 panel panel-default">
-		<ul class="nav nav-tabs avatar-pieces">
+	<div class="avatar-pieces col-md-4 panel panel-default">
+		<ul class="nav nav-tabs">
 			<li role="presentation" 
 				ng-class="{'active': iconActived == icon.reference}" 
 				ng-repeat="icon in avatarImages.icons">

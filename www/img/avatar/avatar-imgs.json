@@ -1,6 +1,6 @@
 {
 	"male": "img/avatar/avatar_male.svg",
-	"female": "img/avatar/avatar_female.svg",
+	"female": "img/avatar/avatar_female_bikes.svg",
 	"base": "#base",
 	"icons": [
 		{
@@ -164,6 +164,31 @@
 				{
 					"id": 1,
 					"value": "#glasses"
+				}
+			]
+		},
+		"bikes": {
+			"id": 8,
+			"options": [
+				{
+					"id": 0,
+					"value": "#cruiser"
+				},
+				{
+					"id": 1,
+					"value": "#bmx"
+				},
+				{
+					"id": 2,
+					"value": "#mountain"
+				},
+				{
+					"id": 3,
+					"value": "#road"
+				},
+				{
+					"id": 4,
+					"value": "#triathlon"
 				}
 			]
 		}

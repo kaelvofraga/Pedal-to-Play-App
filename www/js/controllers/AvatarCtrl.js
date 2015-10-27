@@ -29,19 +29,20 @@
       
       this.addPieceToAvatar = function (before) {
         var elementValue = null;
+        var elementObj = null;
         var option = null;
         var piece = $scope.selectedPiece;
         if (!angular.isUndefined(piece)) {
           option = piece.options[avatarReferences[piece.id]];
           if (!angular.isUndefined(option)) {
             elementValue = option.value;
-            if (elementValue) {
+            if (elementValue && (elementObj = svgContent.select(elementValue))) {              
               if (before) {
-                before.after(angular.copy(svgContent.select(elementValue)));
+                before.after(angular.copy(elementObj));
               } else if ((elementValue === "#helmet") || (elementValue === "#glasses")){
-                drawingArea.append(angular.copy(svgContent.select(elementValue)));
+                drawingArea.append(angular.copy(elementObj));
               } else {
-                avatarBaseGroup.append(angular.copy(svgContent.select(elementValue)));
+                avatarBaseGroup.append(angular.copy(elementObj));
               }
             }
           }            
@@ -105,32 +106,14 @@
         Snap.load(avatarSVG, function (svg) {
           svgContent = svg;
           avatarBaseGroup = svg.select(angular.copy(avatarImages.base));
-          drawingArea.append(avatarBaseGroup);
-          avatarBaseGroup.append(
-            angular.copy(
-              svg.select(avatarImages.pieces.faces.options[0].value)
+          drawingArea.append(avatarBaseGroup);          
+          angular.forEach(avatarImages.pieces, function (piece, key) {            
+            avatarBaseGroup.append(
+              angular.copy(
+                svg.select(piece.options[avatarReferences[piece.id]].value)
               )
-            );
-          avatarBaseGroup.append(
-            angular.copy(
-              svg.select(avatarImages.pieces.shorts.options[0].value)
-              )
-            );
-          avatarBaseGroup.append(
-            angular.copy(
-              svg.select(avatarImages.pieces.jerseys.options[0].value)
-              )
-            );
-          avatarBaseGroup.append(
-            angular.copy(
-              svg.select(avatarImages.pieces.shoes.options[0].value)
-              )
-            );
-          avatarBaseGroup.append(
-            angular.copy(
-              svg.select(avatarImages.pieces.hairs.options[0].value)
-              )
-            );
+            );            
+          });
         });  
       });      
     }]);
