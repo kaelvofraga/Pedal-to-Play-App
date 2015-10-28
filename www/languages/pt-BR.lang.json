@@ -33,7 +33,10 @@
             "CHECKING_EMAIL": "Verificando email",
             "INVALID_OR_REPEATED_EMAIL": "Email inválido ou já está sendo utilizado.",
             "INVALID_PASSWORD": "Senha inválida. Deve conter de 6 a 30 caracteres.",
-            "DIFFERENT_PASSWORDS": "As senhas digitadas são diferentes."
+            "DIFFERENT_PASSWORDS": "As senhas digitadas são diferentes.",
+            "SERVER_CONNECT_FAIL": "Falha ao tentar conexão.",
+            "SERVER_SIGN_IN_FAIL": "Usuário ou senha incorretos.",
+            "SERVER_SIGN_UP_FAIL": "Dados para cadastro inválidos."
         }
     },
     "button": {
@@ -50,7 +53,9 @@
         "SPEED": "Velocidade: ",
         "TIMESTAMP": "Data e hora: "
     },
-    "error": {
-        "SVG": "Desculpe-me, mas seu dispositivo não suporta o sistema de customização do avatar."
+    "avatar": {
+        "SERVER_SAVE_FAIL": "Customizações de avatar inválidas. Confira suas escolhas.",
+        "SERVER_CONNECT_TO_GET_FAIL": "A customização de seu avatar não pode ser recuperada.",
+        "ERROR_SVG": "Desculpe-me, mas seu dispositivo não suporta o sistema de customização do avatar."
     }
 }

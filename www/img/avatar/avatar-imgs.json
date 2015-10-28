@@ -7,6 +7,8 @@
 	"arms": "#arms",
 	"legs": "#legs",
 	"bikesGroup": "#bikes",
+	"defaultGender": "F",
+	"defaultSkinColor": "#deaa87",
 	"icons": [
 		{
 			"reference": "genders"

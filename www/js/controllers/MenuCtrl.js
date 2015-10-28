@@ -7,6 +7,22 @@
     .controller('MenuController', ['AuthService', '$scope', '$state', '$window', 'localStorageService',
                           function (AuthService, $scope, $state, $window, localStorageService) {
                 
+        if (localStorageService.get('user') === null) {
+          $state.go('auth');
+        }
+        
+        var sideMenu = angular.element('.navmenu');                
+        
+        sideMenu.offcanvas({'toggle': false});        
+        
+        sideMenu.on('show.bs.offcanvas', function (e) {
+          angular.element('#menuContainer').addClass('blur');
+        });        
+        
+        sideMenu.on('hide.bs.offcanvas', function (e) {
+          angular.element('#menuContainer').removeClass('blur');
+        });
+            
         $scope.$watch(function () { return $state.current.name }, function (newValue, oldValue) {
           if (typeof newValue !== 'undefined') {           
             switch ($state.current.name) {
@@ -21,11 +37,7 @@
             }            
           }
         });
-        
-        if (localStorageService.get('user') === null) {
-          $state.go('auth');
-        }
-        
+                
         this.menuItens = [
           {
             name: $scope.string.menu.HOME,
@@ -62,21 +74,11 @@
           angular.element('body').removeClass('modal-open');
           angular.element('.modal-backdrop').remove();
           AuthService.logout();
-        };
-        
-        angular.element('.navmenu').offcanvas({'toggle': false});
-        
-        angular.element('.navmenu').on('show.bs.offcanvas', function (e) {
-          angular.element('#menuContainer').addClass('blur');
-        });
-        
-        angular.element('.navmenu').on('hide.bs.offcanvas', function (e) {
-          angular.element('#menuContainer').removeClass('blur');
-        });        
+        };        
         
         $scope.$on('$stateChangeStart',
           function (event, toState, toParams, fromState, fromParams) {  
-            angular.element('.navmenu').offcanvas('hide');
+            sideMenu.offcanvas('hide');
             
             if ((localStorageService.get('user') === null) && (toState.name !== 'auth')) {
               event.preventDefault();
@@ -85,9 +87,8 @@
          });      
           
         angular.element($window).bind('resize', function () {
-          angular.element('.navmenu').offcanvas('hide');
-          angular.element('#menuContainer').removeClass('blur');
+          sideMenu.offcanvas('hide');
           $scope.$apply();
-        });        
-      }]);
+        });                     
+    }]);
 })();

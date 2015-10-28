@@ -11,7 +11,7 @@
 			if (response.data && 
 				response.data.token && 
 				response.data.id_user && 
-				!(response.data.error)) 
+				!response.data.error) 
 			{
 				delete scope.user.password;
 				scope.user.id = response.data.id_user;
@@ -25,8 +25,7 @@
 		}
 		
 		var errorCallback = function (scope, error) {
-			console.log(error);
-			scope.errorMessage = "Falha ao tentar conectar com o servidor.";
+			scope.errorMessage = $rootScope.string.form.message.SERVER_CONNECT_FAIL;
 			LoadingService.stopLoading();
 		}	
 		
@@ -36,7 +35,9 @@
 				$http.post($rootScope.string.SERVER_BASE_URL + 'signin', scope.user)
 					.then(
 						function (response) {
-							sucessCallback(scope, response, "Usuário ou senha incorretos.");
+							sucessCallback(scope, 
+										   response, 
+										   $rootScope.string.form.message.SERVER_SIGN_IN_FAIL);
 						},
 						function (error) {
 							errorCallback(scope, error);
@@ -47,7 +48,9 @@
 				$http.post($rootScope.string.SERVER_BASE_URL + 'signup', scope.user)
 					.then(
 						function (response) {
-							sucessCallback(scope, response, "Dados para cadastro inválidos.");						
+							sucessCallback(scope, 
+										   response, 
+										   $rootScope.string.form.message.SERVER_SIGN_UP_FAIL);						
 						},
 						function (error) {
 							errorCallback(scope, error);
@@ -63,7 +66,6 @@
 							return $q.reject();
 						},
 						function (error) {
-							console.log(error);
 							return $q.reject();
 						});
 			},

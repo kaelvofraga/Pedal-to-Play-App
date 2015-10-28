@@ -1,16 +1,16 @@
 <div id="avatarDiv" class="row container-fluid">
 	<div class="avatar-visualization col-md-8 panel panel-default">
 		<div class="buttons">
-			<button class="btn btn-default" ng-click="">
+			<button class="btn btn-default" ng-click="share()">
 				{{string.button.SHARE}}
 			</button>
 			<button class="btn btn-lg circle-button color-picker 
-					colorpicker-element pull-right" ng-click="pickColor()">
+					colorpicker-element pull-right" ng-focus="pickColor()">
 				<i class="fa fa-eyedropper"></i>
 			</button>
 		</div>
 		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
-			{{string.error.SVG}}
+			{{string.avatar.ERROR_SVG}}
 		</div>
 		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>	
 		<ul class="pager">
@@ -20,7 +20,7 @@
 				</a>
 			</li>
 			<li>
-				<button class="btn btn-lg btn-default" ng-click="">
+				<button class="btn btn-lg btn-default" ng-click="save()">
 					{{string.button.SAVE}}
 				</button>
 			</li>
