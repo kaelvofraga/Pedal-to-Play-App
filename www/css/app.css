@@ -100,25 +100,31 @@ body{
 }
 
 #avatarDiv .avatar{
-  height: 555px;
+  height: 580px;
   width: 90%;
-  margin-left: 32px;
+  margin-left: 10%;
+  margin-bottom: 10px;
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
-    height: 300px;
+    height: 410px;
   }
 } 
 @media (max-height: 600px) { 
   #avatarDiv .avatar{ 
-    height: 220px;
+    height: 305px;
   }
 }
 @media (max-height: 480px) { 
   #avatarDiv .avatar{ 
-    height: 140px;
+    height: 180px;
   }
 }
+@media (max-height: 240px) { 
+   #avatarDiv .avatar{ 
+     height: 80px;
+   }
+}  
 
 #avatarDiv .nav-tabs {
   margin-top: 10px;
@@ -130,11 +136,11 @@ body{
 
 @media (orientation: landscape) {
   .avatar-visualization {
-    width: 66%;
+    width: 80%;
     display: table-cell;
   }
   .avatar-pieces {
-    width: 33%;
+    width: 20%;
     display: table-cell;
   }
 }
@@ -164,6 +170,9 @@ body{
   }
 }
 
+#avatarDiv .pager {
+  margin: 0 !important;
+} 
 #avatarDiv .pager a {
   cursor: pointer;
   font-size: 24px;
@@ -187,27 +196,31 @@ body{
     overflow-x: scroll;
 }
 @media (orientation: landscape) { 
-	.nav-tabs {
+  .nav-tabs {
 		height: 685px;
 		overflow-y: scroll;
-		overflow-x: hidden;
 	}  
-  @media (max-height: 700px) { 
+}
+@media (orientation: landscape) and (max-height: 700px) { 
     .nav-tabs { 
       height: 610px;
     }
-  } 
-  @media (max-height: 600px) { 
-    .nav-tabs { 
+} 
+@media (orientation: landscape) and (max-height: 600px) { 
+   .nav-tabs { 
       height: 410px;
-    }
-  }
-  @media (max-height: 480px) { 
+   }
+}
+@media (orientation: landscape) and (max-height: 480px) { 
     .nav-tabs { 
       height: 260px;
     }
-  }  
 }
+@media (orientation: landscape) and (max-height: 240px) { 
+    .nav-tabs { 
+      height: 100px;
+    }
+}    
 
 .nav-tabs > li {
     display: table-cell;

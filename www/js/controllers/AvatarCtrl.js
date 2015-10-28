@@ -97,7 +97,7 @@
             svgContent = Snap.fragment(avatarSVG, bikesSVG);
             avatarBaseGroup = svgContent.select(angular.copy($scope.avatarImages.base));
             if (avatar.skinColor.length > 0) {
-              that.changeElementColor(avatar.skinColor);
+              avatarBaseGroup.selectAll('path').attr({fill: avatar.skinColor}); 
             }
             drawingArea.append(avatarBaseGroup);
             $scope.supportsSVG = angular.isDefined(angular.element($scope.avatarImages.base));                            

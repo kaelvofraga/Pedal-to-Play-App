@@ -10,7 +10,6 @@
         var sucessCallback = function (scope, response, messageOut) {
           if (response.data && response.data.error) {
             scope.errorMessage = messageOut;
-            //TODO armazenar localmente
           }
           LoadingService.stopLoading();
         }
@@ -21,11 +20,13 @@
         }
         
         var saveLocally = function (avatar) {
-          localStorageService.set('avatar', angular.copy(avatar));
+          var user = localStorageService.get('user');
+          localStorageService.set('avatar'+user.id, angular.copy(avatar));          
         };
             
         var searchLocally = function () {
-          return localStorageService.get('avatar');
+          var user = localStorageService.get('user');
+          return localStorageService.get('avatar'+user.id);
         };
   
         var saveRemotely = function (avatar) {
