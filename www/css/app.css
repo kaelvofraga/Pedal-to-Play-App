@@ -101,9 +101,8 @@ body{
 
 #avatarDiv .avatar{
   height: 555px;
-  width: auto;
   width: 90%;
-  z-index: -1;
+  margin-left: 32px;
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
@@ -143,13 +142,13 @@ body{
 #avatarDiv .buttons {
   margin-top: 10px;
 }
-#avatarDiv .buttons .btn-default { 
+#avatarDiv .btn-default { 
     font-size: 16px;
 }
 @media (max-width: 300px) { 
-  #avatarDiv .buttons .btn-default { 
-    padding: 10px 10px;
-    font-size: 14px;
+  #avatarDiv .btn-default { 
+    padding: 10px 10px !important;
+    font-size: 14px !important;
   }
 }
 
@@ -291,4 +290,18 @@ body{
   border-radius: 50% !important;
   text-align: center;  
   margin: 5px;  
+}
+
+.colorpicker-2x .colorpicker-saturation {
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+}
+.colorpicker-2x .colorpicker-hue {
+  width: 60px;
+  height: 150px;
+}
+.colorpicker-2x .colorpicker-color,
+.colorpicker-2x .colorpicker-color div{
+  height: 15px;
 }

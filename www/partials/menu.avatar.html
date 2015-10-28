@@ -4,14 +4,15 @@
 			<button class="btn btn-default" ng-click="">
 				{{string.button.SHARE}}
 			</button>
-			<button class="btn btn-default pull-right" ng-click="">
-				{{string.button.SAVE}}
+			<button class="btn btn-lg circle-button color-picker 
+					colorpicker-element pull-right" ng-click="pickColor()">
+				<i class="fa fa-eyedropper"></i>
 			</button>
 		</div>
 		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
 			{{string.error.SVG}}
 		</div>
-		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>		
+		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>	
 		<ul class="pager">
 			<li class="previous">
 				<a ng-click="onPreviousOptionClick()">
@@ -19,8 +20,8 @@
 				</a>
 			</li>
 			<li>
-				<button class="btn btn-lg circle-button color-picker" ng-click="">
-					<i class="fa fa-eyedropper"></i>
+				<button class="btn btn-lg btn-default" ng-click="">
+					{{string.button.SAVE}}
 				</button>
 			</li>
 			<li class="next">

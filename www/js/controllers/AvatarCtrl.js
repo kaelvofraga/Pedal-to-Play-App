@@ -20,7 +20,47 @@
       var svgContent = null;
       var avatarReferences = [];
       var avatarBaseGroup = {};
-      var avatarGender = 'F';    
+      var avatarGender = 'F';      
+      var colorPicker = angular.element('.color-picker')
+      
+      colorPicker.colorpicker({
+        customClass: 'colorpicker-2x',
+        sliders: {
+          saturation: {
+            maxLeft: 150,
+            maxTop: 150
+          },
+          hue: {
+            maxTop: 150
+          }
+        },
+        template: '<div class="colorpicker dropdown-menu">' +
+        '<div class="colorpicker-saturation"><i><b></b></i></div>' +
+        '<div class="colorpicker-hue"><i></i></div>' +
+        '<div class="colorpicker-color"><div /></div>' +
+        '<div class="colorpicker-selectors"></div>' +
+        '</div>'
+      });
+      
+      colorPicker.colorpicker().on('changeColor.colorpicker', function (event) {
+        that.changeElementColor(event.color.toHex());
+      });      
+            
+      this.changeElementColor = function (colorHex) {
+        var elementObjs = null;
+        if (elementObjs = avatarBaseGroup.selectAll($scope.avatarImages.head + ',' + 
+                                                    $scope.avatarImages.arms + ',' + 
+                                                    $scope.avatarImages.legs )) {
+          for (var i = 0; i < elementObjs.items.length; i++) {
+            var result = elementObjs[i].selectAll('path');
+            if (result.items.length > 0) {
+              result.attr({ fill: colorHex });
+            } else {
+              elementObjs[i].attr({fill: colorHex });
+            }
+          }                 
+        }
+      }
       
       this.loadSvgAvatarImages = function () {     
         var avatarSvgPath = '';
@@ -69,7 +109,8 @@
             if (elementValue && (elementObj = svgContent.select(elementValue))) {              
               if (before) {
                 before.after(angular.copy(elementObj));
-              } else if ((elementValue === "#helmet") || (elementValue === "#glasses")){
+              } else if (($scope.iconActived === "helmets") || 
+                         ($scope.iconActived === "glasses")) {
                 drawingArea.append(angular.copy(elementObj));
               } else {
                 avatarBaseGroup.append(angular.copy(elementObj));
@@ -78,7 +119,11 @@
           }            
         }
       }
-            
+         
+      $scope.pickColor = function () {
+        colorPicker.colorpicker('show');
+      }          
+         
       $scope.changeAvatarGender = function () {
         angular.element('#genderModal').modal('hide');
         avatarGender = avatarGender == 'F' ? 'M' : 'F';

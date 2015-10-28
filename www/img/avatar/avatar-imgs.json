@@ -3,6 +3,9 @@
 	"female": "img/avatar/avatar_female.svg",
 	"bikesFile": "img/avatar/bikes.svg",
 	"base": "#base",
+	"head": "#head",
+	"arms": "#arms",
+	"legs": "#legs",
 	"bikesGroup": "#bikes",
 	"icons": [
 		{
