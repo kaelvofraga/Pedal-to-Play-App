@@ -318,3 +318,8 @@ body{
 .colorpicker-2x .colorpicker-color div{
   height: 15px;
 }
+
+.modal-title {
+  text-align: center;
+  font-weight: bold;
+}

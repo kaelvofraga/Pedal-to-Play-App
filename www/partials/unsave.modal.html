@@ -1,19 +1,19 @@
-<div id="logoutModal" class="modal" role="dialog" aria-labelledby="logoutModal">
+<div id="unsaveModal" class="modal" role="dialog" aria-labelledby="unsaveModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="logoutModalTitle">{{string.LOGOUT_TITLE}}</h4>
+        <h4 class="modal-title" id="unsaveModalTitle">{{string.UNSAVE_TITLE}}</h4>
       </div>
       <div class="modal-body">
-        {{string.LOGOUT_CONFIRMATION}}
+        {{string.UNSAVE_CONFIRMATION}}
       </div>
       <div class="modal-footer">      
-        <button type="button" class="btn btn-success pull-left" ng-click="doLogout()">
-          {{string.YES}}
-        </button>
-        <button type="button" class="btn btn btn-danger pull-right" data-dismiss="modal">
+        <button type="button" class="btn btn-success pull-right" data-dismiss="modal">
           {{string.NO}}
+        </button>
+        <button type="button" class="btn btn btn-danger pull-left" ng-click="dontSave()">
+          {{string.YES}}
         </button>
       </div>
     </div><!-- /.modal-content -->

@@ -4,8 +4,8 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('AvatarController', ['$scope', '$window', 'AvatarService', 'ImageService', 
-                            function ($scope, $window, AvatarService, ImageService) 
+    .controller('AvatarController', ['$scope', '$window', '$state', 'AvatarService', 'ImageService', 
+                            function ($scope, $window, $state, AvatarService, ImageService) 
     {            
       var that = this;
       var Snap = $window.Snap;
@@ -13,7 +13,7 @@
       var svgContent = null;
       var avatarBaseGroup = {};
       var colorPicker = angular.element('.color-picker')
-      
+      var unsavedChanges = false;
       var avatar = {};
       avatar.pieces = [];
       avatar.gender = '';
@@ -23,6 +23,7 @@
       $scope.avatarImages = null;
       $scope.selectedPiece = null;
       $scope.iconActived = null;
+      $scope.nextStateName = null;
       
       colorPicker.colorpicker({
         customClass: 'colorpicker-2x',
@@ -48,7 +49,7 @@
       });      
                   
       this.initializeAvatar = function (avatarPieces) {      
-        var savedAvatar = AvatarService.recoverCustomization();
+        var savedAvatar = AvatarService.recoverCustomization($scope);
         if (savedAvatar &&
             angular.isDefined(savedAvatar.gender) &&
             angular.isDefined(savedAvatar.skinColor) &&
@@ -80,6 +81,7 @@
               elementObjs.items[i].attr({fill: colorHex });
             }
             avatar.skinColor = colorHex;
+            unsavedChanges = true;
           }                 
         }
       }
@@ -126,6 +128,7 @@
           if (angular.isDefined(option)) {
             var elementValue = option.value;
             var elementObj = null;
+            unsavedChanges = true;
             if (elementValue && (elementObj = svgContent.select(elementValue))) {              
               if (before) {
                 before.after(angular.copy(elementObj));
@@ -138,6 +141,15 @@
             }
           }            
         }
+      }
+      
+      this.hideModal = function (idModal) {
+        var modalObj = angular.element(idModal);
+        if (modalObj) {
+          modalObj.modal('hide');
+        }        
+        angular.element('body').removeClass('modal-open');
+        angular.element('.modal-backdrop').remove(); 
       }
          
       $scope.pickColor = function () {
@@ -192,8 +204,26 @@
         }
       }
       
+      $scope.dontSave = function () {
+        that.hideModal('#unsaveModal');          
+        unsavedChanges = false;
+        $state.go($scope.nextStateName);
+      }
+      
+      $scope.$on('$stateChangeStart',
+        function (event, toState, toParams, fromState, fromParams) {
+          that.hideModal('#genderModal');
+          if (unsavedChanges) {
+            angular.element('#unsaveModal').modal('show');
+            $scope.nextStateName = toState.name;
+            event.preventDefault();
+          }
+      });
+      
       $scope.save = function () {
-        AvatarService.saveCustomization(avatar);
+        if (AvatarService.saveCustomization(avatar, $scope)) {
+          unsavedChanges = false;
+        }       
       }
       
       $scope.share = function () {

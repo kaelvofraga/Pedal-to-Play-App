@@ -29,25 +29,25 @@
           return localStorageService.get('avatar'+user.id);
         };
   
-        var saveRemotely = function (avatar) {
-          return false;
+        var saveRemotely = function (avatar, scope) {
+          return true;
         };
   
-        var searchRemotely = function () {
+        var searchRemotely = function (scope) {
           return null;
         };
         
         return {            
-            recoverCustomization: function () {
-              var avatarCustomization = searchRemotely();
+            recoverCustomization: function (scope) {
+              var avatarCustomization = searchRemotely(scope);
               if (avatarCustomization === null) {
                 return searchLocally();
               }
             },
             
-            saveCustomization: function (avatar) {
+            saveCustomization: function (avatar, scope) {
               saveLocally(avatar);
-              return saveRemotely(avatar);
+              return saveRemotely(avatar, scope);
             }
         };
       }]);
