@@ -4,23 +4,24 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('AvatarController', ['$scope', '$window', '$state', 'AvatarService', 'ImageService', 
-                            function ($scope, $window, $state, AvatarService, ImageService) 
+    .controller('AvatarController', ['$scope', '$window', '$state', 'AvatarService', 'ImageService', 'UserService',
+                            function ($scope, $window, $state, AvatarService, ImageService, UserService) 
     {            
       var that = this;
       var Snap = $window.Snap;
       var drawingArea = Snap('.avatar');
       var svgContent = null;
       var avatarBaseGroup = {};
-      var colorPicker = angular.element('.color-picker')
+      var colorPicker = angular.element('.color-picker');
       var unsavedChanges = false;
+      var userLevel = 1;
       var avatar = {};
       avatar.pieces = [];
       avatar.gender = '';
       avatar.skinColor = '';
       
       $scope.supportsSVG = true;                            
-      $scope.avatarImages = null;
+      $scope.avatarImages = {};
       $scope.selectedPiece = null;
       $scope.iconActived = null;
       $scope.nextStateName = null;
@@ -56,14 +57,20 @@
             angular.isDefined(savedAvatar.pieces)) 
         {
           angular.copy(savedAvatar, avatar);
-          angular.forEach(avatarPieces, function (value, key) {
-            avatar.pieces[value.id] = savedAvatar.pieces[value.id] || 0;
+          angular.forEach(avatarPieces, function (piece, key) {            
+            var savedOptionIndex = savedAvatar.pieces[piece.id];
+            if (savedOptionIndex && (savedOptionIndex > 0) && (savedOptionIndex < piece.options.length)) 
+            {
+              avatar.pieces[piece.id] = savedOptionIndex;
+            } else {
+              avatar.pieces[piece.id] = 0;
+            }     
           }); 
         } else {
           avatar.gender = $scope.avatarImages.defaultGender;
           avatar.skinColor = $scope.avatarImages.defaultSkinColor;
-          angular.forEach(avatarPieces, function (value, key) {
-            avatar.pieces[value.id] = 0;
+          angular.forEach(avatarPieces, function (piece, key) {
+            avatar.pieces[piece.id] = 0;
           });          
         }                  
       }  
@@ -104,7 +111,7 @@
             drawingArea.append(avatarBaseGroup);
             $scope.supportsSVG = angular.isDefined(angular.element($scope.avatarImages.base));                            
             angular.forEach($scope.avatarImages.pieces, function (piece, key) { 
-              if ((key === "helmets") || (key === "glasses")){
+              if ((key === "helmets") || (key === "glasses")) {
                 drawingArea.append(
                   angular.copy(
                     svgContent.select(piece.options[avatar.pieces[piece.id]].value)
@@ -129,16 +136,17 @@
             var elementValue = option.value;
             var elementObj = null;
             unsavedChanges = true;
-            if (elementValue && (elementObj = svgContent.select(elementValue))) {              
+            if (elementValue && (elementObj = svgContent.select(elementValue))) {
               if (before) {
                 before.after(angular.copy(elementObj));
-              } else if (($scope.iconActived === "helmets") || 
-                         ($scope.iconActived === "glasses")) {
+                before.remove();
+              } else if (($scope.iconActived === "helmets") ||
+                ($scope.iconActived === "glasses")) {
                 drawingArea.append(angular.copy(elementObj));
               } else {
                 avatarBaseGroup.append(angular.copy(elementObj));
               }
-            }
+            }            
           }            
         }
       }
@@ -150,6 +158,23 @@
         }        
         angular.element('body').removeClass('modal-open');
         angular.element('.modal-backdrop').remove(); 
+      }
+      
+      this.checkRequiredLevel = function (option) {        
+        return angular.isUndefined(option.requiredLevel) || (userLevel >= option.requiredLevel);
+      }
+      
+      this.removeUnavailableOptions = function (avatarPieces) {
+        angular.forEach(avatarPieces, function (piece, key) {
+          var i = 0;
+          while (angular.isDefined(piece.options[i])) {
+            if (!(that.checkRequiredLevel(piece.options[i]))) {
+              piece.options.splice(i, 1);
+            } else {
+              ++i;
+            }
+          }
+        });
       }
          
       $scope.pickColor = function () {
@@ -234,12 +259,18 @@
         return "img/avatar/icons/" + reference + ".svg";
       }
       
-      ImageService.getAvatarImages().then( function (avatarImages) {        
-        $scope.avatarImages = avatarImages;
-        $scope.iconActived = avatarImages.icons[1].reference
-        $scope.selectedPiece = avatarImages.pieces[$scope.iconActived];
-        that.initializeAvatar(avatarImages.pieces);
-        that.loadSvgAvatarImages();        
+      UserService.getUserLevel().then(function (level) {
+        ImageService.getAvatarImages().then(function (avatarImages) {
+          userLevel = level || avatarImages.initialLevel;
+          $scope.avatarImages = avatarImages;
+          if (avatarImages !== null) {
+            $scope.iconActived = avatarImages.icons[1].reference;
+            that.removeUnavailableOptions(avatarImages.pieces);                        
+            $scope.selectedPiece = avatarImages.pieces[$scope.iconActived];            
+            that.initializeAvatar(avatarImages.pieces);
+            that.loadSvgAvatarImages();
+          }
+        });
       });      
     }]);
 })();

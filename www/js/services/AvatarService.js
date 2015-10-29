@@ -21,12 +21,12 @@
         
         var saveLocally = function (avatar) {
           var user = localStorageService.get('user');
-          localStorageService.set('avatar'+user.id, angular.copy(avatar));          
+          localStorageService.set('avatar' + user.id, angular.copy(avatar));          
         };
             
         var searchLocally = function () {
           var user = localStorageService.get('user');
-          return localStorageService.get('avatar'+user.id);
+          return localStorageService.get('avatar' + user.id);
         };
   
         var saveRemotely = function (avatar, scope) {

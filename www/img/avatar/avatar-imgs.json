@@ -9,6 +9,7 @@
 	"bikesGroup": "#bikes",
 	"defaultGender": "F",
 	"defaultSkinColor": "#deaa87",
+	"initialLevel": "5",
 	"icons": [
 		{
 			"reference": "genders"
@@ -41,7 +42,7 @@
 			"reference": "glasses"
 		}
 	],
-	"pieces" : {
+	"pieces": {
 		"faces": {
 			"id": 0,
 			"options": [
@@ -114,7 +115,8 @@
 				},
 				{
 					"id": 1,
-					"value": "#gear-shorts"
+					"value": "#gear-shorts",
+					"requiredLevel": 5 
 				}
 			]
 		},
@@ -127,7 +129,8 @@
 				},
 				{
 					"id": 1,
-					"value": "#gear-jersey"
+					"value": "#gear-jersey",
+					"requiredLevel": 5 
 				}
 			]
 		},
@@ -140,7 +143,8 @@
 				},
 				{
 					"id": 1,
-					"value": "#gloves"
+					"value": "#gloves",
+					"requiredLevel": 2
 				}
 			]
 		},
@@ -153,7 +157,8 @@
 				},
 				{
 					"id": 1,
-					"value": "#gear-shoes"
+					"value": "#gear-shoes",
+					"requiredLevel": 3
 				}
 			]
 		},
@@ -166,7 +171,8 @@
 				},
 				{
 					"id": 1,
-					"value": "#glasses"
+					"value": "#glasses",
+					"requiredLevel": 4
 				}
 			]
 		},
@@ -179,19 +185,23 @@
 				},
 				{
 					"id": 1,
-					"value": "#bmx"
+					"value": "#bmx",
+					"requiredLevel": 2
 				},
 				{
 					"id": 2,
-					"value": "#mountain"
+					"value": "#mountain",
+					"requiredLevel": 3
 				},
 				{
 					"id": 3,
-					"value": "#road"
+					"value": "#road",
+					"requiredLevel": 4
 				},
 				{
 					"id": 4,
-					"value": "#triathlon"
+					"value": "#triathlon",
+					"requiredLevel": 5
 				}
 			]
 		}

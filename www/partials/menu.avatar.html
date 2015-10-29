@@ -12,6 +12,9 @@
 		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
 			{{string.avatar.ERROR_SVG}}
 		</div>
+		<div class="alert alert-danger" role="alert" ng-show="avatarImages === null">
+			{{string.avatar.ERROR_LOAD_IMAGES}}
+		</div>
 		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>	
 		<ul class="pager">
 			<li class="previous">
