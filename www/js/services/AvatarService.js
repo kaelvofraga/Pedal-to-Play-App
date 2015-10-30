@@ -7,16 +7,17 @@
     .factory('AvatarService', ['$rootScope', '$http', 'localStorageService', 'LoadingService',
                       function ($rootScope, $http, localStorageService, LoadingService) {
         
-        var sucessCallback = function (scope, response, messageOut) {
+        var onConnectToSaveSuccess = function (scope, response) {
           if (response.data && response.data.error) {
-            scope.errorMessage = messageOut;
+             scope.errorMessage = $rootScope.string.avatar.SERVER_SAVE_FAIL;
+             return false;
           }
-          LoadingService.stopLoading();
+          return true;
         }
 
-        var errorCallback = function (scope, error, messageOut) {
-          scope.errorMessage = messageOut;
-          LoadingService.stopLoading();
+        var onConnectToSaveError = function (scope, error) {
+            //TODO pull request in the queue
+            return true;
         }
         
         var saveLocally = function (avatar) {
@@ -30,7 +31,17 @@
         };
   
         var saveRemotely = function (avatar, scope) {
-          return true;
+          LoadingService.startLoading();
+          return $http.put($rootScope.string.SERVER_BASE_URL + 'avatar', avatar)
+                  .then(
+                    function (response) {
+                      LoadingService.stopLoading();
+                      return onConnectToSaveSuccess(scope, response);
+                    },
+                    function (error) {
+                      LoadingService.stopLoading();
+                      return onConnectToSaveError(scope, error);
+                    });
         };
   
         var searchRemotely = function (scope) {

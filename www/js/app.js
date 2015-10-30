@@ -52,12 +52,16 @@
     
     $urlRouterProvider.otherwise('/app/home');
     
-    $httpProvider.interceptors.push(['$q', '$location', 'localStorageService', function ($q, $location, localStorageService) {
+    $httpProvider.interceptors.push(['$q', '$location', 'localStorageService', 
+                            function ($q, $location, localStorageService) {
       return {
         'request': function (config) {
           config.headers = config.headers || {};
           if (localStorageService.get('user')) {
-            config.headers.Authorization = angular.toJson(localStorageService.get('user'));
+            config.headers.Authorization = angular.toJson({
+              'id': localStorageService.get('user').id,
+              'token': localStorageService.get('user').token
+            });
             config.withCredentials = true;
           }
           return config;

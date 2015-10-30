@@ -237,22 +237,23 @@
       
       $scope.$on('$stateChangeStart',
         function (event, toState, toParams, fromState, fromParams) {
-          that.hideModal('#genderModal');
-          if (unsavedChanges) {
-            angular.element('#unsaveModal').modal('show');
-            $scope.nextStateName = toState.name;
-            event.preventDefault();
+          if ((toState.name !== fromState.name) && (toState.name !== "auth")) {
+            that.hideModal('#genderModal');
+            if (unsavedChanges) {
+              angular.element('#unsaveModal').modal('show');
+              $scope.nextStateName = toState.name;
+              event.preventDefault();
+            }
           }
       });
       
       $scope.save = function () {
-        if (AvatarService.saveCustomization(avatar, $scope)) {
-          unsavedChanges = false;
-        }       
+        AvatarService.saveCustomization(avatar, $scope)
+          .then( function (response) { unsavedChanges = response; });       
       }
       
       $scope.share = function () {
-        return true; //TODO implementar compartilhamento
+        return true; //TODO develop "sharing" routine
       }
       
       $scope.getPath = function (reference) {
