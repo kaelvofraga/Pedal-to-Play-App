@@ -190,6 +190,20 @@ body{
 	background-color: #46287D !important;
 }
 
+#avatarDiv .alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+#avatarDiv .alert button {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+#avatarDiv .alert button:hover {
+  color: #404040; 
+}
+
 .nav-tabs {
     width: 100%;
     border-bottom: 0;

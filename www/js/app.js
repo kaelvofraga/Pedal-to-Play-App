@@ -56,21 +56,22 @@
                             function ($q, $location, localStorageService) {
       return {
         'request': function (config) {
-          config.headers = config.headers || {};
-          if (localStorageService.get('user')) {
-            config.headers.Authorization = angular.toJson({
-              'id': localStorageService.get('user').id,
-              'token': localStorageService.get('user').token
-            });
-            config.withCredentials = true;
-          }
-          return config;
+            config.headers = config.headers || {};
+            var user = localStorageService.get('user');
+            if (user !== null) {
+              config.headers.Authorization = angular.toJson({
+                'id': user.id,
+                'token': user.token
+              });
+              config.withCredentials = true;
+            }
+            return config;
         },
         'responseError': function (response) {
-          if (response.status === 401) {
-            $location.path('/auth');
-          }
-          return $q.reject(response);
+            if (response.status === 401) {
+              $location.path('/auth');
+            }
+            return $q.reject(response);
         }
       };
     }]);    

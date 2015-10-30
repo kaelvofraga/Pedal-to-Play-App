@@ -4,8 +4,9 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('HomeController', ['$scope', 'localStorageService', function ($scope, localStorageService) 
+    .controller('HomeController', ['$scope', 'AuthService', 
+                          function ($scope, AuthService) 
     {
-       $scope.user = localStorageService.get('user');
+       $scope.user = AuthService.getLoggedUser();
     }]);
 })();

@@ -4,10 +4,10 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('MenuController', ['AuthService', '$scope', '$state', '$window', 'localStorageService',
-                          function (AuthService, $scope, $state, $window, localStorageService) {
+    .controller('MenuController', ['AuthService', '$scope', '$state', '$window',
+                          function (AuthService, $scope, $state, $window) {
                 
-        if (localStorageService.get('user') === null) {
+        if (AuthService.getLoggedUser() === null) {
           $state.go('auth');
         }
         
@@ -80,7 +80,7 @@
           function (event, toState, toParams, fromState, fromParams) {  
             sideMenu.offcanvas('hide');
             
-            if ((localStorageService.get('user') === null) && (toState.name !== 'auth')) {
+            if ((AuthService.getLoggedUser() === null) && (toState.name !== 'auth')) {
               event.preventDefault();
               $state.go('auth');
             }

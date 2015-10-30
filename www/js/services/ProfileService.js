@@ -4,16 +4,19 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .factory('UserService', ['$rootScope', '$http', 'localStorageService', 
-				 	function ($rootScope, $http, localStorageService) 
+    .factory('ProfileService', ['$rootScope', '$http', 'localStorageService', 
+				 	             function ($rootScope, $http, localStorageService) 
     {   
       
       var successCallback = function (response) {
-        var user = localStorageService.get('user');
-        if (user !== null) {
-          localStorageService.set('level' + user.id, response.data);
+        if (response.data) {
+          var user = localStorageService.get('user');
+          if (user !== null) {
+            localStorageService.set('level' + user.id, response.data);
+          }
+          return response.data;  
         }
-        return response.data;
+        return null;
       }
       
       var errorCallback = function (error) {        

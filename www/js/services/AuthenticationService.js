@@ -69,6 +69,9 @@
 							return $q.reject();
 						});
 			},
+			getLoggedUser: function() {
+				return localStorageService.get('user');
+			},
 			logout: function() {
 				localStorageService.remove('user');
 				$state.go('auth');

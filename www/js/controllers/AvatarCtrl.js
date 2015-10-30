@@ -4,8 +4,9 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('AvatarController', ['$scope', '$window', '$state', 'AvatarService', 'ImageService', 'UserService',
-                            function ($scope, $window, $state, AvatarService, ImageService, UserService) 
+    .controller('AvatarController', 
+    ['$scope', '$window', '$state', '$timeout','AvatarService', 'ImageService', 'ProfileService',
+    function ($scope, $window, $state, $timeout, AvatarService, ImageService, ProfileService) 
     {            
       var that = this;
       var Snap = $window.Snap;
@@ -14,7 +15,8 @@
       var avatarBaseGroup = {};
       var colorPicker = angular.element('.color-picker');
       var unsavedChanges = false;
-      var userLevel = 1;
+      var errorMsgTimeout = undefined;
+      var userLevel = 0;
       var avatar = {};
       avatar.pieces = [];
       avatar.gender = '';
@@ -25,6 +27,7 @@
       $scope.selectedPiece = null;
       $scope.iconActived = null;
       $scope.nextStateName = null;
+      $scope.showErrorMsg = false;      
       
       colorPicker.colorpicker({
         customClass: 'colorpicker-2x',
@@ -50,7 +53,7 @@
       });      
                   
       this.initializeAvatar = function (avatarPieces) {      
-        var savedAvatar = AvatarService.recoverCustomization($scope);
+        var savedAvatar = AvatarService.recoverCustomization();
         if (savedAvatar &&
             angular.isDefined(savedAvatar.gender) &&
             angular.isDefined(savedAvatar.skinColor) &&
@@ -247,9 +250,25 @@
           }
       });
       
+      $scope.stopShowingErrorMessage = function () {
+        if (angular.isDefined(errorMsgTimeout)) {
+          $timeout.cancel(errorMsgTimeout);
+          $scope.showErrorMsg = false;
+        }
+      };
+      
       $scope.save = function () {
-        AvatarService.saveCustomization(avatar, $scope)
-          .then( function (response) { unsavedChanges = response; });       
+        AvatarService.saveCustomization(avatar)
+          .then( function (response) { 
+            unsavedChanges = response; 
+            if (response === false) 
+            {                             
+              $scope.showErrorMsg = true;
+              errorMsgTimeout = $timeout(function () {  
+                 $scope.showErrorMsg = false;
+              }, 15000);
+            }
+          });       
       }
       
       $scope.share = function () {
@@ -260,7 +279,7 @@
         return "img/avatar/icons/" + reference + ".svg";
       }
       
-      UserService.getUserLevel().then(function (level) {
+      ProfileService.getUserLevel().then(function (level) {
         ImageService.getAvatarImages().then(function (avatarImages) {
           userLevel = level || avatarImages.initialLevel;
           $scope.avatarImages = avatarImages;

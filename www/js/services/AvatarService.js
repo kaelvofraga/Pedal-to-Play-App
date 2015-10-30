@@ -7,58 +7,60 @@
     .factory('AvatarService', ['$rootScope', '$http', 'localStorageService', 'LoadingService',
                       function ($rootScope, $http, localStorageService, LoadingService) {
         
-        var onConnectToSaveSuccess = function (scope, response) {
+        var onConnectToSaveSuccess = function (avatar, response) {
           if (response.data && response.data.error) {
-             scope.errorMessage = $rootScope.string.avatar.SERVER_SAVE_FAIL;
              return false;
           }
+          saveLocally(avatar);
           return true;
         }
 
-        var onConnectToSaveError = function (scope, error) {
+        var onConnectToSaveError = function (avatar, error) {
             //TODO pull request in the queue
+            saveLocally(avatar);
             return true;
         }
         
         var saveLocally = function (avatar) {
           var user = localStorageService.get('user');
-          localStorageService.set('avatar' + user.id, angular.copy(avatar));          
+          if (user !== null) {
+            localStorageService.set('avatar' + user.id, angular.copy(avatar));          
+          }
         };
             
         var searchLocally = function () {
           var user = localStorageService.get('user');
-          return localStorageService.get('avatar' + user.id);
+          return user !== null ? localStorageService.get('avatar' + user.id) : null;
         };
   
-        var saveRemotely = function (avatar, scope) {
+        var saveRemotely = function (avatar) {
           LoadingService.startLoading();
           return $http.put($rootScope.string.SERVER_BASE_URL + 'avatar', avatar)
                   .then(
                     function (response) {
                       LoadingService.stopLoading();
-                      return onConnectToSaveSuccess(scope, response);
+                      return onConnectToSaveSuccess(avatar, response);
                     },
                     function (error) {
                       LoadingService.stopLoading();
-                      return onConnectToSaveError(scope, error);
+                      return onConnectToSaveError(avatar, error);
                     });
         };
   
-        var searchRemotely = function (scope) {
+        var searchRemotely = function () {
           return null;
         };
         
         return {            
-            recoverCustomization: function (scope) {
-              var avatarCustomization = searchRemotely(scope);
+            recoverCustomization: function () {
+              var avatarCustomization = searchRemotely();
               if (avatarCustomization === null) {
                 return searchLocally();
               }
             },
             
-            saveCustomization: function (avatar, scope) {
-              saveLocally(avatar);
-              return saveRemotely(avatar, scope);
+            saveCustomization: function (avatar) {
+              return saveRemotely(avatar);
             }
         };
       }]);
