@@ -7,20 +7,6 @@
     .factory('AvatarService', ['$rootScope', '$http', 'localStorageService', 'LoadingService',
                       function ($rootScope, $http, localStorageService, LoadingService) {
         
-        var onConnectToSaveSuccess = function (avatar, response) {
-          if (response.data && response.data.error) {
-             return false;
-          }
-          saveLocally(avatar);
-          return true;
-        }
-
-        var onConnectToSaveError = function (avatar, error) {
-            //TODO pull request in the queue
-            saveLocally(avatar);
-            return true;
-        }
-        
         var saveLocally = function (avatar) {
           var user = localStorageService.get('user');
           if (user !== null) {
@@ -32,7 +18,29 @@
           var user = localStorageService.get('user');
           return user !== null ? localStorageService.get('avatar' + user.id) : null;
         };
-  
+          
+        var onConnectToSaveSuccess = function (avatar, response) {
+          if (response.data && response.data.error) {
+            return false;
+          }
+          saveLocally(avatar);
+          return true;
+        }
+
+        var onConnectToSaveError = function (avatar, error) {
+            //TODO pull request in the queue
+            saveLocally(avatar);
+            return true;
+        }
+        
+        var onConnectToGetSuccess = function (response) {
+          if (response.data && response.data.error) {
+            return searchLocally();
+          }
+          saveLocally(response.data);
+          return response.data;
+        }
+        
         var saveRemotely = function (avatar) {
           LoadingService.startLoading();
           return $http.put($rootScope.string.SERVER_BASE_URL + 'avatar', avatar)
@@ -48,15 +56,19 @@
         };
   
         var searchRemotely = function () {
-          return null;
+          return $http.get($rootScope.string.SERVER_BASE_URL + 'avatar')
+                  .then(
+                    function (response) {
+                      return onConnectToGetSuccess(response);
+                    },
+                    function (error) {
+                      return searchLocally();
+                    });
         };
         
         return {            
             recoverCustomization: function () {
-              var avatarCustomization = searchRemotely();
-              if (avatarCustomization === null) {
-                return searchLocally();
-              }
+                return searchRemotely();
             },
             
             saveCustomization: function (avatar) {

@@ -17,8 +17,8 @@
 			{{string.avatar.ERROR_LOAD_IMAGES}}
 		</div>
 		<div class="alert alert-danger" role="alert" 
-			 ng-show="showErrorMsg" ng-click="stopShowingErrorMessage()">
-			{{string.avatar.SERVER_SAVE_FAIL}}
+			 ng-show="shownErrorMsg" ng-click="stopShowingErrorMessage()">
+			{{errorMsg}}
 			<button><i class="fa fa-times"></i></button>
 		</div>
 		<svg class="avatar center-block" width="600" height="512" viewBox="0 0 600 512.00001"></svg>	

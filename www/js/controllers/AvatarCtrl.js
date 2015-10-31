@@ -27,7 +27,8 @@
       $scope.selectedPiece = null;
       $scope.iconActived = null;
       $scope.nextStateName = null;
-      $scope.showErrorMsg = false;      
+      $scope.shownErrorMsg = false;
+      $scope.errorMsg = "";    
       
       colorPicker.colorpicker({
         customClass: 'colorpicker-2x',
@@ -51,33 +52,15 @@
       colorPicker.colorpicker().on('changeColor.colorpicker', function (event) {
         that.changeElementColor(event.color.toHex());
       });      
-                  
-      this.initializeAvatar = function (avatarPieces) {      
-        var savedAvatar = AvatarService.recoverCustomization();
-        if (savedAvatar &&
-            angular.isDefined(savedAvatar.gender) &&
-            angular.isDefined(savedAvatar.skinColor) &&
-            angular.isDefined(savedAvatar.pieces)) 
-        {
-          angular.copy(savedAvatar, avatar);
-          angular.forEach(avatarPieces, function (piece, key) {            
-            var savedOptionIndex = savedAvatar.pieces[piece.id];
-            if (savedOptionIndex && (savedOptionIndex > 0) && (savedOptionIndex < piece.options.length)) 
-            {
-              avatar.pieces[piece.id] = savedOptionIndex;
-            } else {
-              avatar.pieces[piece.id] = 0;
-            }     
-          }); 
-        } else {
-          avatar.gender = $scope.avatarImages.defaultGender;
-          avatar.skinColor = $scope.avatarImages.defaultSkinColor;
-          angular.forEach(avatarPieces, function (piece, key) {
-            avatar.pieces[piece.id] = 0;
-          });          
-        }                  
-      }  
-            
+      
+      this.showErrorMessage = function (message) {
+        $scope.errorMsg = message;
+        $scope.shownErrorMsg = true;
+        errorMsgTimeout = $timeout(function () {
+          $scope.shownErrorMsg = false;
+        }, 15000);
+      }
+                              
       this.changeElementColor = function (colorHex) {
         var elementObjs = null;
         if (elementObjs = avatarBaseGroup.selectAll($scope.avatarImages.head + ',' + 
@@ -131,6 +114,37 @@
           });  
         }); 
       }   
+      
+      this.initializeAvatar = function (avatarPieces) {      
+        AvatarService.recoverCustomization().then( function (response) {
+          var savedAvatar = response;
+          if (savedAvatar &&
+              angular.isDefined(savedAvatar.gender) &&
+              angular.isDefined(savedAvatar.skinColor) &&
+              angular.isDefined(savedAvatar.pieces)
+          ){
+              angular.copy(savedAvatar, avatar);
+              angular.forEach(avatarPieces, function (piece, key) {
+                var savedOptionIndex = savedAvatar.pieces[piece.id];
+                if (savedOptionIndex && (savedOptionIndex > 0) && 
+                    (savedOptionIndex < piece.options.length)
+                ){
+                  avatar.pieces[piece.id] = savedOptionIndex;
+                } else {
+                  avatar.pieces[piece.id] = 0;
+                }
+              });
+          } else {
+            that.showErrorMessage($scope.string.avatar.SERVER_CONNECT_TO_GET_FAIL);
+            avatar.gender = $scope.avatarImages.defaultGender;
+            avatar.skinColor = $scope.avatarImages.defaultSkinColor;
+            angular.forEach(avatarPieces, function (piece, key) {
+              avatar.pieces[piece.id] = 0;
+            });
+          }
+          that.loadSvgAvatarImages();       
+        });              
+      }  
       
       this.addPieceToAvatar = function (before) {
         if (angular.isDefined($scope.selectedPiece)) {
@@ -253,20 +267,17 @@
       $scope.stopShowingErrorMessage = function () {
         if (angular.isDefined(errorMsgTimeout)) {
           $timeout.cancel(errorMsgTimeout);
-          $scope.showErrorMsg = false;
+          $scope.shownErrorMsg = false;
         }
       };
-      
+            
       $scope.save = function () {
         AvatarService.saveCustomization(avatar)
           .then( function (response) { 
             unsavedChanges = response; 
             if (response === false) 
-            {                             
-              $scope.showErrorMsg = true;
-              errorMsgTimeout = $timeout(function () {  
-                 $scope.showErrorMsg = false;
-              }, 15000);
+            {                         
+              that.showErrorMessage($scope.string.avatar.SERVER_SAVE_FAIL);
             }
           });       
       }
@@ -288,7 +299,6 @@
             that.removeUnavailableOptions(avatarImages.pieces);                        
             $scope.selectedPiece = avatarImages.pieces[$scope.iconActived];            
             that.initializeAvatar(avatarImages.pieces);
-            that.loadSvgAvatarImages();
           }
         });
       });      
