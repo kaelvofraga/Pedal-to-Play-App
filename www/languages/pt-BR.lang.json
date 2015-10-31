@@ -60,6 +60,7 @@
         "SERVER_SAVE_FAIL": "Customizações de avatar inválidas. Confira suas escolhas.",
         "SERVER_CONNECT_TO_GET_FAIL": "A customização de seu avatar não pode ser recuperada.",
         "ERROR_SVG": "Desculpe-me, mas seu dispositivo não suporta o sistema de customização do avatar.",
-        "ERROR_LOAD_IMAGES": "Falha ao carregar imagens, por favor, reinstale o aplicativo se o erro persistir."
+        "ERROR_LOAD_IMAGES": "Falha ao carregar imagens, por favor, reinstale o aplicativo se o erro persistir.",
+        "LOADING": "Carregando avatar "
     }
 }

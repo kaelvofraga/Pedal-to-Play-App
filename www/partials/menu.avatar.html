@@ -10,6 +10,9 @@
 				<i class="fa fa-eyedropper"></i>
 			</button>
 		</div>
+		<div class="alert alert-info" role="alert" ng-show="isAvatarLoading()">
+			{{string.avatar.LOADING}}<i class="fa fa-spinner fa-pulse"></i>
+		</div>
 		<div class="alert alert-danger" role="alert" ng-show="!supportsSVG">
 			{{string.avatar.ERROR_SVG}}
 		</div>
@@ -29,7 +32,8 @@
 				</a>
 			</li>
 			<li>
-				<button class="btn btn-lg btn-default" ng-click="save()" ng-disabled="loading">
+				<button class="btn btn-lg btn-default" ng-click="save()" 
+						ng-disabled="loading || isAvatarLoading()">
 					{{loading ? string.SAVING : string.button.SAVE}}
 					<i class="fa fa-spinner fa-pulse" ng-show="loading"></i>
 				</button>

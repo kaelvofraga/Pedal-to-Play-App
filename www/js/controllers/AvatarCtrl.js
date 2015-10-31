@@ -28,7 +28,7 @@
       $scope.iconActived = null;
       $scope.nextStateName = null;
       $scope.shownErrorMsg = false;
-      $scope.errorMsg = "";    
+      $scope.errorMsg = "";
       
       colorPicker.colorpicker({
         customClass: 'colorpicker-2x',
@@ -111,6 +111,7 @@
                 );
               } 
             });
+            $scope.$apply();
           });  
         }); 
       }   
@@ -193,6 +194,10 @@
           }
         });
       }
+      
+      $scope.isAvatarLoading = function () {
+        return svgContent === null;
+      }
          
       $scope.pickColor = function () {
         colorPicker.colorpicker('show');
@@ -205,8 +210,10 @@
         that.loadSvgAvatarImages();
       }
       
-      $scope.onNextOptionClick = function () {
-        if (angular.isDefined($scope.avatarImages.pieces[$scope.iconActived])) {
+      $scope.onNextOptionClick = function () {   
+        if (($scope.isAvatarLoading() === false) &&
+            angular.isDefined($scope.avatarImages.pieces[$scope.iconActived])
+        ) {
           var element = drawingArea.select($scope.selectedPiece.options[avatar.pieces[$scope.selectedPiece.id]].value);      
           ++(avatar.pieces[$scope.selectedPiece.id]);
           if (avatar.pieces[$scope.selectedPiece.id] >= $scope.selectedPiece.options.length) {
@@ -222,7 +229,9 @@
       }
       
       $scope.onPreviousOptionClick = function () {
-        if (angular.isDefined($scope.avatarImages.pieces[$scope.iconActived])) {
+        if (($scope.isAvatarLoading() === false) &&
+            angular.isDefined($scope.avatarImages.pieces[$scope.iconActived])
+        ) {
           var element = drawingArea.select($scope.selectedPiece.options[avatar.pieces[$scope.selectedPiece.id]].value);
           --(avatar.pieces[$scope.selectedPiece.id]);
           if (avatar.pieces[$scope.selectedPiece.id] < 0) {
@@ -274,7 +283,7 @@
       $scope.save = function () {
         AvatarService.saveCustomization(avatar)
           .then( function (response) { 
-            unsavedChanges = response; 
+            unsavedChanges = !response; 
             if (response === false) 
             {                         
               that.showErrorMessage($scope.string.avatar.SERVER_SAVE_FAIL);
@@ -290,17 +299,21 @@
         return "img/avatar/icons/" + reference + ".svg";
       }
       
-      ProfileService.getUserLevel().then(function (level) {
-        ImageService.getAvatarImages().then(function (avatarImages) {
-          userLevel = level || avatarImages.initialLevel;
-          $scope.avatarImages = avatarImages;
-          if (avatarImages !== null) {
-            $scope.iconActived = avatarImages.icons[1].reference;
-            that.removeUnavailableOptions(avatarImages.pieces);                        
-            $scope.selectedPiece = avatarImages.pieces[$scope.iconActived];            
-            that.initializeAvatar(avatarImages.pieces);
-          }
+      $scope.$on('$viewContentLoaded', function() {
+        ProfileService.getUserLevel().then(function (level) {
+          ImageService.getAvatarImages().then(function (avatarImages) {
+            userLevel = level || avatarImages.initialLevel;
+            $scope.avatarImages = avatarImages;
+            if (avatarImages !== null) {
+              $scope.iconActived = avatarImages.icons[1].reference;
+              that.removeUnavailableOptions(avatarImages.pieces);                        
+              $scope.selectedPiece = avatarImages.pieces[$scope.iconActived];            
+              that.initializeAvatar(avatarImages.pieces);
+            }
+          });
         });
-      });      
+      });
+            
     }]);
+    
 })();

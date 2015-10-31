@@ -88,7 +88,6 @@
           
         angular.element($window).bind('resize', function () {
           sideMenu.offcanvas('hide');
-          $scope.$apply();
         });                     
     }]);
 })();

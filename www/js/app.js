@@ -69,6 +69,9 @@
         },
         'responseError': function (response) {
             if (response.status === 401) {
+              if (localStorageService.get('user')) {
+                localStorageService.remove('user');
+              }
               $location.path('/auth');
             }
             return $q.reject(response);

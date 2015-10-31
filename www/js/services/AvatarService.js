@@ -14,7 +14,7 @@
           }
         };
             
-        var searchLocally = function () {
+        var recoverLocally = function () {
           var user = localStorageService.get('user');
           return user !== null ? localStorageService.get('avatar' + user.id) : null;
         };
@@ -35,7 +35,7 @@
         
         var onConnectToGetSuccess = function (response) {
           if (response.data && response.data.error) {
-            return searchLocally();
+            return recoverLocally();
           }
           saveLocally(response.data);
           return response.data;
@@ -43,7 +43,7 @@
         
         var saveRemotely = function (avatar) {
           LoadingService.startLoading();
-          return $http.put($rootScope.string.SERVER_BASE_URL + 'avatar', avatar)
+          return $http.post($rootScope.string.SERVER_BASE_URL + 'avatar', avatar)
                   .then(
                     function (response) {
                       LoadingService.stopLoading();
@@ -55,20 +55,20 @@
                     });
         };
   
-        var searchRemotely = function () {
+        var recoverRemotely = function () {
           return $http.get($rootScope.string.SERVER_BASE_URL + 'avatar')
                   .then(
                     function (response) {
                       return onConnectToGetSuccess(response);
                     },
                     function (error) {
-                      return searchLocally();
+                      return recoverLocally();
                     });
         };
         
         return {            
             recoverCustomization: function () {
-                return searchRemotely();
+                return recoverRemotely();
             },
             
             saveCustomization: function (avatar) {
