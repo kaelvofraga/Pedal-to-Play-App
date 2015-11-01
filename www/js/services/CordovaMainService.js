@@ -1,5 +1,3 @@
-/// <reference path="../../libs/typings/angularjs/angular.d.ts"/>
-
 (function () { 
 	'use strict';
 

@@ -4,3 +4,4 @@ platforms/**
 plugins/**
 hooks/**
 .vscode/settings.json
+typings/**
