@@ -107,12 +107,12 @@ body{
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
-    height: 410px;
+    height: 300px;
   }
 } 
 @media (max-height: 600px) { 
   #avatarDiv .avatar{ 
-    height: 305px;
+    height: 250px;
   }
 }
 @media (max-height: 480px) { 
@@ -338,4 +338,31 @@ body{
 .modal-title {
   text-align: center;
   font-weight: bold;
+}
+
+#tracking .row {
+  text-align: center;
+  padding: 20px 0;
+}
+#tracking .middle {
+  border: 3px #999 solid;
+  border-right: none;
+  border-left: none;
+}
+#tracking .row label {
+  color: #999;
+  font-size: 16px;
+  display: block;
+}
+#tracking .row span {
+  color: black;
+  font-size: 26px;
+  display: block;
+}
+#tracking .middle span {
+  font-size: 32px;
+}
+#tracking .alert {
+  text-align: center;
+  margin: 0;
 }

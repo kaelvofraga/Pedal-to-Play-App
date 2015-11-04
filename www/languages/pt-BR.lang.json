@@ -12,7 +12,6 @@
     "NO": "Não",
     "PROCESSING": "Processando",
     "SAVING": "Salvando",
-    "TRACKING_TITLE": "Posição",
     "menu": {
         "HOME": "Home",
         "TRACKING": "Pedalada",
@@ -20,7 +19,7 @@
         "LOGOUT": "Logout"
     },
     "navbarTitle": {
-        "TRACKING": "Monitorando Pedalada",
+        "TRACKING": "Pedalada",
         "AVATAR": "Customização do Avatar"
     },
     "form": {
@@ -62,5 +61,21 @@
         "ERROR_SVG": "Desculpe-me, mas seu dispositivo não suporta o sistema de customização do avatar.",
         "ERROR_LOAD_IMAGES": "Falha ao carregar imagens, por favor, reinstale o aplicativo se o erro persistir.",
         "LOADING": "Carregando avatar "
+    },
+    "tracking": {
+        "TIME": "Duração (h:m:s)",
+        "SPEED": "Velocidade (km/h)",
+        "DISTANCE": "Distância (km)",
+        "PAUSED": "Pausada",
+        "SAVE_SESSION": "Salvar pedalada",
+        "SESSION_DESCRIPTION": "Descricao da pedalada:",
+        "button": {
+            "START_TRACKING": "Gravar pedalada",
+            "PAUSE": "Pausar",
+            "STOP": "Parar",
+            "CONTINUE": "Continuar",
+            "DISCARD": "Descartar",
+            "SAVE": "Salvar"
+        }
     }
 }

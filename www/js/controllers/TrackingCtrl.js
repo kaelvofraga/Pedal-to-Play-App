@@ -4,7 +4,11 @@
   angular.module('Pedal2Play')
     .controller('TrackingController', ['$scope', 'TrackService', function ($scope, TrackService) 
     {
-      var intervalId = setInterval(function () {
+      $scope.time = 0;
+      $scope.speed = 0;
+      $scope.distance = 0;    
+      
+      /*var intervalId = setInterval(function () {
         TrackService.getCurrentPosition(function (position) {
           $scope.position = [
             { 
@@ -45,6 +49,6 @@
       
       $scope.$on('$destroy', function () {
         clearInterval(intervalId);
-      });      
+      }); */     
     }]);
 })();

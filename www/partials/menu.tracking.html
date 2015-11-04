@@ -1,7 +1,20 @@
-<h1>{{string.TRACKING_TITLE}}</h1>
-<ul class="list-group">
-  <li class="list-group-item" ng-repeat="coord in position">
-    <span class="badge">{{coord.value}}</span>
-    {{coord.name}}
-  </li>
-</ul>
+<div id="tracking">
+  <div class="alert alert-info" role="alert" ng-show="false">
+    <span class="sr-only">Info:</span> {{string.tracking.PAUSED}}
+  </div>
+  <div class="row">
+    <label>{{string.tracking.TIME}}</label>
+    <span>{{ time | date:'HH:mm:ss':'GMT'}}</span>
+  </div>
+  <div class="row middle">
+    <label>{{string.tracking.SPEED}}</label>
+    <span>{{ speed | number:1 }}</span>
+  </div>
+  <div class="row">
+    <label>{{string.tracking.DISTANCE}}</label>
+    <span>{{ distance | number:1 }}</span>
+  </div>
+  <button class="btn btn-primary btn-lg btn-block" ng-disabled="false">
+    {{string.tracking.button.START_TRACKING}}
+  </button>
+</div>
