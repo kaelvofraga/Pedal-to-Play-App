@@ -5,6 +5,6 @@
     .controller('HomeController', ['$scope', 'AuthService', 
                           function ($scope, AuthService) 
     {
-       $scope.user = AuthService.getLoggedUser();
+       $scope.user = AuthService.getLoggedUser();       
     }]);
 })();

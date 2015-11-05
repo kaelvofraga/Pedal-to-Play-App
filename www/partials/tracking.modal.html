@@ -27,8 +27,12 @@
       </div>
       <div class="modal-footer">      
         <button type="button" class="btn btn-success pull-right" ng-click="saveSession()" 
-                ng-disabled="sessionForm.$invalid || !hasMinSessionData()">
+                ng-disabled="sessionForm.$invalid" ng-if="hasMinSessionData()">
           {{string.tracking.button.SAVE}}
+        </button>
+        <button type="button" class="btn btn-success pull-right" ng-click="onStartTracking()"
+                ng-if="!hasMinSessionData()">
+          {{string.tracking.button.RESUME}}
         </button>
         <button type="button" class="btn btn btn-danger pull-left" ng-click="discardSession()">
           {{string.tracking.button.DISCARD}}

@@ -198,11 +198,13 @@ body{
   left: 0;
   z-index: 100;
 }
-#avatarDiv .alert button {
+#avatarDiv .alert button, 
+#tracking .alert button {
   background-color: transparent !important;
   border: 0 !important;
 }
-#avatarDiv .alert button:hover {
+#avatarDiv .alert button:hover, 
+#tracking .alert button:hover {
   color: #404040; 
 }
 

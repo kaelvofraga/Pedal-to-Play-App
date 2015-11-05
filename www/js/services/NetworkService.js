@@ -5,7 +5,9 @@
     .factory('NetworkService', ['CordovaMainService', function (CordovaMainService) 
     {                        
         return {
-           /* py code here */
+           isConnected: CordovaMainService.cordovaReady(function () {
+               return navigator.connection.type !== Connection.NONE;
+           })
         };
     }]);
 })();

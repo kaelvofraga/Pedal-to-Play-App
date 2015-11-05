@@ -2,10 +2,12 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('TrackingController', ['$scope', '$log', '$interval', 'localStorageService', 'TrackService', 'ErrorMessageService',
-                              function ($scope, $log, $interval, localStorageService, TrackService, ErrorMessageService) {
+    .controller('TrackingController', ['$scope', '$interval','TrackService', 'ErrorMessageService',
+                              function ($scope, $interval, TrackService, ErrorMessageService) {
       
-      var MIN_SESSION_LEN = 30;
+      var MIN_SESSION_LEN = 30
+        , MAX_ERRORS = 10
+        ;
       
       var sessionID = null
         , sessionData = []
@@ -20,29 +22,12 @@
         $scope.areButtonsLocked = true;
         $scope.sessionDescription = '';
         $scope.errorMsg = ErrorMessageService;
+        $scope.errorCounter = 0;
         
         sessionID = null;
         sessionData.splice(0, sessionData.length);       
       }      
       resetValues();
-     
-      /* From "Calculate distance, bearing and more between Latitude/Longitude points" (VENESS, 2015)   
-         http://www.movable-type.co.uk/scripts/latlong.html */
-      var calcDistanceBetweenCoords = function (lat1, lon1, lat2, lon2) {        
-          
-        var R = 6371000; // metres
-        var dLat = (lat2 - lat1) * (Math.PI / 180);
-        var dLon = (lon2 - lon1) * (Math.PI / 180);
-        lat1 = lat1 * (Math.PI / 180);
-        lat2 = lat2 * (Math.PI / 180);
-
-        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c;
-
-        return d;
-      }
      
       var filterPosition = function (position) {
         delete position.coords.accuracy;
@@ -58,8 +43,10 @@
          if (sessionID && (dataLen >= 2)) {
             var lastOldPosition = sessionData[dataLen - 2].coords;
             var newerPosition = sessionData[dataLen - 1].coords;
-            var metres = calcDistanceBetweenCoords(lastOldPosition.latitude, lastOldPosition.longitude,
-                                                   newerPosition.latitude, newerPosition.longitude);
+            var metres = TrackService.calcDistanceBetweenCoords(
+                            lastOldPosition.latitude, lastOldPosition.longitude,
+                            newerPosition.latitude, newerPosition.longitude
+                         );
             $scope.distance += metres / 1000; 
          }       
       }
@@ -80,10 +67,15 @@
       }
 
       var onLocationError = function (error) {
-        $log.error('Error: code: ' + error.code + '| message: ' + error.message + '\n');
+        ++($scope.errorCounter);
+        if ($scope.errorCounter > MAX_ERRORS) {
+          $scope.onPauseTracking();
+          $scope.errorMsg.show($scope.string.tracking.GPS_OFF);
+          $scope.errorCounter = 0;
+        }
       }
 
-      var locationOptions = { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true };
+      var locationOptions = { maximumAge: 60000, timeout: 10000, enableHighAccuracy: true };
       
       $scope.hasMinSessionData = function () {
         return sessionData.length > MIN_SESSION_LEN;
@@ -108,6 +100,7 @@
       }  
       
       $scope.onStartTracking = function () {                         
+        $scope.hideModal('#trackingModal');
         $scope.state = 'tracking';
 
         if (timer) {
@@ -131,9 +124,6 @@
                 $scope.errorMsg.show($scope.string.tracking.GPS_OFF);
                 $scope.onPauseTracking();
               }
-            },
-            function (error) {
-              $log.error('Error: ' + error + '\n');
             }
           );
         }, 5000);                                    
@@ -157,13 +147,22 @@
         $scope.hideModal('#trackingModal');
         var activity = {
           description: $scope.sessionDescription,
-          path: sessionData
+          path: sessionData,
+          timer: $scope.time
         }
         if (activity.description.length <= 100) {
           if (sessionData.length > MIN_SESSION_LEN) {
-            localStorageService.set('activity' + (new Date().getTime()).toString(), activity);
-            //TODO save remotely
-            resetValues();
+            TrackService.saveActivity(activity)
+              .then(function (result) {
+                  if (result) {
+                    resetValues();
+                  } else {
+                    $scope.errorMsg.show($scope.string.tracking.ERROR_INVALID_DATA);
+                  }
+                },
+                function (error) {
+                  resetValues();
+                });            
           }
         } else {
           $scope.errorMsg.show($scope.string.tracking.MAX_LENGTH);
