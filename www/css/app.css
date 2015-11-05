@@ -100,19 +100,19 @@ body{
 }
 
 #avatarDiv .avatar{
-  height: 580px;
+  height: 545px;
   width: 90%;
   margin-left: 10%;
   margin-bottom: 10px;
 } 
 @media (max-height: 700px) { 
   #avatarDiv .avatar{ 
-    height: 300px;
+    height: 350px;
   }
 } 
 @media (max-height: 600px) { 
   #avatarDiv .avatar{ 
-    height: 250px;
+    height: 300px;
   }
 }
 @media (max-height: 480px) { 
@@ -224,7 +224,7 @@ body{
 } 
 @media (orientation: landscape) and (max-height: 600px) { 
    .nav-tabs { 
-      height: 410px;
+      height: 405px;
    }
 }
 @media (orientation: landscape) and (max-height: 480px) { 

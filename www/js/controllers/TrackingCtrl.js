@@ -140,13 +140,7 @@
       }          
       
       $scope.onStopTracking = function () {
-        if (sessionID !== null) {
-          clearInterval(sessionID);
-        } 
-        if (timer) {
-          $interval.cancel(timer);
-        } 
-        
+        $scope.onPauseTracking();
         angular.element('#trackingModal').modal('show');
       }
       
