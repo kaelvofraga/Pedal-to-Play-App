@@ -1,20 +1,64 @@
 <div id="tracking">
-  <div class="alert alert-info" role="alert" ng-show="false">
+  
+  <div class="alert alert-info" role="alert" ng-show="isPaused()">
     <span class="sr-only">Info:</span> {{string.tracking.PAUSED}}
   </div>
+  
+  <div class="alert alert-danger" role="alert" ng-show="errorMsg.hasMessage()">
+    <span class="sr-only">Error:</span> {{errorMsg.getMessage()}}
+  </div>
+  
   <div class="row">
     <label>{{string.tracking.TIME}}</label>
-    <span>{{ time | date:'HH:mm:ss':'GMT'}}</span>
+    <span><i class="fa fa-clock-o"></i>{{ time | date:'HH:mm:ss':'GMT'}}</span>
   </div>
+  
   <div class="row middle">
     <label>{{string.tracking.SPEED}}</label>
-    <span>{{ speed | number:1 }}</span>
+    <span><i class="fa fa-tachometer"></i>{{ speed | number:2 }}</span>
   </div>
+  
   <div class="row">
     <label>{{string.tracking.DISTANCE}}</label>
-    <span>{{ distance | number:1 }}</span>
+    <span><i class="fa fa-road"></i>{{ distance | number:2 }}</span>
   </div>
-  <button class="btn btn-primary btn-lg btn-block" ng-disabled="false">
+  
+  <button class="btn btn-primary btn-lg btn-block" ng-show="state === null"
+          ng-click="onStartTracking()">
     {{string.tracking.button.START_TRACKING}}
   </button>
+  
+  <div class="btn-group btn-group-justified" role="group" 
+       aria-label="Buttons Pause, Lock and Stop" ng-show="state !== null">
+       
+    <div class="btn-group" role="group" > 
+      <button type="button" class="btn btn-lg btn-warning" ng-if="!isPaused()" 
+              ng-disabled="areButtonsLocked" ng-click="onPauseTracking()">
+        {{string.tracking.button.PAUSE}}
+      </button>
+    
+      <button type="button" class="btn btn-lg btn-success" ng-if="isPaused()"  
+              ng-disabled="areButtonsLocked" ng-click="onStartTracking()">
+        {{string.tracking.button.RESUME}}
+      </button>
+    </div>
+    
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-lg" ng-class="getLockClass()" 
+              ng-click="onChangeButtonState()">
+        <i class="fa fa-lock" ng-show="areButtonsLocked"></i>
+        <i class="fa fa-unlock-alt" ng-show="!areButtonsLocked"></i>
+      </button>
+    </div>
+    
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-lg btn-danger" 
+              ng-disabled="areButtonsLocked" ng-click="onStopTracking()">
+        {{string.tracking.button.STOP}}
+      </button>
+    </div>
+    
+  </div> 
+   
 </div>
+<tracking-modal></tracking-modal>

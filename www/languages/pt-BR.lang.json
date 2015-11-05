@@ -63,19 +63,24 @@
         "LOADING": "Carregando avatar "
     },
     "tracking": {
-        "TIME": "Duração (h:m:s)",
+        "TIME": "Duração",
         "SPEED": "Velocidade (km/h)",
         "DISTANCE": "Distância (km)",
         "PAUSED": "Pausada",
         "SAVE_SESSION": "Salvar pedalada",
         "SESSION_DESCRIPTION": "Descricao da pedalada:",
+        "SESSION_PLACEHOLDER": "exemplo: Pedalada matinal",
+        "MAX_LENGTH": "A descrição deve ter no máximo 100 caracteres.",
+        "MIN_SESSION_LEN": "A pedalada precisa ser mais longa para salvarmos e analisarmos. Favor, continue ou recomece.",
         "button": {
             "START_TRACKING": "Gravar pedalada",
             "PAUSE": "Pausar",
             "STOP": "Parar",
-            "CONTINUE": "Continuar",
+            "RESUME": "Continuar",
             "DISCARD": "Descartar",
             "SAVE": "Salvar"
-        }
+        },
+        "ERROR_INVALID_DATA": "Não foi possível salvar a pedalada, dados inválidos encontrados.",
+        "GPS_OFF": "Para gravar, por favor, ligue o GPS de seu dispositivo!"
     }
 }

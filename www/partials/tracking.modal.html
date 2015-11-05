@@ -1,0 +1,39 @@
+<div id="trackingModal" class="modal" role="dialog" aria-labelledby="trackingModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="trackingModalTitle">{{string.tracking.SAVE_SESSION}}</h4>
+      </div>
+      <div class="modal-body">        
+        <div class="alert alert-danger" role="alert" ng-if="!hasMinSessionData()">
+          <span class="sr-only">Error:</span> {{string.tracking.MIN_SESSION_LEN}}
+        </div>
+        <form name="sessionForm" novalidate>
+          <div class="form-group form-group-lg">
+            <label class="control-label" for="sessionDescription">
+              {{string.tracking.SESSION_DESCRIPTION}}
+            </label>
+            <input id="sessionDescription" type="text" class="form-control" 
+                   placeholder="{{string.tracking.SESSION_PLACEHOLDER}}" 
+                   ng-model="sessionDescription" name="sessionDescription" ng-maxlength="100">
+            <div class="help-block" ng-show="sessionForm.$touched || sessionForm.$dirty">
+              <span ng-show="sessionForm.sessionDescription.$error.maxlength">
+                  {{string.tracking.MAX_LENGTH}}
+              </span>
+            </div>
+          </div>
+        </form>        
+      </div>
+      <div class="modal-footer">      
+        <button type="button" class="btn btn-success pull-right" ng-click="saveSession()" 
+                ng-disabled="sessionForm.$invalid || !hasMinSessionData()">
+          {{string.tracking.button.SAVE}}
+        </button>
+        <button type="button" class="btn btn btn-danger pull-left" ng-click="discardSession()">
+          {{string.tracking.button.DISCARD}}
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -12,16 +12,15 @@
             $http.get(baseLanguagePath + lang + sufix)
                 .then(
                     function (response) {
-                        scope.string = response.data;
+                        scope.string = response.data;                        
+                        $http.get(baseLanguagePath + 'common' + sufix)
+                            .then(
+                                function (response) {
+                                    angular.merge(scope.string, response.data);
+                                }
+                            );                        
                     }
-                );
-            
-            $http.get(baseLanguagePath + 'common' + sufix)
-                .then(
-                    function (response) {
-                        angular.merge(scope.string, response.data);
-                    }
-                );
+                );                     
         };
     }]);
 })();

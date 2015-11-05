@@ -3,8 +3,8 @@
   
   angular.module('Pedal2Play')
     .controller('AvatarController', 
-    ['$scope', '$window', '$state', '$timeout','AvatarService', 'ImageService', 'ProfileService',
-    function ($scope, $window, $state, $timeout, AvatarService, ImageService, ProfileService) 
+    ['$scope', '$window', '$state', '$timeout','AvatarService', 'ImageService', 'ProfileService', 'ErrorMessageService',
+    function ($scope, $window, $state, $timeout, AvatarService, ImageService, ProfileService, ErrorMessageService) 
     {            
       var that = this;
       var Snap = $window.Snap;
@@ -12,21 +12,19 @@
       var svgContent = null;
       var avatarBaseGroup = {};
       var colorPicker = angular.element('.color-picker');
-      var unsavedChanges = false;
-      var errorMsgTimeout = undefined;
+      var unsavedChanges = false; 
       var userLevel = 0;
       var avatar = {};
       avatar.pieces = [];
       avatar.gender = '';
       avatar.skinColor = '';
       
+      $scope.errorMsg = ErrorMessageService;
       $scope.supportsSVG = true;                            
       $scope.avatarImages = {};
       $scope.selectedPiece = null;
       $scope.iconActived = null;
       $scope.nextStateName = null;
-      $scope.shownErrorMsg = false;
-      $scope.errorMsg = "";
       
       colorPicker.colorpicker({
         customClass: 'colorpicker-2x',
@@ -50,15 +48,7 @@
       colorPicker.colorpicker().on('changeColor.colorpicker', function (event) {
         that.changeElementColor(event.color.toHex());
       });      
-      
-      this.showErrorMessage = function (message) {
-        $scope.errorMsg = message;
-        $scope.shownErrorMsg = true;
-        errorMsgTimeout = $timeout(function () {
-          $scope.shownErrorMsg = false;
-        }, 15000);
-      }
-                              
+                                    
       this.changeElementColor = function (colorHex) {
         var elementObjs = null;
         if (elementObjs = avatarBaseGroup.selectAll($scope.avatarImages.head + ',' + 
@@ -134,7 +124,7 @@
                 }
               });
           } else {
-            that.showErrorMessage($scope.string.avatar.SERVER_CONNECT_TO_GET_FAIL);
+            $scope.errorMsg.show($scope.string.avatar.SERVER_CONNECT_TO_GET_FAIL);
             avatar.gender = $scope.avatarImages.defaultGender;
             avatar.skinColor = $scope.avatarImages.defaultSkinColor;
             angular.forEach(avatarPieces, function (piece, key) {
@@ -165,15 +155,6 @@
             }            
           }            
         }
-      }
-      
-      this.hideModal = function (idModal) {
-        var modalObj = angular.element(idModal);
-        if (modalObj) {
-          modalObj.modal('hide');
-        }        
-        angular.element('body').removeClass('modal-open');
-        angular.element('.modal-backdrop').remove(); 
       }
       
       this.checkRequiredLevel = function (option) {        
@@ -254,7 +235,7 @@
       }
       
       $scope.dontSave = function () {
-        that.hideModal('#unsaveModal');          
+        $scope.hideModal('#unsaveModal');          
         unsavedChanges = false;
         $state.go($scope.nextStateName);
       }
@@ -262,7 +243,7 @@
       $scope.$on('$stateChangeStart',
         function (event, toState, toParams, fromState, fromParams) {
           if ((toState.name !== fromState.name) && (toState.name !== "auth")) {
-            that.hideModal('#genderModal');
+            $scope.hideModal('#genderModal');
             if (unsavedChanges) {
               angular.element('#unsaveModal').modal('show');
               $scope.nextStateName = toState.name;
@@ -270,13 +251,6 @@
             }
           }
       });
-      
-      $scope.stopShowingErrorMessage = function () {
-        if (angular.isDefined(errorMsgTimeout)) {
-          $timeout.cancel(errorMsgTimeout);
-          $scope.shownErrorMsg = false;
-        }
-      };
             
       $scope.save = function () {
         AvatarService.saveCustomization(avatar)
@@ -284,7 +258,7 @@
             unsavedChanges = !response; 
             if (response === false) 
             {                         
-              that.showErrorMessage($scope.string.avatar.SERVER_SAVE_FAIL);
+              $scope.errorMsg.show($scope.string.avatar.SERVER_SAVE_FAIL);
             }
           });       
       }

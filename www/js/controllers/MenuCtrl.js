@@ -7,8 +7,8 @@
                 
         if (AuthService.getLoggedUser() === null) {
           $state.go('auth');
-        }
-        
+        }        
+       
         var sideMenu = angular.element('.navmenu');                
         
         sideMenu.offcanvas({'toggle': false});        
@@ -65,15 +65,22 @@
               angular.element('#logoutModal').modal('show');                 
             }
           }
-        ];
-        
-        $scope.doLogout = function() {
-          angular.element('#logoutModal').modal('hide');
+        ];        
+
+        $scope.hideModal = function (idModal) {
+          var modalObj = angular.element(idModal);
+          if (modalObj) {
+            modalObj.modal('hide');
+          }
           angular.element('body').removeClass('modal-open');
           angular.element('.modal-backdrop').remove();
+        }
+        
+        $scope.doLogout = function() {
+          $scope.hideModal('#logoutModal');
           AuthService.logout();
         };        
-        
+                                
         $scope.$on('$stateChangeStart',
           function (event, toState, toParams, fromState, fromParams) {  
             sideMenu.offcanvas('hide');

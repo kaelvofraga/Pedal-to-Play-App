@@ -344,20 +344,25 @@ body{
   text-align: center;
   padding: 20px 0;
 }
-#tracking .middle {
-  border: 3px #999 solid;
-  border-right: none;
-  border-left: none;
+#tracking .btn, #tracking .btn-group, #tracking .row {
+  max-width: 600px;
+  margin: 0 auto;
 }
 #tracking .row label {
   color: #999;
   font-size: 16px;
   display: block;
+  font-weight: normal;
 }
 #tracking .row span {
   color: black;
   font-size: 26px;
   display: block;
+}
+#tracking .row span i{
+  color: #999;
+  font-size: 20px;
+  margin-right: 20px;
 }
 #tracking .middle span {
   font-size: 32px;
@@ -365,4 +370,23 @@ body{
 #tracking .alert {
   text-align: center;
   margin: 0;
+  padding: 5px;
+}
+#tracking .btn[disabled] {
+  -webkit-filter: brightness(0.7);
+  -moz-filter: brightness(0.7);
+  -o-filter: brightness(0.7);
+  -ms-filter: brightness(0.7);
+  filter: brightness(0.7);
+}
+#tracking .btn-lg {
+  font-size: 16px;
+}
+
+#trackingModal label {
+  font-size: 18px;
+  font-weight: normal;
+}
+#trackingModal .alert-danger {
+  font-size: 14px;
 }

@@ -2,11 +2,11 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .directive('saveSessionModal', function () 
+    .directive('trackingModal', function () 
     {
 		return {
 			restrict: 'E',
-			templateUrl: 'partials/save-session.modal.html'
+			templateUrl: 'partials/tracking.modal.html'
 		};     
     });
 })();
