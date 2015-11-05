@@ -73,6 +73,18 @@
         }
       }
       
+      var onLocationSuccess = function (position) {
+        sessionData.push(filterPosition(position));
+        updateDistance();
+        updateSpeed();
+      }
+
+      var onLocationError = function (error) {
+        $log.error('Error: code: ' + error.code + '| message: ' + error.message + '\n');
+      }
+
+      var locationOptions = { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true };
+      
       $scope.hasMinSessionData = function () {
         return sessionData.length > MIN_SESSION_LEN;
       }
@@ -85,39 +97,6 @@
         return $scope.state === 'paused';
       }
  
-      $scope.onStartTracking = function () {
-        $scope.state = 'tracking';
-        
-        if (timer) {
-          $interval.cancel(timer);
-        }
-        
-        timer = $interval(function () {
-            $scope.time += 1000;
-        }, 1000);
-        
-        if (sessionID) {
-          clearInterval(sessionID);
-        }
-        
-        sessionID = setInterval(function () {          
-          var onSuccess = function (position) {
-            sessionData.push(filterPosition(position));
-            updateDistance();
-            updateSpeed();            
-          }
-          
-          var onError = function (error) {
-            $log.error('Error: code: ' + error.code + '| message: ' + error.message + '\n');
-          }
-          
-          var options = { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true };
-          
-          TrackService.getCurrentPosition(onSuccess, onError, options);
-          
-        }, 5000);        
-      }
-           
       $scope.onPauseTracking = function () {
         $scope.state = 'paused';
         if (sessionID !== null) {
@@ -126,7 +105,39 @@
         if (timer) {
           $interval.cancel(timer);
         }
-      }
+      }  
+      
+      $scope.onStartTracking = function () {                         
+        $scope.state = 'tracking';
+
+        if (timer) {
+          $interval.cancel(timer);
+        }
+
+        timer = $interval(function () {
+          $scope.time += 1000;
+        }, 1000);
+
+        if (sessionID) {
+          clearInterval(sessionID);
+        }
+
+        sessionID = setInterval(function () {
+          TrackService.isLocationEnabled(
+            function (enabled) {
+              if (enabled) {
+                TrackService.getCurrentPosition(onLocationSuccess, onLocationError, locationOptions);
+              } else {
+                $scope.errorMsg.show($scope.string.tracking.GPS_OFF);
+                $scope.onPauseTracking();
+              }
+            },
+            function (error) {
+              $log.error('Error: ' + error + '\n');
+            }
+          );
+        }, 5000);                                    
+      }          
       
       $scope.onStopTracking = function () {
         if (sessionID !== null) {

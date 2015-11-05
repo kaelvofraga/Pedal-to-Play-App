@@ -81,6 +81,6 @@
             "SAVE": "Salvar"
         },
         "ERROR_INVALID_DATA": "Não foi possível salvar a pedalada, dados inválidos encontrados.",
-        "GPS_OFF": "Para gravar, por favor, ligue o GPS de seu dispositivo!"
+        "GPS_OFF": "O GPS de seu dispositivo está desligado ou com sinal fraco, por favor religue-o."
     }
 }

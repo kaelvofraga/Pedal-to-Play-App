@@ -4,8 +4,11 @@
     <span class="sr-only">Info:</span> {{string.tracking.PAUSED}}
   </div>
   
-  <div class="alert alert-danger" role="alert" ng-show="errorMsg.hasMessage()">
-    <span class="sr-only">Error:</span> {{errorMsg.getMessage()}}
+  <div class="alert alert-danger" role="alert" 
+       ng-show="errorMsg.hasMessage()" ng-click="errorMsg.stopShowing()">
+    <span class="sr-only">Error:</span> 
+    {{errorMsg.getMessage()}}
+    <button><i class="fa fa-times"></i></button>
   </div>
   
   <div class="row">
