@@ -397,7 +397,7 @@ body{
 #records .panel {
   padding: 0;
 }
-@media (orientation: landscape) {  
+@media (orientation: landscape) and (min-width: 1000px){  
   #records .path-map {
     width: 48%;
     margin-right: 1%;
@@ -458,4 +458,11 @@ body{
    #records .activity-list .badge {
      font-size: 10px;
    }
+}
+.marker-labels {
+  border: 1px solid #512e90;
+  border-radius: 4px;
+  background-color: white;
+  color: #512e90;
+  padding: 4px;  
 }

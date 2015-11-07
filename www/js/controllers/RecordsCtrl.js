@@ -3,7 +3,7 @@
 
 angular.module('Pedal2Play')
 .controller('RecordsController', [
-  '$scope'
+    '$scope'
   , 'uiGmapGoogleMapApi'
   , 'TrackService'
   , 'ErrorMessageService'
@@ -14,12 +14,22 @@ angular.module('Pedal2Play')
             , ErrorMessageService
             , LoadingService) {
     
+    var IFRS_LAT = -29.899837
+      , IFRS_LGT = -51.1503104
+      , MARKER_ID = 0
+      , MAP_ZOOM = 15
+      ;
+    
     $scope.activities = null;
     $scope.errorMsg = ErrorMessageService;
-    $scope.selectedActivity = {};
-    $scope.selectedActivity.time = 0;
-    $scope.selectedActivity.speed = 0;
-    $scope.selectedActivity.distance = 0;   
+    $scope.selectedActivity = {
+      description: ""
+      , time: 0
+      , speed: 0
+      , distance: 0
+      , timestamp: 0 
+    };
+    $scope.mapOptions = {scrollwheel: false};
     
     LoadingService.startLoading();
     TrackService.recoverActivities().then(
@@ -38,9 +48,18 @@ angular.module('Pedal2Play')
     
     uiGmapGoogleMapApi.then(function (maps) {
         $scope.map = {
-          center: { latitude: -29.899837, longitude: -51.1503104 }, 
-          zoom: 16
-        };
+          center: { latitude: IFRS_LAT, longitude: IFRS_LGT }, 
+          zoom: MAP_ZOOM,
+          marker: {
+            id: MARKER_ID,
+            coords: { latitude: IFRS_LAT, longitude: IFRS_LGT },
+            options: {
+              labelContent: "IFRS - Campus Canoas",
+              labelAnchor: "0 0",
+              labelClass: "marker-labels"
+            }
+          }
+        };  
     });
         
     var calculateDistance = function (path) {
@@ -60,6 +79,14 @@ angular.module('Pedal2Play')
       return metresPerSeg * 3.6; // convert to km/h
     }   
     
+    var getActivityLocaleDate = function () {
+      if (angular.isUndefined($scope.selectedActivity.timestamp)){
+        return null;
+      }
+      return new Date($scope.getMilliseconds(
+                 $scope.selectedActivity.timestamp)).toLocaleString();
+    }
+    
     var loadActivityPath = function (path) {
       var pathLen = path.length;
       var mapPath = [];
@@ -67,12 +94,23 @@ angular.module('Pedal2Play')
         mapPath.push({latitude: path[i].latitude, longitude: path[i].longitude});
       }
       
-      uiGmapGoogleMapApi.then(function (maps) {
+      uiGmapGoogleMapApi.then(function (maps) {        
+        delete $scope.map;
         $scope.map = { 
           center: { latitude: path[0].latitude, longitude: path[0].longitude }, 
-          zoom: 15,
+          zoom: MAP_ZOOM,
           stroke: { color: "#a63ab7", weight: 4, opacity: 1.0 },
-          path: mapPath 
+          path: mapPath, 
+          marker: {
+            id: MARKER_ID,
+            coords: { latitude: path[0].latitude, longitude: path[0].longitude },
+            options: {
+              labelContent: $scope.selectedActivity.description + " - " + 
+                            getActivityLocaleDate(),
+              labelAnchor: "0 0",
+              labelClass: "marker-labels"
+            }
+          }
         };
       });
     }   
@@ -90,6 +128,8 @@ angular.module('Pedal2Play')
       TrackService.recoverActivityPath(activity.id).then(
         function (path) {
            if (path) {
+              $scope.selectedActivity.description = activity.description;
+              $scope.selectedActivity.timestamp = activity.timestamp;
               $scope.selectedActivity.time = activity.timer;
               $scope.selectedActivity.distance = calculateDistance(path);
               $scope.selectedActivity.speed = calculateAverageSpeed(

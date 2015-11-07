@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Content Security Policy: Cordova White-List -->    
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <!-- Content Security Policy: Cordova White-List -->     
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src *; 
+                  style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; 
+                  script-src 'self' https://*.googleapis.com https://maps.gstatic.com 'unsafe-inline' 'unsafe-eval'" />    
      
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="libs/style/bootstrap/css/bootstrap.min.css" />

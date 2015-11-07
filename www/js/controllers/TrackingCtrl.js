@@ -35,7 +35,7 @@
         $scope.time = 0;
         $scope.speed = 0;
         $scope.distance = 0;
-        $scope.MAX_DESC_LENGTH = 100;
+        $scope.MAX_DESC_LENGTH = 40;
         $scope.state = null;
         $scope.areButtonsLocked = true;
         $scope.sessionDescription = '';

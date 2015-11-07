@@ -37,8 +37,9 @@
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
     <access origin="http://*.kaelfraga.com" />
-    <access origin="http://*.google.com" />
 	<access origin="http://php-pedal2play.rhcloud.com" />
+	<access origin="https://*.googleapis.com/*" />
+	<access origin="https://*.gstatic.com/*" />
     <plugin name="cordova-plugin-whitelist" version="1" />
 	<plugin name="cordova-plugin-geolocation" version="1.0.1"/>
 	<plugin name="cordova-plugin-network-information" version="1.0.1"/>
@@ -49,6 +50,8 @@
     <allow-intent href="geo:*" />
     <allow-navigation href="*://*.kaelfraga.com/*" />
 	<allow-navigation href="*://php-pedal2play.rhcloud.com/*" />
+	<allow-navigation href="*://*.googleapis.com/*" />
+	<allow-navigation href="*://*.gstatic.com/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>

@@ -1,8 +1,13 @@
 <div id="records" class="row container-fluid">
 	<div class="path-map col-md-6 panel panel-primary">
-		<ui-gmap-google-map center="map.center" zoom="map.zoom">
+		<ui-gmap-google-map center="map.center" zoom="map.zoom" option="mapOptions">
 			<ui-gmap-polyline ng-if="map.path" path="map.path" stroke="map.stroke">
 			</ui-gmap-polyline>
+			<ui-gmap-marker ng-if="map.marker" 
+							coords="map.marker.coords" 
+							options="map.marker.options" 
+							idkey="map.marker.id">
+			</ui-gmap-marker>
 		</ui-gmap-google-map>
 		<div class="values">
 			<div class="col-xs-4 col-md-4">
