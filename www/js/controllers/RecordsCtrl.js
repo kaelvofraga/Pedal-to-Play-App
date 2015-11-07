@@ -17,7 +17,7 @@ angular.module('Pedal2Play')
     var IFRS_LAT = -29.899837
       , IFRS_LGT = -51.1503104
       , MARKER_ID = 0
-      , MAP_ZOOM = 15
+      , MAP_ZOOM = 13
       ;
     
     $scope.activities = null;

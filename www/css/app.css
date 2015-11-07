@@ -443,16 +443,16 @@ body{
 }
 @media (max-height: 480px) { 
   .angular-google-map-container{ 
-    max-height: 160px;
+    max-height: 290px;
   }
   #records .activity-list, 
   #records .activity-list .badge {
     font-size: 12px;
   }
 }
-@media (max-height: 240px) { 
+@media (max-height: 320px) { 
    .angular-google-map-container{ 
-     max-height: 80px;
+     max-height: 150px;
    }
    #records .activity-list, 
    #records .activity-list .badge {
