@@ -16,11 +16,8 @@
         "HOME": "Home",
         "TRACKING": "Pedalada",
         "AVATAR": "Avatar",
+        "RECORDS": "Histórico",
         "LOGOUT": "Logout"
-    },
-    "navbarTitle": {
-        "TRACKING": "Pedalada",
-        "AVATAR": "Customização do Avatar"
     },
     "form": {
         "EMAIL": "Email:",
@@ -82,5 +79,14 @@
         },
         "ERROR_INVALID_DATA": "Não foi possível salvar a pedalada, dados inválidos encontrados.",
         "GPS_OFF": "O GPS de seu dispositivo está desligado ou com sinal fraco, por favor religue-o."
+    },
+    "records": {
+        "PANEL_TITLE": "Pedaladas",
+        "ERROR_NOT_FOUND": "Não foram encontradas pedaladas para seu usuário.",
+        "ERROR_CANT_CONNECT": "Não foi possível buscar suas pedaladas. Verifique sua conexão com a internet.",
+        "ERROR_CANT_GET_PATH": "Não foi possível buscar essa pedalada. Verifique sua conexão com a internet.",
+        "LOADING": "Carregando pedaladas",
+        "DESCRIPTION": "Descricao",
+        "INITIAL_DATE": "Data de início"
     }
 }

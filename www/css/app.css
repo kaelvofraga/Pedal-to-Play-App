@@ -16,7 +16,6 @@ body{
 .ng-invalid.ng-dirty {
   border-color:red;
 } 
-
 .ng-valid.ng-dirty {
   border-color:green;
 } 
@@ -94,7 +93,7 @@ body{
     filter: blur(1px);
 }
 
-#avatarDiv {
+#avatarDiv, #records {
   display: block;
   margin-top: 15px;
 }
@@ -199,12 +198,14 @@ body{
   z-index: 100;
 }
 #avatarDiv .alert button, 
-#tracking .alert button {
+#tracking .alert button,
+#records .alert button {
   background-color: transparent !important;
   border: 0 !important;
 }
 #avatarDiv .alert button:hover, 
-#tracking .alert button:hover {
+#tracking .alert button:hover,
+#records .alert button:hover {
   color: #404040; 
 }
 
@@ -215,7 +216,7 @@ body{
 }
 @media (orientation: landscape) { 
   .nav-tabs {
-		height: 685px;
+		height: 648px;
 		overflow-y: scroll;
 	}  
 }
@@ -391,4 +392,70 @@ body{
 }
 #trackingModal .alert-danger {
   font-size: 14px;
+}
+
+#records .panel {
+  padding: 0;
+}
+@media (orientation: landscape) {  
+  #records .path-map {
+    width: 48%;
+    margin-right: 1%;
+  }
+}
+#records .path-map {
+  overflow: hidden;
+}
+#records .path-map .values {
+  display: inline-block;
+  width: 100%;
+}
+#records .path-map .col-xs-4 {
+  text-align: center;
+  color: #777;
+  height: 78px;
+  border-top: 1px solid #512e90;
+  padding: 4px;
+  font-size: 16px;
+}
+#records .path-map .middle-value {
+  border-left: 1px solid #512e90;
+  border-right: 1px solid #512e90;
+}
+#records .path-map .col-xs-4 span{
+  display: block;
+  font-size: 22px;
+}
+#records .activity-list .badge {
+  font-size: 14px;
+}
+.angular-google-map-container { 
+  height: 512px; 
+}
+@media (max-height: 600px) { 
+  .angular-google-map-container{ 
+    max-height: 240px;
+  }
+  #records .activity-list, 
+  #records .activity-list .badge {
+    font-size: 16px;
+  }
+}
+@media (max-height: 480px) { 
+  .angular-google-map-container{ 
+    max-height: 160px;
+  }
+  #records .activity-list, 
+  #records .activity-list .badge {
+    font-size: 12px;
+  }
+}
+@media (max-height: 240px) { 
+   .angular-google-map-container{ 
+     max-height: 80px;
+   }
+   #records .activity-list, 
+   #records .activity-list .badge {
+     font-size: 10px;
+   }
 }

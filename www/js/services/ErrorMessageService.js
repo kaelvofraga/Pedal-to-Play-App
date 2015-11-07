@@ -21,7 +21,7 @@
                 self.shownMessage = true;
                 self.errorMsgTimeout = $timeout(function () {
                     self.shownMessage = false;
-                }, 15000);
+                }, 30000);
             },
             stopShowing: function () {
                 if (angular.isDefined(self.errorMsgTimeout)) {

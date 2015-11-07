@@ -16,7 +16,7 @@
             </label>
             <input id="sessionDescription" type="text" class="form-control" 
                    placeholder="{{string.tracking.SESSION_PLACEHOLDER}}" 
-                   ng-model="sessionDescription" name="sessionDescription" ng-maxlength="100">
+                   ng-model="sessionDescription" name="sessionDescription" ng-maxlength="MAX_DESC_LENGTH">
             <div class="help-block" ng-show="sessionForm.$touched || sessionForm.$dirty">
               <span ng-show="sessionForm.sessionDescription.$error.maxlength">
                   {{string.tracking.MAX_LENGTH}}

@@ -9,13 +9,15 @@
     , 'LoadingService'
     , 'NetworkService'
     , 'RequestQueueService'
+    , 'localStorageService'
     , function ($rootScope
               , $http
               , $q
               , CordovaMainService
               , LoadingService
               , NetworkService
-              , RequestQueueService) {
+              , RequestQueueService
+              , localStorageService) {
     
     var cordovaGetCurrentPosition = function (onSuccess, onError, options) {
       navigator.geolocation.getCurrentPosition(
@@ -109,13 +111,6 @@
       return true;
     }
 
-    var onConnectToGetSuccess = function (response) {
-      if (response.data && response.data.error) {
-        return null;
-      }
-      return response.data;
-    }
-
     var saveRemotely = function (request, deferred) {
       LoadingService.startLoading();
       
@@ -126,17 +121,6 @@
           function (error) {
             LoadingService.stopLoading();
             deferred.reject(onConnectToSaveError(request, error));
-          });
-    };
-
-    var recoverRemotely = function () {
-      return $http.get($rootScope.string.SERVER_BASE_URL + 'activity')
-        .then(
-          function (response) {
-            return onConnectToGetSuccess(response);
-          },
-          function (error) {
-            return null;
           });
     };
     
@@ -162,8 +146,34 @@
         return d;
       },
       
+      recoverActivityPath: function (activityID) {
+        
+        return $http.get($rootScope.string.SERVER_BASE_URL + 'activity/' + activityID)
+          .then(
+            function (response) {
+              if (response.data && response.data.error) {
+                return null;
+              }
+              return response.data;
+            },
+            function (error) {
+              return null;
+            });        
+      },
+      
       recoverActivities: function () {
-        return recoverRemotely();
+        
+        return $http.get($rootScope.string.SERVER_BASE_URL + 'activities')
+          .then(
+            function (response) {
+              if (response.data && response.data.error) {
+                return null;
+              }
+              return response.data;
+            },
+            function (error) {
+              return null;
+            });        
       },
 
       saveActivity: function (activity) {

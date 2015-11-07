@@ -285,6 +285,10 @@
           });
         });
       });
+      
+      $scope.$on('$destroy', function () {
+        $scope.errorMsg.stopShowing()
+      }); 
             
     }]);
     

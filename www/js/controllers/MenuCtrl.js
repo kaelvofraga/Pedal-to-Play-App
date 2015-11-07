@@ -22,13 +22,16 @@
         });
             
         $scope.$watch(function () { return $state.current.name }, function (newValue, oldValue) {
-          if (typeof newValue !== 'undefined') {           
+          if (angular.isDefined(newValue)) {           
             switch ($state.current.name) {
               case 'app.avatar': 
-                $scope.navbarTitle =  $scope.string.navbarTitle.AVATAR; 
+                $scope.navbarTitle =  $scope.string.menu.AVATAR; 
                 break;
               case 'app.tracking': 
-                $scope.navbarTitle = $scope.string.navbarTitle.TRACKING;
+                $scope.navbarTitle = $scope.string.menu.TRACKING;
+                break;
+              case 'app.records': 
+                $scope.navbarTitle = $scope.string.menu.RECORDS;
                 break;
               default: 
                 $scope.navbarTitle = $scope.string.APP_NAME;
@@ -56,6 +59,13 @@
             icon: 'fa fa-user',
             action: function () {
               $state.go('app.avatar');
+            }
+          },
+          {
+            name: $scope.string.menu.RECORDS,
+            icon: 'fa fa-map',
+            action: function () {
+              $state.go('app.records');
             }
           },
           {

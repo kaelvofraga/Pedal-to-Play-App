@@ -1,6 +1,5 @@
 # PhoneGap files and directories
 platforms/**
-!platforms/android/AndroidManifest.xml
 plugins/**
 hooks/**
 .vscode/settings.json

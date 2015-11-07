@@ -2,10 +2,11 @@
   'use strict';
 
   angular.module('Pedal2Play', [
-    'ui.router', 
-    'ngMd5', 
-    'LocalStorageModule', 
-    'ngTouch'
+      'ui.router' 
+    , 'ngMd5' 
+    , 'LocalStorageModule'
+    , 'ngTouch'
+    , 'uiGmapgoogle-maps'
   ]) 
   
   .controller('MainController', ['$rootScope', 'StringService', 
@@ -13,7 +14,7 @@
       StringService.getStrings($rootScope, null);                          
   }])
       
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, uiGmapGoogleMapApiProvider) {
 
     $stateProvider
       .state('auth', {
@@ -46,9 +47,20 @@
         templateUrl: 'partials/menu.tracking.html',
         controller: 'TrackingController',
         controllerAs: 'trackCtrl'
+      })
+      .state('app.records', {
+        url: '/records',
+        templateUrl: 'partials/menu.records.html',
+        controller: 'RecordsController',
+        controllerAs: 'recCtrl'
       });
     
     $urlRouterProvider.otherwise('/app/home');
+    
+    uiGmapGoogleMapApiProvider.configure({
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
+    });
     
     $httpProvider.interceptors.push(['$q', '$location', 'localStorageService', 
                             function ($q, $location, localStorageService) {
