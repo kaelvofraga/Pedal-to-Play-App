@@ -1,0 +1,5 @@
+<div class="alert alert-danger" role="alert" 
+     ng-if="errorMsg.hasMessage()" ng-click="errorMsg.stopShowing()">
+	<span class="sr-only">Error:</span> {{errorMsg.getMessage()}}
+	<button><i class="fa fa-times"></i></button>
+</div>

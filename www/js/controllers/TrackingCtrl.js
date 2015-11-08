@@ -39,7 +39,6 @@
         $scope.state = null;
         $scope.areButtonsLocked = true;
         $scope.sessionDescription = '';
-        $scope.errorMsg = ErrorMessageService;
         $scope.errorCounter = 0;
         
         sessionID = null;
@@ -88,7 +87,7 @@
         ++($scope.errorCounter);
         if ($scope.errorCounter > MAX_ERRORS) {
           $scope.onPauseTracking();
-          $scope.errorMsg.show($scope.string.tracking.GPS_OFF);
+          ErrorMessageService.show($scope.string.tracking.GPS_OFF);
           $scope.errorCounter = 0;
           tryAgainTimeout = $timeout(function () {
             $scope.onStartTracking();
@@ -142,7 +141,7 @@
               if (enabled) {
                 TrackService.getCurrentPosition(onLocationSuccess, onLocationError, locationOptions);
               } else {
-                $scope.errorMsg.show($scope.string.tracking.GPS_OFF);
+                ErrorMessageService.show($scope.string.tracking.GPS_OFF);
                 $scope.onPauseTracking();
               }
             }
@@ -178,7 +177,7 @@
                   if (result) {
                     resetValues();
                   } else {
-                    $scope.errorMsg.show($scope.string.tracking.ERROR_INVALID_DATA);
+                    ErrorMessageService.show($scope.string.tracking.ERROR_INVALID_DATA);
                   }
                 },
                 function (error) {
@@ -186,13 +185,13 @@
                 });            
           }
         } else {
-          $scope.errorMsg.show($scope.string.tracking.MAX_LENGTH);
+          ErrorMessageService.show($scope.string.tracking.MAX_LENGTH);
         }       
       }
            
       $scope.$on('$destroy', function () {
         stopAllIntervals();
-        $scope.errorMsg.stopShowing()
+        ErrorMessageService.stopShowing()
         $scope.hideModal('#trackingModal');
       });     
     }]);

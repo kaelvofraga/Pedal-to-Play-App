@@ -1,0 +1,42 @@
+<div id="quests">
+  <div class="alert alert-info" role="alert" ng-if="isAvatarLoading()">
+    <span class="sr-only">Info:</span> {{string.quests.LOADING}}
+    <i class="fa fa-spinner fa-pulse"></i>
+  </div>
+
+  <error-message></error-message>
+
+  <div class="quest-list" ng-if="areQuestsToShow()">
+    <div class="panel"  
+         ng-repeat="(level, rewardImgs) in rewards.levels"
+         ng-class="getQuestClass(level).bootstrapClass">
+      <div class="panel-heading">
+        {{string.quests.LEVEL + level}}
+        <span>{{getQuestClass(level).status}}</span>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <h3>{{string.quests.DESCRIPTION}}</h3>
+            <p>{{string.quests.levels[level].DESCRIPTION}}</p>
+          </div>
+          <div class="col-sm-4 col-md-4">
+            <h3>{{string.quests.REWARDS}}</h3>
+            <span>{{string.quests.levels[level].REWARDS}}</span>
+          </div>
+          <div class="reward-thumbs col-sm-4 col-md-4">
+            <div class="col-xs-6 col-md-6" 
+                 ng-repeat="imgReference in rewardImgs">
+              <div class="thumbnail">
+                <img ng-src="{{rewards.path + imgReference + '.svg'}}" 
+                     alt="{{'Reward level ' + level + ': ' + imgReference}}">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

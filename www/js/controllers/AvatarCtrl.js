@@ -7,7 +7,7 @@
       , '$window'
       , '$state'
       , '$timeout'
-      ,'AvatarService'
+      , 'AvatarService'
       , 'ImageService'
       , 'ProfileService'
       , 'ErrorMessageService'
@@ -33,7 +33,6 @@
       avatar.gender = '';
       avatar.skinColor = '';
       
-      $scope.errorMsg = ErrorMessageService;
       $scope.supportsSVG = true;                            
       $scope.avatarImages = {};
       $scope.selectedPiece = null;
@@ -138,7 +137,7 @@
                 }
               });
           } else {
-            $scope.errorMsg.show($scope.string.avatar.SERVER_CONNECT_TO_GET_FAIL);
+            ErrorMessageService.show($scope.string.avatar.SERVER_CONNECT_TO_GET_FAIL);
             avatar.gender = $scope.avatarImages.defaultGender;
             avatar.skinColor = $scope.avatarImages.defaultSkinColor;
             angular.forEach(avatarPieces, function (piece, key) {
@@ -272,7 +271,7 @@
             unsavedChanges = !response; 
             if (response === false) 
             {                         
-              $scope.errorMsg.show($scope.string.avatar.SERVER_SAVE_FAIL);
+              ErrorMessageService.show($scope.string.avatar.SERVER_SAVE_FAIL);
             }
           });       
       }
@@ -288,7 +287,7 @@
       $scope.$on('$viewContentLoaded', function() {
         ProfileService.getUserLevel().then(function (level) {
           ImageService.getAvatarImages().then(function (avatarImages) {
-            userLevel = level || avatarImages.initialLevel;
+            userLevel = level;
             $scope.avatarImages = avatarImages;
             if (avatarImages !== null) {
               $scope.iconActived = avatarImages.icons[1].reference;
@@ -301,7 +300,7 @@
       });
       
       $scope.$on('$destroy', function () {
-        $scope.errorMsg.stopShowing()
+        ErrorMessageService.stopShowing()
       }); 
             
     }]);

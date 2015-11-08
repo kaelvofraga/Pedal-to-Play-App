@@ -21,7 +21,6 @@ angular.module('Pedal2Play')
       ;
     
     $scope.activities = null;
-    $scope.errorMsg = ErrorMessageService;
     $scope.selectedActivity = {
       description: ""
       , time: 0
@@ -37,12 +36,12 @@ angular.module('Pedal2Play')
         if (userActivities) {
           $scope.activities = userActivities;
         } else {
-          $scope.errorMsg.show($scope.string.records.ERROR_NOT_FOUND);
+          ErrorMessageService.show($scope.string.records.ERROR_NOT_FOUND);
         }
         LoadingService.stopLoading();
       },
       function (error) {
-         $scope.errorMsg.show($scope.string.records.ERROR_CANT_CONNECT);
+         ErrorMessageService.show($scope.string.records.ERROR_CANT_CONNECT);
          LoadingService.stopLoading();
     });
     
@@ -137,18 +136,18 @@ angular.module('Pedal2Play')
               );
               loadActivityPath(path);
            } else {
-             $scope.errorMsg.show($scope.string.records.ERROR_CANT_GET_PATH);
+             ErrorMessageService.show($scope.string.records.ERROR_CANT_GET_PATH);
            }
            LoadingService.stopLoading();           
         },
         function (error) {
-          $scope.errorMsg.show($scope.string.records.ERROR_CANT_GET_PATH);
+          ErrorMessageService.show($scope.string.records.ERROR_CANT_GET_PATH);
           LoadingService.stopLoading();
         });      
     }
      
     $scope.$on('$destroy', function () {
-        $scope.errorMsg.stopShowing()
+        ErrorMessageService.stopShowing()
     }); 
         
   }]);

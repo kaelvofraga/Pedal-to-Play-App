@@ -189,6 +189,11 @@ body{
 	background-color: #46287D !important;
 }
 
+error-message button{
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
 #avatarDiv .alert {
   position: absolute;
   text-align: center;
@@ -196,12 +201,6 @@ body{
   top: 0;
   left: 0;
   z-index: 100;
-}
-#avatarDiv .alert button, 
-#tracking .alert button,
-#records .alert button {
-  background-color: transparent !important;
-  border: 0 !important;
 }
 #avatarDiv .alert button:hover, 
 #tracking .alert button:hover,
@@ -465,4 +464,36 @@ body{
   background-color: white;
   color: #512e90;
   padding: 4px;  
+}
+
+#quests {
+  margin-top: 15px;
+}
+@media (max-width: 600px) { 
+  #quests {
+    font-size: 16px;
+  }
+  #quests h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+#quests .panel-heading span {
+  margin-left: 10px;
+  float: right;
+}
+#quests .thumbnail img {
+  height: 64px;
+}
+@media (max-height: 600px) { 
+  #quests .thumbnail img {
+    height: 32px;
+  }
+}
+#quests .reward-thumbs {
+  margin-top: 15px;
+}
+#quests .panel-default .panel-heading {
+  background-color: #999;
+  color: white;
 }

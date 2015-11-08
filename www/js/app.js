@@ -42,6 +42,12 @@
         controller: 'AvatarController',
         controllerAs: 'avatarCtrl'        
       })
+      .state('app.quests', {
+        url: '/quests',
+        templateUrl: 'partials/menu.quests.html',
+        controller: 'QuestsController',
+        controllerAs: 'questsCtrl'        
+      })
       .state('app.tracking', {
         url: '/tracking',
         templateUrl: 'partials/menu.tracking.html',

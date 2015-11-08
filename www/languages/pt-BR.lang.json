@@ -15,6 +15,7 @@
     "menu": {
         "HOME": "Home",
         "TRACKING": "Pedalada",
+        "QUESTS": "Desafios",
         "AVATAR": "Avatar",
         "RECORDS": "Histórico",
         "LOGOUT": "Logout"
@@ -88,5 +89,33 @@
         "LOADING": "Carregando pedaladas",
         "DESCRIPTION": "Descricao",
         "INITIAL_DATE": "Data de início"
+    },
+    "quests": {
+        "LEVEL": "Nível ",
+        "LOADING": "Carregando desafios ",
+        "ERROR_CONNECTION": "Não foi possível carregar os desafios disponíveis para você. Verifique sua conexão com a internet.",
+        "DESCRIPTION": "Descrição:",
+        "REWARDS": "Recompensas:",
+        "COMPLETED": "Completo",
+        "UNAVAILABLE": "Indisponível",
+        "IN_PROGRESS": "Em andamento",
+        "levels": {
+            "1": {
+                "DESCRIPTION": "Acumular 5 km de pedalada.",
+                "REWARDS": "Luvas e BMX"
+            },
+            "2": {
+                "DESCRIPTION": "Acumular 20 km de pedalada.",
+                "REWARDS": "Sapatos Pro e Mountain Bike"
+            },
+            "3": {
+                "DESCRIPTION": "Acumular 50 km de pedalada.",
+                "REWARDS": "Óculos e Road bike"
+            },
+            "4": {
+                "DESCRIPTION": "Acumular 100 km de pedalada.",
+                "REWARDS": "Vestimenta Pro e Triathlon"
+            }
+        }
     }
 }

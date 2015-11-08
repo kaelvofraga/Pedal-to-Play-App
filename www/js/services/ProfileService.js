@@ -5,6 +5,8 @@
     .factory('ProfileService', ['$rootScope', '$http', 'localStorageService', 
 				 	             function ($rootScope, $http, localStorageService) {   
       
+      var DEFAULT_LEVEL = 1;
+      
       var successCallback = function (response) {
         if (response.data) {
           var user = localStorageService.get('user');
@@ -13,7 +15,7 @@
           }
           return response.data;  
         }
-        return null;
+        return DEFAULT_LEVEL;
       }
       
       var errorCallback = function (error) {        
@@ -24,7 +26,7 @@
              return userLevel;
            }
         }        
-        return null;
+        return DEFAULT_LEVEL;
       }
       
       return {

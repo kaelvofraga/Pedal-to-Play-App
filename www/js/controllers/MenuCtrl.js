@@ -27,6 +27,9 @@
               case 'app.avatar': 
                 $scope.navbarTitle =  $scope.string.menu.AVATAR; 
                 break;
+              case 'app.quests': 
+                $scope.navbarTitle =  $scope.string.menu.QUESTS; 
+                break;
               case 'app.tracking': 
                 $scope.navbarTitle = $scope.string.menu.TRACKING;
                 break;
@@ -52,6 +55,13 @@
             icon: 'fa fa-bicycle',
             action: function () {
               $state.go('app.tracking');
+            }
+          },
+          {
+            name: $scope.string.menu.QUESTS,
+            icon: 'fa fa-trophy',
+            action: function () {
+              $state.go('app.quests');
             }
           },
           {

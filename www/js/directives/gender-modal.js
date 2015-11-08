@@ -4,9 +4,9 @@
   angular.module('Pedal2Play')
     .directive('genderModal', function () 
     {
-		return {
-			restrict: 'E',
-			templateUrl: 'partials/gender.modal.html'
-		};     
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/gender.modal.html'
+      };     
     });
 })();
