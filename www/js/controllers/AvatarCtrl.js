@@ -2,10 +2,24 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .controller('AvatarController', 
-    ['$scope', '$window', '$state', '$timeout','AvatarService', 'ImageService', 'ProfileService', 'ErrorMessageService',
-    function ($scope, $window, $state, $timeout, AvatarService, ImageService, ProfileService, ErrorMessageService) 
-    {            
+    .controller('AvatarController', [
+        '$scope'
+      , '$window'
+      , '$state'
+      , '$timeout'
+      ,'AvatarService'
+      , 'ImageService'
+      , 'ProfileService'
+      , 'ErrorMessageService'
+      ,function ( $scope
+                , $window
+                , $state
+                , $timeout
+                , AvatarService
+                , ImageService
+                , ProfileService
+                , ErrorMessageService) {
+                              
       var that = this;
       var Snap = $window.Snap;
       var drawingArea = Snap('.avatar');
