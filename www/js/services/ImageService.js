@@ -2,23 +2,35 @@
   'use strict';
   
   angular.module('Pedal2Play')
-    .service('ImageService', ['$http', '$log', function ($http, $log) 
-    {  
-       var baseImgPath = 'img/';
-       var sufix = '.json';
+    .service('ImageService', ['$http', '$q', function ($http, $q) { 
+                               
+       var BASE_IMG_PATH = 'img/';
+       var SUFIX = '.json';
+       var self = this;
+       
+       this.avatarImages = null;
        
        this.getAvatarImages = function () {   
+         
+         var deferred = $q.defer();
 
-         return $http.get(baseImgPath + 'avatar/avatar-imgs' + sufix)
-           .then(
-             function (response) {
-               return response.data;
-             },
-             function (error) {
-               $log.error(error);
-               return null;
-             }
-           );
+         if (self.avatarImages) {
+           deferred.resolve(self.avatarImages);
+         } else {
+           $http.get(BASE_IMG_PATH + 'avatar/avatar-imgs' + SUFIX)
+             .then(
+               function (response) {
+                 self.avatarImages = response.data;
+                 deferred.resolve(response.data);
+               },
+               function (error) {
+                 deferred.reject(null);
+             });
+         }
+         
+         return deferred.promise;
        };
+       
     }]);
+    
 })();

@@ -42,6 +42,25 @@
 			"reference": "glasses"
 		}
 	],
+	"reward-thumbnails": {
+		"path": "img/avatar/reward-thumbnails",
+		"level2": {
+			"gear": "gloves",
+			"bike": "bmx"
+		},
+		"level3": {
+			"gear": "professional-shoes",
+			"bike": "mountain"
+		},
+		"level4": {
+			"gear": "glasses",
+			"bike": "road"
+		},
+		"level5": {
+			"gear": "professional-gear",
+			"bike": "triathlon"
+		}
+	},
 	"pieces": {
 		"faces": {
 			"id": 0,

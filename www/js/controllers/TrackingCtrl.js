@@ -3,19 +3,19 @@
   
   angular.module('Pedal2Play')
     .controller('TrackingController', [
-      '$scope'
-    , '$interval'
-    , '$timeout'
-    , 'TrackService'
-    , 'ErrorMessageService'
-    , 'uiGmapGoogleMapApi'
-    , function ($scope
-              , $interval
-              , $timeout
-              , TrackService
-              , ErrorMessageService
-              , uiGmapGoogleMapApi) {
-      
+        '$scope'
+      , '$interval'
+      , '$timeout'
+      , 'TrackService'
+      , 'ErrorMessageService'
+      , 'uiGmapGoogleMapApi'
+      , function ($scope
+                , $interval
+                , $timeout
+                , TrackService
+                , ErrorMessageService
+                , uiGmapGoogleMapApi) {
+        
       var MIN_SESSION_LEN = 30
         , MAX_ERRORS = 10
         , LOCATION_TIMEOUT = 10000
