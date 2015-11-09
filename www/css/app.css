@@ -56,6 +56,7 @@ body{
   .nav-purple .navmenu-brand{ 
     font-weight: bold !important;
     font-size: 20px !important;
+    width: 164px;
   }
 }
 .navbar-default .navbar-nav > .open > a, 
@@ -511,6 +512,7 @@ error-message button{
 #homeDiv h3{
   font-size: 28px;
   color: black;
+  margin-top: 0;
 }
 @media (max-height: 600px) {
   #homeDiv {
@@ -522,7 +524,7 @@ error-message button{
 }
 #homeDiv .progress {
   margin-top: 15px;
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }  
 #homeDiv .progress-bar {
   font-size: 18px;
@@ -534,4 +536,7 @@ error-message button{
 }
 #homeDiv .circle-button:hover {
   background-color: #265626;
+}
+#homeDiv .user-date {
+  margin-bottom: 10px;
 }
