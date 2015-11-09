@@ -33,8 +33,8 @@
       .state('app.home', {
         url: '/home',
         templateUrl: 'partials/menu.home.html',
-        controller: 'HomeController',
-        controllerAs: 'homeCtrl'        
+        controller: 'AvatarController',
+        controllerAs: 'avatarCtrl'        
       })
       .state('app.avatar', {
         url: '/avatar',

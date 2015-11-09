@@ -93,43 +93,43 @@ body{
     filter: blur(1px);
 }
 
-#avatarDiv, #records {
+.avatarDiv, #records {
   display: block;
   margin-top: 15px;
 }
 
-#avatarDiv .avatar{
+.avatarDiv .avatar{
   height: 545px;
   width: 90%;
   margin-left: 10%;
   margin-bottom: 10px;
 } 
 @media (max-height: 700px) { 
-  #avatarDiv .avatar{ 
+  .avatarDiv .avatar{ 
     height: 350px;
   }
 } 
 @media (max-height: 600px) { 
-  #avatarDiv .avatar{ 
+  .avatarDiv .avatar{ 
     height: 300px;
   }
 }
 @media (max-height: 480px) { 
-  #avatarDiv .avatar{ 
+  .avatarDiv .avatar{ 
     height: 180px;
   }
 }
 @media (max-height: 240px) { 
-   #avatarDiv .avatar{ 
+   .avatarDiv .avatar{ 
      height: 80px;
    }
 }  
 
-#avatarDiv .nav-tabs {
+.avatarDiv .nav-tabs {
   margin-top: 10px;
 }
 
-#avatarDiv .panel {
+.avatarDiv .panel {
   margin-bottom: 10px !important;
 }
 
@@ -144,35 +144,35 @@ body{
   }
 }
 
-#avatarDiv .buttons {
+.avatarDiv .buttons {
   margin-top: 10px;
 }
-#avatarDiv .btn-default { 
+.avatarDiv .btn-default { 
     font-size: 16px;
 }
 @media (max-width: 300px) { 
-  #avatarDiv .btn-default { 
+  .avatarDiv .btn-default { 
     padding: 10px 10px !important;
     font-size: 14px !important;
   }
 }
 
-#avatarDiv .avatar-pieces ul{
+.avatarDiv .avatar-pieces ul{
   margin-bottom: 10px;
 }
-#avatarDiv .avatar-pieces li, #avatarDiv .avatar-pieces img{
+.avatarDiv .avatar-pieces li, .avatarDiv .avatar-pieces img{
   height: 32px !important;
 }
 @media (min-width: 600px) and (min-height: 600px){ 
-  #avatarDiv .avatar-pieces li, #avatarDiv .avatar-pieces img { 
+  .avatarDiv .avatar-pieces li, .avatarDiv .avatar-pieces img { 
     height: 64px !important;
   }
 }
 
-#avatarDiv .pager {
+.avatarDiv .pager {
   margin: 0 !important;
 } 
-#avatarDiv .pager a {
+.avatarDiv .pager a {
   cursor: pointer;
   font-size: 24px;
   color: #FFF;
@@ -181,11 +181,11 @@ body{
   border-color: #512E90 !important;
 }
 @media (max-width: 500px) { 
-  #avatarDiv .pager a { 
+  .avatarDiv .pager a { 
      font-size: 18px;
   }
 }
-#avatarDiv .pager li > a:hover, .pager li > a:focus {
+.avatarDiv .pager li > a:hover, .pager li > a:focus {
 	background-color: #46287D !important;
 }
 
@@ -194,7 +194,7 @@ error-message button{
   border: 0 !important;
 }
 
-#avatarDiv .alert {
+.avatarDiv .alert {
   position: absolute;
   text-align: center;
   width: 100%;
@@ -202,7 +202,7 @@ error-message button{
   left: 0;
   z-index: 100;
 }
-#avatarDiv .alert button:hover, 
+.avatarDiv .alert button:hover, 
 #tracking .alert button:hover,
 #records .alert button:hover {
   color: #404040; 
@@ -308,11 +308,11 @@ error-message button{
     -ms-filter: brightness(0.7);
     filter: brightness(0.7);
 }
-#avatarDiv .color-picker {
+.avatarDiv .color-picker {
   margin-top: 0px;
 }
 @media (max-width: 500px) { 
-  #avatarDiv .color-picker { 
+  .avatarDiv .color-picker { 
      padding: 8px 12px;
   }
 }
@@ -496,4 +496,42 @@ error-message button{
 #quests .panel-default .panel-heading {
   background-color: #999;
   color: white;
+}
+
+#homeDiv .alert {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+}
+#homeDiv {
+  font-size: 24px;
+  color: #666;
+}
+#homeDiv h3{
+  font-size: 28px;
+  color: black;
+}
+@media (max-height: 600px) {
+  #homeDiv {
+    font-size: 14px;
+  }
+  #homeDiv h3 {
+    font-size: 18px;
+  }
+}
+#homeDiv .progress {
+  margin-top: 15px;
+  margin-bottom: 0;
+}  
+#homeDiv .progress-bar {
+  font-size: 18px;
+}
+#homeDiv .circle-button {
+  color: white;
+  background-color: #5cb85c;
+  margin-right: 10px;
+}
+#homeDiv .circle-button:hover {
+  background-color: #265626;
 }

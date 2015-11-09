@@ -27,17 +27,20 @@
       var avatarBaseGroup = {};
       var colorPicker = angular.element('.color-picker');
       var unsavedChanges = false; 
-      var userLevel = 0;
-      var avatar = {};
-      avatar.pieces = [];
-      avatar.gender = '';
-      avatar.skinColor = '';
+      var avatar = {
+          pieces: []
+        , gender: ''
+        , skinColor: ''
+      };
       
+      $scope.userLevel = 0;
+      $scope.maxLevel = 0;
       $scope.supportsSVG = true;                            
       $scope.avatarImages = {};
       $scope.selectedPiece = null;
       $scope.iconActived = null;
       $scope.nextStateName = null;
+      $scope.currentScore = 0;
       
       colorPicker.colorpicker({
         customClass: 'colorpicker-2x',
@@ -171,7 +174,7 @@
       }
       
       this.checkRequiredLevel = function (option) {        
-        return angular.isUndefined(option.requiredLevel) || (userLevel >= option.requiredLevel);
+        return angular.isUndefined(option.requiredLevel) || ($scope.userLevel >= option.requiredLevel);
       }
       
       this.removeUnavailableOptions = function (avatarPieces) {
@@ -284,10 +287,27 @@
         return "img/avatar/icons/" + reference + ".svg";
       }
       
+      $scope.getUserEmail = function () {
+        return ProfileService.getUserEmail();
+      }
+      
+      $scope.getLevelPercentage = function () {
+        if (angular.isNumber($scope.userLevel) && 
+            angular.isNumber($scope.maxLevel))
+        {
+          return ($scope.userLevel / $scope.maxLevel) * 100;
+        }
+        return 0;
+      }
+      
+      $scope.editAvatar = function () {
+        $state.go('app.avatar');
+      }
+            
       $scope.$on('$viewContentLoaded', function() {
         ProfileService.getUserLevel().then(function (level) {
           ImageService.getAvatarImages().then(function (avatarImages) {
-            userLevel = level;
+            $scope.userLevel = level;
             $scope.avatarImages = avatarImages;
             if (avatarImages !== null) {
               $scope.iconActived = avatarImages.icons[1].reference;
@@ -297,6 +317,28 @@
             }
           });
         });
+        
+        ProfileService.getTotalScore().then(
+          function (score) {
+            if (score) {
+              $scope.currentScore = (score / 1000).toFixed(2);
+            } else {
+              $scope.currentScore = $scope.string.ERROR_DATA_NOT_FOUND;
+            }            
+          },
+          function (error) {
+            $scope.currentScore = $scope.string.ERROR_DATA_NOT_FOUND;
+          }
+        );
+        
+        ProfileService.getMaxLevel().then(
+          function (maxLevel) {
+            $scope.maxLevel = maxLevel;
+          },
+          function (error) {
+            $scope.maxLevel = error;
+          }
+        );        
       });
       
       $scope.$on('$destroy', function () {

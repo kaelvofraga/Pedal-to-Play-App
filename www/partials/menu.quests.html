@@ -11,7 +11,7 @@
          ng-repeat="(level, rewardImgs) in rewards.levels"
          ng-class="getQuestClass(level).bootstrapClass">
       <div class="panel-heading">
-        {{string.quests.LEVEL + level}}
+        {{string.quests.LEVEL + ' ' + level}}
         <span>{{getQuestClass(level).status}}</span>
       </div>
       <div class="panel-body">
@@ -30,7 +30,6 @@
               <div class="thumbnail">
                 <img ng-src="{{rewards.path + imgReference + '.svg'}}" 
                      alt="{{'Reward level ' + level + ': ' + imgReference}}">
-                </a>
               </div>
             </div>
           </div>

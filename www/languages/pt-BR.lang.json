@@ -1,5 +1,6 @@
 {
     "USER_NAME": "Usuário: ",
+    "TRAVELLED_DISTANCE": "Distância total pedalada:",
     "DO_LOGIN": "Fazer Login",
     "DO_REGISTER": "Inscreva-se",
     "LOGOUT_TITLE": "Confirmar Logout",
@@ -12,6 +13,7 @@
     "NO": "Não",
     "PROCESSING": "Processando",
     "SAVING": "Salvando",
+    "ERROR_DATA_NOT_FOUND": "Dado não encontrado.",
     "menu": {
         "HOME": "Home",
         "TRACKING": "Pedalada",
@@ -91,7 +93,7 @@
         "INITIAL_DATE": "Data de início"
     },
     "quests": {
-        "LEVEL": "Nível ",
+        "LEVEL": "Nível",
         "LOADING": "Carregando desafios ",
         "ERROR_CONNECTION": "Não foi possível carregar os desafios disponíveis para você. Verifique sua conexão com a internet.",
         "DESCRIPTION": "Descrição:",

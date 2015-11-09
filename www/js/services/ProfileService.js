@@ -33,6 +33,41 @@
         getUserLevel: function () {
           return $http.get($rootScope.string.SERVER_BASE_URL + 'user/level')
                   .then(successCallback, errorCallback);
+        },
+        getUserEmail: function () {
+          var user = localStorageService.get('user');
+          if (user !== null) {
+            return user.email || "";
+          }
+          return "";
+        },
+        getTotalScore: function () {
+          return $http.get($rootScope.string.SERVER_BASE_URL + 'user/score')
+                  .then(
+                    function (response) {
+                      if (angular.isNumber(response.data)) {
+                        return response.data;
+                      }
+                      return null;
+                    },
+                    function (error) {
+                      return null;
+                    } 
+                  );
+        },
+        getMaxLevel: function () {
+          return $http.get($rootScope.string.SERVER_BASE_URL + 'user/maxlevel')
+                  .then(
+                    function (response) {
+                      if (angular.isNumber(response.data)) {
+                        return response.data;
+                      }
+                      return null;
+                    },
+                    function (error) {
+                      return null;
+                    } 
+                  );
         }
 		  };
     }]);
