@@ -1,9 +1,13 @@
 <div id="homeDiv" class="avatarDiv">
 	<div class="panel panel-default">
 		<div class="buttons">
-			<button class="btn btn-lg circle-button pull-right" 
-					ng-click="editAvatar()">
+			<button class="btn btn-lg circle-button edit-avatar" 
+					ng-click="editAvatar()" title="{{string.button.EDIT}}">
 				<i class="fa fa-pencil"></i>
+			</button>
+			<button class="btn btn-lg btn-primary circle-button pedal" ng-click="goTracking()" 
+					title="{{string.button.PEDAL}}">
+				<i class="fa fa-bicycle"></i>
 			</button>
 		</div>		
 		

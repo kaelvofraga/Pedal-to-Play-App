@@ -1,5 +1,5 @@
 <div id="quests">
-  <div class="alert alert-info" role="alert" ng-if="isAvatarLoading()">
+  <div class="alert alert-info" role="alert" ng-if="loading">
     <span class="sr-only">Info:</span> {{string.quests.LOADING}}
     <i class="fa fa-spinner fa-pulse"></i>
   </div>
@@ -36,6 +36,11 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-lg btn-primary circle-button" 
+            ng-click="goTracking()" 
+            title="{{string.button.PEDAL}}">
+      <i class="fa fa-bicycle"></i>
+    </button>
   </div>
   
 </div>

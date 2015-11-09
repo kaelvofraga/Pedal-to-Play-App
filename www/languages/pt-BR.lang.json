@@ -43,7 +43,10 @@
     },
     "button": {
         "SHARE": "Compartilhar",
-        "SAVE": "Salvar"
+        "SAVE": "Salvar",
+        "PEDAL": "Pedalar",
+        "EDIT": "Editar",
+        "COLOR_PICKER": "Escolher cor"
     },
     "position": {
         "LATITUDE": "Latitude: ",

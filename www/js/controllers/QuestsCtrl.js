@@ -4,11 +4,13 @@
   angular.module('Pedal2Play')
     .controller('QuestsController', [
         '$scope'
+      , '$state'
       , 'ImageService'
       , 'ProfileService'
       , 'LoadingService'
       , 'ErrorMessageService'
       , function ($scope
+                , $state
                 , ImageService
                 , ProfileService
                 , LoadingService
@@ -31,8 +33,7 @@
         $scope.areQuestsToShow = function () {
           return angular.isDefined($scope.userLevel) && 
                  angular.isDefined($scope.rewards)
-        }
-        
+        }        
          
         $scope.getQuestClass = function(questLevel) {
           if (angular.isDefined($scope.userLevel) && questLevel) {          
@@ -53,7 +54,11 @@
                 status: $scope.string.quests.IN_PROGRESS
               };
         }
-
+        
+        $scope.goTracking = function () {
+          $state.go('app.tracking');
+        }
+        
         $scope.$on('$destroy', function () {
           ErrorMessageService.stopShowing();
         }); 

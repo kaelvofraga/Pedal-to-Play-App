@@ -498,16 +498,22 @@ error-message button{
   background-color: #999;
   color: white;
 }
-
-#homeDiv .alert {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  z-index: 100;
+#quests .circle-button {
+  position: fixed; 
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  font-size: 26px;
+  padding: 0;
 }
+
 #homeDiv {
   font-size: 24px;
   color: #666;
+}
+#homeDiv .panel {
+  position: relative;
 }
 #homeDiv h3{
   font-size: 28px;
@@ -526,15 +532,30 @@ error-message button{
   margin-top: 15px;
   margin-bottom: 20px;
 }  
-#homeDiv .progress-bar {
+#homeDiv .progress-bar,
+#homeDiv .alert {
   font-size: 18px;
 }
-#homeDiv .circle-button {
+#homeDiv .pedal {  
+  position: absolute; 
+  right: 10px;
+  top: 70px;
+  top: calc(100% - 64px);
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  font-size: 26px;
+  padding: 0;
+}
+#homeDiv .edit-avatar {  
+  position: absolute;
+  z-index: 100;
+  top: 5px;
+  right: 10px;
   color: white;
   background-color: #5cb85c;
-  margin-right: 10px;
 }
-#homeDiv .circle-button:hover {
+#homeDiv .edit-avatar:hover {
   background-color: #265626;
 }
 #homeDiv .user-date {

@@ -283,6 +283,10 @@
         return true; //TODO develop "sharing" routine
       }
       
+      $scope.goTracking = function () {
+        $state.go('app.tracking');
+      }
+      
       $scope.getPath = function (reference) {
         return "img/avatar/icons/" + reference + ".svg";
       }
