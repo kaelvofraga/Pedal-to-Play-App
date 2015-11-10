@@ -1,6 +1,6 @@
 {
     "USER_NAME": "Usuário: ",
-    "TRAVELLED_DISTANCE": "Distância total pedalada:",
+    "TRAVELLED_DISTANCE": "Distância total pedalada (km):",
     "DO_LOGIN": "Fazer Login",
     "DO_REGISTER": "Inscreva-se",
     "LOGOUT_TITLE": "Confirmar Logout",

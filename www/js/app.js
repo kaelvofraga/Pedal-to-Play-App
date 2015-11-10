@@ -9,9 +9,18 @@
     , 'uiGmapgoogle-maps'
   ]) 
   
-  .controller('MainController', ['$rootScope', 'StringService', 
-                        function ($rootScope, StringService) {    
-      StringService.getStrings($rootScope, null);                          
+  .controller('MainController', ['$rootScope', 'StringService', 'AuthService', '$state',
+                        function ($rootScope, StringService, AuthService, $state) {    
+      
+      StringService.getStrings($rootScope, null);  
+      
+      $rootScope.$on('$locationChangeStart', function (event, newUrl) {
+        var next = newUrl.split('#')[1];
+        if ((next !== '/auth') && (AuthService.getLoggedUser() === null)) {              
+            event.preventDefault();
+            $state.go('auth');
+        }
+      });                              
   }])
       
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider, uiGmapGoogleMapApiProvider) {

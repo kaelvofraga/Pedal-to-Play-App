@@ -121,33 +121,41 @@
       }   
       
       this.initializeAvatar = function (avatarPieces) {      
-        AvatarService.recoverCustomization().then( function (response) {
-          var savedAvatar = response;
-          if (savedAvatar &&
-              angular.isDefined(savedAvatar.gender) &&
-              angular.isDefined(savedAvatar.skinColor) &&
-              angular.isDefined(savedAvatar.pieces)
-          ){
-              angular.copy(savedAvatar, avatar);
+        AvatarService.recoverCustomization().then( 
+          function (response) {
+            var savedAvatar = response;
+            if (savedAvatar &&
+                angular.isDefined(savedAvatar.gender) &&
+                angular.isDefined(savedAvatar.skinColor) &&
+                angular.isDefined(savedAvatar.pieces)
+            ){
+                angular.copy(savedAvatar, avatar);
+                angular.forEach(avatarPieces, function (piece, key) {
+                  var savedOptionIndex = savedAvatar.pieces[piece.id];
+                  if (savedOptionIndex && (savedOptionIndex > 0) && 
+                      (savedOptionIndex < piece.options.length)
+                  ){
+                    avatar.pieces[piece.id] = savedOptionIndex;
+                  } else {
+                    avatar.pieces[piece.id] = 0;
+                  }
+                });
+            } else {   
+              avatar.gender = $scope.avatarImages.defaultGender;
+              avatar.skinColor = $scope.avatarImages.defaultSkinColor;
               angular.forEach(avatarPieces, function (piece, key) {
-                var savedOptionIndex = savedAvatar.pieces[piece.id];
-                if (savedOptionIndex && (savedOptionIndex > 0) && 
-                    (savedOptionIndex < piece.options.length)
-                ){
-                  avatar.pieces[piece.id] = savedOptionIndex;
-                } else {
-                  avatar.pieces[piece.id] = 0;
-                }
+                avatar.pieces[piece.id] = 0;
               });
-          } else {
+            }
+            that.loadSvgAvatarImages();
+                            
+        }, function (error) {
             ErrorMessageService.show($scope.string.avatar.SERVER_CONNECT_TO_GET_FAIL);
             avatar.gender = $scope.avatarImages.defaultGender;
             avatar.skinColor = $scope.avatarImages.defaultSkinColor;
             angular.forEach(avatarPieces, function (piece, key) {
               avatar.pieces[piece.id] = 0;
             });
-          }
-          that.loadSvgAvatarImages();       
         });              
       }  
       
@@ -323,7 +331,7 @@
             if (score) {
               $scope.currentScore = (score / 1000).toFixed(2);
             } else {
-              $scope.currentScore = $scope.string.ERROR_DATA_NOT_FOUND;
+              $scope.currentScore = 0;
             }            
           },
           function (error) {

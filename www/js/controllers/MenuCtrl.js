@@ -3,11 +3,7 @@
   
   angular.module('Pedal2Play')
     .controller('MenuController', ['AuthService', '$scope', '$state', '$window',
-                          function (AuthService, $scope, $state, $window) {
-                
-        if (AuthService.getLoggedUser() === null) {
-          $state.go('auth');
-        }        
+                          function (AuthService, $scope, $state, $window) {  
         
         var isCordovaPresent = angular.isDefined($window.cordova);
         
@@ -116,11 +112,6 @@
         $scope.$on('$stateChangeStart',
           function (event, toState, toParams, fromState, fromParams) {  
             sideMenu.offcanvas('hide');
-            
-            if ((AuthService.getLoggedUser() === null) && (toState.name !== 'auth')) {
-              event.preventDefault();
-              $state.go('auth');
-            }
             
             if (!isCordovaPresent && (toState.name === 'app.tracking')) {
               event.preventDefault();

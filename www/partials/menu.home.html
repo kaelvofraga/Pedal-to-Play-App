@@ -34,7 +34,7 @@
 				<h3>{{string.USER_NAME}}</h3> {{getUserEmail()}}
 			</div>
 			<div class="col-sm-6 col-md-6 user-date">
-				<h3>{{string.TRAVELLED_DISTANCE}}</h3> {{currentScore + ' km'}}
+				<h3>{{string.TRAVELLED_DISTANCE}}</h3> {{currentScore}}
 			</div>
 		</div>
 		<h3 ng-if="getLevelPercentage()">{{string.quests.LEVEL + ':'}}</h3>
@@ -44,7 +44,7 @@
 				 aria-valuemax="{{maxLevel}}" ng-style="{width : ( getLevelPercentage() + '%' )}">
 				{{userLevel}} / {{maxLevel}}
 				<span class="sr-only">
-					{{string.TRAVELLED_DISTANCE}}: {{userLevel}} / {{maxLevel}}
+					{{string.quests.LEVEL}}: {{userLevel}} / {{maxLevel}}
 				</span>
 			</div>
 		</div>
