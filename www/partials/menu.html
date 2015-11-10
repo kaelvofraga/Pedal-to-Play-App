@@ -1,6 +1,6 @@
 <nav id="mainnav" class="navmenu navmenu-default navmenu-fixed-left offcanvas nav-purple" role="navigation">
   <ul class="nav navmenu-nav">
-     <li ng-repeat="item in menuCtrl.menuItens" >
+     <li ng-repeat="item in menuCtrl.menuItens" ng-if="item.condition">
         <a ng-click="item.action()"><i ng-class="item.icon"></i> {{item.name}}</a>
      </li>
   </ul>
@@ -18,7 +18,7 @@
   </div>
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-      <li ng-repeat="item in menuCtrl.menuItens" >
+      <li ng-repeat="item in menuCtrl.menuItens" ng-if="item.condition">
        <a ng-click="item.action()">{{item.name}}</a>
      </li>
     </ul>

@@ -8,7 +8,9 @@
         if (AuthService.getLoggedUser() === null) {
           $state.go('auth');
         }        
-       
+        
+        var isCordovaPresent = angular.isDefined($window.cordova);
+        
         var sideMenu = angular.element('.navmenu');                
         
         sideMenu.offcanvas({'toggle': false});        
@@ -46,6 +48,7 @@
           {
             name: $scope.string.menu.HOME,
             icon: 'fa fa-home',
+            condition: true,
             action: function () {
               $state.go('app.home');
             }
@@ -53,6 +56,7 @@
           {
             name: $scope.string.menu.TRACKING,
             icon: 'fa fa-bicycle',
+            condition: isCordovaPresent,
             action: function () {
               $state.go('app.tracking');
             }
@@ -60,6 +64,7 @@
           {
             name: $scope.string.menu.QUESTS,
             icon: 'fa fa-trophy',
+            condition: true,
             action: function () {
               $state.go('app.quests');
             }
@@ -67,6 +72,7 @@
           {
             name: $scope.string.menu.AVATAR,
             icon: 'fa fa-user',
+            condition: true,
             action: function () {
               $state.go('app.avatar');
             }
@@ -74,6 +80,7 @@
           {
             name: $scope.string.menu.RECORDS,
             icon: 'fa fa-map',
+            condition: true,
             action: function () {
               $state.go('app.records');
             }
@@ -81,6 +88,7 @@
           {
             name: $scope.string.menu.LOGOUT,
             icon: 'fa fa-sign-out',
+            condition: true,
             action: function () {
               angular.element('#logoutModal').modal('show');                 
             }
@@ -100,6 +108,10 @@
           $scope.hideModal('#logoutModal');
           AuthService.logout();
         };        
+        
+        $scope.goTracking = function () {
+          $state.go('app.tracking');
+        }
                                 
         $scope.$on('$stateChangeStart',
           function (event, toState, toParams, fromState, fromParams) {  
@@ -108,6 +120,11 @@
             if ((AuthService.getLoggedUser() === null) && (toState.name !== 'auth')) {
               event.preventDefault();
               $state.go('auth');
+            }
+            
+            if (!isCordovaPresent && (toState.name === 'app.tracking')) {
+              event.preventDefault();
+              $state.go('app.records');
             }
          });      
           

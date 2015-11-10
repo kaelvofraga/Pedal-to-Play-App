@@ -54,11 +54,7 @@
                 status: $scope.string.quests.IN_PROGRESS
               };
         }
-        
-        $scope.goTracking = function () {
-          $state.go('app.tracking');
-        }
-        
+                
         $scope.$on('$destroy', function () {
           ErrorMessageService.stopShowing();
         }); 
