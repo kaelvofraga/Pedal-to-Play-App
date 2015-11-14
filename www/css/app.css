@@ -239,7 +239,7 @@ error-message button {
 } 
 @media (orientation: landscape) and (max-height: 600px) { 
    .nav-tabs { 
-      height: 385px;
+      height: 360px;
    }
 }
 @media (orientation: landscape) and (max-height: 480px) { 
