@@ -1,11 +1,12 @@
 <div class="row container-fluid avatarDiv">
-	<div class="avatar-visualization col-sm-8 col-md-8 panel panel-default"
+	<div class="avatar-visualization col-xs-12 col-sm-8 col-md-8 panel panel-default"
 		 ng-swipe-left="onPreviousOptionClick()" ng-swipe-right="onNextOptionClick()">
 		
 		<div class="buttons">
-			<button class="btn btn-default" ng-click="share()">
+			<button class="btn btn-default" ng-click="share()" ng-if="::false">
 				{{string.button.SHARE}}
 			</button>
+					
 			<button class="btn btn-lg circle-button color-picker colorpicker-element pull-right" 
 					ng-focus="pickColor()" title="{{string.button.COLOR_PICKER}}">
 				<i class="fa fa-eyedropper"></i>
@@ -51,13 +52,15 @@
 			</li>
 		</ul>
 	</div>
-	<div class="avatar-pieces col-sm-4 col-md-4 panel panel-default">
+	<div class="avatar-pieces col-xs-12 col-sm-4 col-md-4 panel panel-default">
 		<ul class="nav nav-tabs">
-			<li role="presentation" 
+			<li role="presentation"
 				ng-class="{'active': iconActived === icon.reference}" 
-				ng-repeat="icon in avatarImages.icons">
-				<a ng-click="onPieceClick(icon.reference)" >
-					<img ng-src="{{getPath(icon.reference)}}" alt="{{icon.reference}}" title="{{icon.reference}}"/>
+				ng-repeat="icon in avatarImages.icons"
+				ng-if="hasMoreThanOnOption(icon.reference)">
+				<a ng-click="onPieceClick(icon.reference)">
+					<img ng-src="{{getPath(icon.reference)}}" alt="{{icon.reference}}" 
+					     title="{{icon.reference}}"/>
 				</a>
 			</li>
 		</ul>

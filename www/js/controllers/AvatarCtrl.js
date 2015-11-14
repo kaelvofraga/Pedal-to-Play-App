@@ -258,6 +258,13 @@
         }
       }
       
+      $scope.hasMoreThanOnOption = function (reference) {
+        if (angular.isDefined($scope.avatarImages.pieces[reference])) {
+           return $scope.avatarImages.pieces[reference].options.length > 1;
+        }
+        return true;
+      }
+      
       $scope.dontSave = function () {
         $scope.hideModal('#unsaveModal');          
         unsavedChanges = false;
