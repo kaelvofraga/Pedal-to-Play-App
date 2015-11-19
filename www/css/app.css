@@ -469,9 +469,10 @@ error-message button {
 .marker-labels {
   border: 1px solid #512e90;
   border-radius: 4px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.75);
   color: #512e90;
-  padding: 4px;  
+  padding: 4px;
+  font-weight: 600;  
 }
 
 #quests {

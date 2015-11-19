@@ -17,7 +17,8 @@ angular.module('Pedal2Play')
     var IFRS_LAT = -29.899837
       , IFRS_LGT = -51.1503104
       , MARKER_ID = 0
-      , MAP_ZOOM = 13
+      , MAP_ZOOM = 17
+      , LABEL_COORD = "15 -15"
       ;
     
     $scope.activities = null;
@@ -54,7 +55,7 @@ angular.module('Pedal2Play')
             coords: { latitude: IFRS_LAT, longitude: IFRS_LGT },
             options: {
               labelContent: "IFRS - Campus Canoas",
-              labelAnchor: "0 0",
+              labelAnchor: LABEL_COORD,
               labelClass: "marker-labels"
             }
           }
@@ -106,7 +107,7 @@ angular.module('Pedal2Play')
             options: {
               labelContent: $scope.selectedActivity.description + " - " + 
                             getActivityLocaleDate(),
-              labelAnchor: "0 0",
+              labelAnchor: LABEL_COORD,
               labelClass: "marker-labels"
             }
           }
