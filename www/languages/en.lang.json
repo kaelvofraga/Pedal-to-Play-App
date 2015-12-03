@@ -1,0 +1,126 @@
+{
+    "USER_NAME": "User: ",
+    "TRAVELLED_DISTANCE": "Total cycled distance (km):",
+    "DO_LOGIN": "Sign in",
+    "DO_REGISTER": "Sign up",
+    "LOGOUT_TITLE": "Confirm Logout",
+    "LOGOUT_CONFIRMATION": "Are you sure you want to quit?",
+    "GENDER_TITLE": "Confirm Gender Exchange",
+    "GENDER_CONFIRMATION": "Do you want to change the gender of your avatar?",
+    "UNSAVE_TITLE": "Unsaved changes",
+    "UNSAVE_CONFIRMATION": "You have not saved your changes, do you really want to quit?",    
+    "YES": "Yes",
+    "NO": "No",
+    "PROCESSING": "Processing",
+    "SAVING": "Saving",
+    "ERROR_DATA_NOT_FOUND": "Date not found.",
+    "menu": {
+        "HOME": "Home",
+        "TRACKING": "Tracking",
+        "QUESTS": "Quests",
+        "AVATAR": "Avatar",
+        "RECORDS": "Records",
+        "LOGOUT": "Logout"
+    },
+    "form": {
+        "EMAIL": "Email:",
+        "PASSWORD": "Password:",
+        "CONFIRM_PASSWORD": "Confirm password:",
+        "EMAIL_PLACEHOLDER": "email@example.com",
+        "PASSWORD_PLACEHOLDER": "6-30 characters",
+        "CONFIRM_PASSWORD_PLACEHOLDER": "Enter the password again",
+        "message": {
+            "REQUIRED": "This field must be filled.",
+            "INVALID_EMAIL": "Invalid email.",
+            "CHECKING_EMAIL": "Checking email",
+            "INVALID_OR_REPEATED_EMAIL": "Invalid email or it is already in use.",
+            "INVALID_PASSWORD": "Invalid password. Must contain 6-30 characters.",
+            "DIFFERENT_PASSWORDS": "The passwords are different.",
+            "SERVER_CONNECT_FAIL": "Failed to connect.",
+            "SERVER_SIGN_IN_FAIL": "Incorrect username or password.",
+            "SERVER_SIGN_UP_FAIL": "Invalid data for registration."
+        }
+    },
+    "button": {
+        "SHARE": "Share",
+        "SAVE": "Save",
+        "PEDAL": "Pedal",
+        "EDIT": "Edit",
+        "COLOR_PICKER": "Color picker"
+    },
+    "position": {
+        "LATITUDE": "Latitude: ",
+        "LONGITUDE": "Longitude: ",
+        "ALTITUDE": "Altitude: ",
+        "ACCURACY": "Accuracy: ",
+        "ALTITUDE_ACCURACY": "Altitude accuracy: ",
+        "HEADING": "Heading: ",
+        "SPEED": "Speed: ",
+        "TIMESTAMP": "Date and time: "
+    },
+    "avatar": {
+        "SERVER_SAVE_FAIL": "Invalid avatar customizations. Check out your choices.",
+        "SERVER_CONNECT_TO_GET_FAIL": "The customization of your avatar can not be recovered.",
+        "ERROR_SVG": "Excuse me, but your device does not support the avatar customization system.",
+        "ERROR_LOAD_IMAGES": "Failed to upload images, please reinstall the application if the error persists.",
+        "LOADING": "Loading avatar "
+    },
+    "tracking": {
+        "TIME": "Time",
+        "SPEED": "Speed (km/h)",
+        "DISTANCE": "Distance (km)",
+        "PAUSED": "Paused",
+        "SAVE_SESSION": "Save pedaling",
+        "SESSION_DESCRIPTION": "Pedaling description:",
+        "SESSION_PLACEHOLDER": "example: Morning pedaling",
+        "MAX_LENGTH": "The description should be no longer than 40 characters.",
+        "MIN_SESSION_LEN": "The pedaling needs to be longer in order to save and analyze. Please resume or restart.",
+        "button": {
+            "START_TRACKING": "Start tracking",
+            "PAUSE": "Pause",
+            "STOP": "Stop",
+            "RESUME": "Resume",
+            "DISCARD": "Discard",
+            "SAVE": "Save"
+        },
+        "ERROR_INVALID_DATA": "Unable to save the pedaling, invalid data found.",
+        "GPS_OFF": "The GPS of your device is turned off or its signal is weak, please reconnect it."
+    },
+    "records": {
+        "PANEL_TITLE": "Pedaling",
+        "ERROR_NOT_FOUND": "There were no rides to your user.",
+        "ERROR_CANT_CONNECT": "Could not get your pedaling. Check your internet connection.",
+        "ERROR_CANT_GET_PATH": "Could not get that ride. Check your internet connection.",
+        "LOADING": "Loading pedaling",
+        "DESCRIPTION": "Description",
+        "INITIAL_DATE": "Start date"
+    },
+    "quests": {
+        "LEVEL": "Level",
+        "LOADING": "Loading quests ",
+        "ERROR_CONNECTION": "Could not load the challenges available to you. Check your internet connection.",
+        "DESCRIPTION": "Description:",
+        "REWARDS": "Rewards:",
+        "COMPLETED": "Complete",
+        "UNAVAILABLE": "Unavailable",
+        "IN_PROGRESS": "In progress",
+        "levels": {
+            "1": {
+                "DESCRIPTION": "Accumulate 5 km of cycling.",
+                "REWARDS": "BMX and gloves"
+            },
+            "2": {
+                "DESCRIPTION": "Accumulate 20 km of cycling.",
+                "REWARDS": "Sapatos Pro e Mountain Bike"
+            },
+            "3": {
+                "DESCRIPTION": "Acumular 50 km de pedalada.",
+                "REWARDS": "Óculos e Road bike"
+            },
+            "4": {
+                "DESCRIPTION": "Acumular 100 km de pedalada.",
+                "REWARDS": "Vestimenta Pro e Triathlon"
+            }
+        }
+    }
+}
