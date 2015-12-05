@@ -9,10 +9,19 @@
     , 'uiGmapgoogle-maps'
   ]) 
   
-  .controller('MainController', ['$rootScope', 'StringService', 'AuthService', '$state',
-                        function ($rootScope, StringService, AuthService, $state) {    
+  .controller('MainController', [
+      '$rootScope'
+    , 'StringService'
+    , 'AuthService'
+    , '$state'
+    , 'SettingsService'
+    , function ($rootScope
+              , StringService
+              , AuthService
+              , $state
+              , SettingsService) {    
       
-      StringService.getStrings($rootScope, null);  
+      StringService.getStrings($rootScope, SettingsService.getUserSettings().language);  
       
       $rootScope.$on('$locationChangeStart', function (event, newUrl) {
         var next = newUrl.split('#')[1];
@@ -68,7 +77,14 @@
         templateUrl: 'partials/menu.records.html',
         controller: 'RecordsController',
         controllerAs: 'recCtrl'
-      });
+      })
+      .state('app.settings', {
+        url: '/settings',
+        templateUrl: 'partials/menu.settings.html',
+        controller: 'SettingsController',
+        controllerAs: 'settCtrl'
+      })
+      ;
     
     $urlRouterProvider.otherwise('/app/home');
     

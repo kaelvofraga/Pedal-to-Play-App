@@ -14,12 +14,14 @@
     "PROCESSING": "Processing",
     "SAVING": "Saving",
     "ERROR_DATA_NOT_FOUND": "Date not found.",
+    "SELECT_LANGUAGE": "Select a language:",
     "menu": {
         "HOME": "Home",
         "TRACKING": "Tracking",
         "QUESTS": "Quests",
         "AVATAR": "Avatar",
         "RECORDS": "Records",
+        "SETTINGS": "Settings",
         "LOGOUT": "Logout"
     },
     "form": {
@@ -107,19 +109,19 @@
         "levels": {
             "1": {
                 "DESCRIPTION": "Accumulate 5 km of cycling.",
-                "REWARDS": "BMX and gloves"
+                "REWARDS": "Gloves and BMX"
             },
             "2": {
                 "DESCRIPTION": "Accumulate 20 km of cycling.",
-                "REWARDS": "Sapatos Pro e Mountain Bike"
+                "REWARDS": "Pro Shoes and Mountain Bike"
             },
             "3": {
-                "DESCRIPTION": "Acumular 50 km de pedalada.",
-                "REWARDS": "Óculos e Road bike"
+                "DESCRIPTION": "Accumulate 50 km of cycling.",
+                "REWARDS": "Glasses and Road bike"
             },
             "4": {
-                "DESCRIPTION": "Acumular 100 km de pedalada.",
-                "REWARDS": "Vestimenta Pro e Triathlon"
+                "DESCRIPTION": "Accumulate 100 km of cycling.",
+                "REWARDS": "Pro Gear and Triathlon bike"
             }
         }
     }

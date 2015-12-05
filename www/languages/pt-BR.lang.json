@@ -14,12 +14,14 @@
     "PROCESSING": "Processando",
     "SAVING": "Salvando",
     "ERROR_DATA_NOT_FOUND": "Dado não encontrado.",
+    "SELECT_LANGUAGE": "Selecione um idioma:",
     "menu": {
         "HOME": "Home",
         "TRACKING": "Pedalada",
         "QUESTS": "Desafios",
         "AVATAR": "Avatar",
         "RECORDS": "Histórico",
+        "SETTINGS": "Configuração",
         "LOGOUT": "Logout"
     },
     "form": {

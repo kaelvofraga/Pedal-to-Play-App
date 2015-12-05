@@ -5,7 +5,7 @@
     .controller('MenuController', ['AuthService', '$scope', '$state', '$window',
                           function (AuthService, $scope, $state, $window) {  
         
-        var isCordovaPresent = angular.isDefined($window.cordova);
+        $scope.isCordovaPresent = angular.isDefined($window.cordova);
         
         var sideMenu = angular.element('.navmenu');                
         
@@ -34,6 +34,9 @@
               case 'app.records': 
                 $scope.navbarTitle = $scope.string.menu.RECORDS;
                 break;
+              case 'app.settings':
+                $scope.navbarTitle = $scope.string.menu.SETTINGS;
+                break;
               default: 
                 $scope.navbarTitle = $scope.string.APP_NAME;
             }            
@@ -52,7 +55,7 @@
           {
             name: $scope.string.menu.TRACKING,
             icon: 'fa fa-bicycle',
-            condition: isCordovaPresent,
+            condition: $scope.isCordovaPresent,
             action: function () {
               $state.go('app.tracking');
             }
@@ -79,6 +82,14 @@
             condition: true,
             action: function () {
               $state.go('app.records');
+            }
+          },
+          {
+            name: $scope.string.menu.SETTINGS,
+            icon: 'fa fa-cog',
+            condition: true,
+            action: function () {
+              $state.go('app.settings');                 
             }
           },
           {
@@ -113,7 +124,7 @@
           function (event, toState, toParams, fromState, fromParams) {  
             sideMenu.offcanvas('hide');
             
-            if (!isCordovaPresent && (toState.name === 'app.tracking')) {
+            if (!$scope.isCordovaPresent && (toState.name === 'app.tracking')) {
               event.preventDefault();
               $state.go('app.records');
             }

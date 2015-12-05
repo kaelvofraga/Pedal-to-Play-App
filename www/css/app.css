@@ -569,3 +569,15 @@ error-message button {
 #homeDiv .user-date {
   margin-bottom: 10px;
 }
+
+.qr-code {
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+}
+.qr-code img {
+  width: 64px;
+  height: auto;
+  display: block;
+}

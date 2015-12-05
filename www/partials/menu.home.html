@@ -1,5 +1,10 @@
 <div id="homeDiv" class="avatarDiv">
 	<div class="panel panel-default">
+		<a href="https://bitbucket.org/kael_fraga/pedal2play/downloads/pedal2play.apk"
+		   ng-if="!isCordovaPresent" class="qr-code">
+			<img title="Download Android app" alt="Download Android app" src="img/qrcode.svg">
+		</a>
+		
 		<div class="buttons">
 			<button class="btn btn-lg circle-button edit-avatar" 
 					ng-click="editAvatar()" title="{{string.button.EDIT}}">
