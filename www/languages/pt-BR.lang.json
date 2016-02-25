@@ -73,7 +73,7 @@
         "DISTANCE": "Distância (km)",
         "PAUSED": "Pausada",
         "SAVE_SESSION": "Salvar pedalada",
-        "SESSION_DESCRIPTION": "Descricao da pedalada:",
+        "SESSION_DESCRIPTION": "Descrição da pedalada:",
         "SESSION_PLACEHOLDER": "exemplo: Pedalada matinal",
         "MAX_LENGTH": "A descrição deve ter no máximo 40 caracteres.",
         "MIN_SESSION_LEN": "A pedalada precisa ser mais longa para salvarmos e analisarmos. Favor, continue ou recomece.",
